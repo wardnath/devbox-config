@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3.0.1
         with:
           # Artifact name
-          name: wardnath_devbox_config
+          name: wardnath_devbox_conf
           # Path of the directory containing the static assets.
           path: _archive
           # Duration after which artifact will expire in days.
