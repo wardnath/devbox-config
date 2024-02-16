@@ -30,12 +30,17 @@ jobs:
         run: |
           echo generating artifact...
           ls -lar
-      - name: Compress action step
-        uses: a7ul/tar-action@v1.1.0
-        id: compress
+      - name: Create a file
+        run: tar -cvf wardnath_devbox_config.tar .
+    
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
         with:
-          command: c
-          cwd: .
-          files: |
-            .
-          outPath: wardnath-devbox.tar.gz
+          name: my-artifact
+          path: wardnath_devbox_config.tar
+          retention-days: 30
+      - uses: actions/download-artifact@v4
+        with:
+          name: wardnath_devbox_config
+      - name: Display structure of downloaded files
+        run: ls -R
