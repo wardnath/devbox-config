@@ -29,7 +29,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo generating artifact...
-          ls -lar
+          mkdir _archive
       - name: Create a file
         run: tar -cvf _archive/wardnath_devbox_config.tar .
     
