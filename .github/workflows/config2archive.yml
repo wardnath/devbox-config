@@ -29,5 +29,6 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo generating artifact
-          tar -cvf wardnath_devbox_config.tar .
+          ls -lar
+      
 
