@@ -30,20 +30,12 @@ jobs:
         run: |
           echo generating artifact...
           ls -lar
-      - uses: actions/checkout@master
       - name: Compress action step
         uses: a7ul/tar-action@v1.1.0
         id: compress
         with:
           command: c
-          cwd: ./test
+          cwd: .
           files: |
-            ./toCompress
-          outPath: yolo.tar.gz
-      - name: Extract files
-        uses: a7ul/tar-action@v1.1.0
-        id: extract
-        with:
-          command: x
-          cwd: ./extract
-          files: yolo.tar.gz
+            .
+          outPath: wardnath-devbox.tar.gz
