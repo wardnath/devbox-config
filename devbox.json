@@ -33,36 +33,25 @@
       ". ${DEVBOX_GLOBAL_ROOT}/init.sh"
     ],
     "scripts": {
-      "install-astro": [
-        "echo cloning astronvim repo to ~/.config/nvim",
-        "git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim"
+      "install-provider-services": [
+        "export BINDIR='/bin' && curl -sfL https://raw.githubusercontent.com/akash-network/provider/main/install.sh | bash"
       ],
-      "install-hook-bash": [
-        "echo adding 'devbox global shellenv' to ~/.bashrc",
-        "grep -qF 'devbox global shellenv' ~/.bashrc || echo 'eval \"$(devbox global shellenv --init-hook)\"' \u003e\u003e ~/.bashrc",
-        "tail -n 1 ~/.bashrc"
+      "install-nnn": [
+        "sh -c \"$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)\""
       ],
-      "install-hook-zsh": [
-        "echo adding 'devbox global shellenv' to ~/.zshrc",
-        "grep -qF 'devbox global shellenv' ~/.zshrc || echo 'eval \"$(devbox global shellenv --init-hook)\"' \u003e\u003e ~/.zshrc",
-        "tail -n 1 ~/.zshrc"
+      "install-tmux": [
+        "[ -f ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm",
+        "cp $DEVBOX_GLOBAL_ROOT/dotfiles/.tmux.conf $HOME/.tmux.conf"
       ],
-      "install-starship-prompt": [
-        "if [ ! -f $HOME/.config/starship.toml ]",
-        "then",
-        "curl -fsSL https://devbox.getfleek.dev/config/starship/starship.toml \u003e $HOME/.config/starship.toml",
-        "fi"
+      "install-chezmoi": [
+        // "mkdir -p $HOME/.local/share/chezmoi",
+        // "echo '../devbox/global/default/.devbox/chezmoi' > $HOME/.local/share/chezmoi/.chezmoiroot",
+        // "echo '2.35.0' > $HOME/.local/share/chezmoi/.chezmoiversion",
+        "chezmoi init --apply --verbose --progress true --source $/.local/share/chezmoi/"
       ],
       "latest-hash": [
         "curl -fsSL https://nixos.org/channels/nixos-unstable/git-revision"
-      ],
-      "npm-global": [
-        "grep -qF '.npm-packages' ~/.npmrc || echo 'prefix=~/.npm-packages' \u003e\u003e ~/.npmrc",
-        "grep -qF '.npm-packages' ~/.zshrc || echo 'export PATH=$PATH:~/.npm-packages/bin' \u003e\u003e ~/.zshrc",
-        "grep -qF '.npm-packages' ~/.bashrc || echo 'export PATH=$PATH:~/.npm-packages/bin' \u003e\u003e ~/.bashrc",
-        "mkdir -p ~/.npm-packages"
       ]
-    }
   },
   "nixpkgs": {}
 }
