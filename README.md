@@ -26,5 +26,5 @@ curl -fsSL https://get.jetpack.io/devbox | bash
 # none, min, low, high
 devbox global pull https://devbox.getfleek.dev/none
 
-devbox global pull https://github.com/wardnath/devbox-config
+devbox global pull https://github.com/wardnath/devbox-config.git
 ```
