@@ -44,9 +44,6 @@
         "cp $DEVBOX_GLOBAL_ROOT/dotfiles/.tmux.conf $HOME/.tmux.conf"
       ],
       "install-chezmoi": [
-        // "mkdir -p $HOME/.local/share/chezmoi",
-        // "echo '../devbox/global/default/.devbox/chezmoi' > $HOME/.local/share/chezmoi/.chezmoiroot",
-        // "echo '2.35.0' > $HOME/.local/share/chezmoi/.chezmoiversion",
         "chezmoi init --apply --verbose --progress true --source $/.local/share/chezmoi/"
       ],
       "latest-hash": [
