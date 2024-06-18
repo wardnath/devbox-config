@@ -44,7 +44,7 @@
         "cp $DEVBOX_GLOBAL_ROOT/dotfiles/.tmux.conf $HOME/.tmux.conf"
       ],
       "install-chezmoi": [
-        "chezmoi init --apply --verbose --progress true --source $/.local/share/chezmoi/"
+        "chezmoi init --apply --verbose --progress true --source ${DEVBOX_GLOBAL_ROOT}/.local/share/chezmoi/"
       ],
       "latest-hash": [
         "curl -fsSL https://nixos.org/channels/nixos-unstable/git-revision"
