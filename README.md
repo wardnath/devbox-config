@@ -28,3 +28,11 @@ devbox global pull https://devbox.getfleek.dev/none
 
 devbox global pull https://github.com/wardnath/devbox-config.git
 ```
+
+### cli devcontainer reset and run 
+
+```bash
+devcontainer up --workspace-folder . --remove-existing-container && wait 2 && devcontainer exec --workspace-folder . bash
+```
+
+
