@@ -7,6 +7,6 @@
     }
   },
   "postAttachCommand": [
-    "echo foo"
+    "/bin/echo foo"
   ]
 }
