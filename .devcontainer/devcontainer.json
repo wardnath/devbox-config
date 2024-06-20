@@ -6,5 +6,5 @@
       "packages": "curl,zsh"
     }
   },
-  "postAttachCommand": "echo foo"
+  "postAttachCommand": "curl -fsSL https://get.jetpack.io/devbox | bash -s -- -f && echo done && echo 'eval \"$(devbox global shellenv --init-hook)\"' >> ~/.zshrc"
 }
