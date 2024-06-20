@@ -6,7 +6,5 @@
       "packages": "curl,zsh"
     }
   },
-  "postAttachCommand": [
-    "/bin/echo foo"
-  ]
+  "postAttachCommand": "echo foo"
 }
