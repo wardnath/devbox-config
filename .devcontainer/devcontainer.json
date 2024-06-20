@@ -7,6 +7,6 @@
     }
   },
   "postAttachCommand": [
-    "curl -fsSL https://get.jetpack.io/devbox | bash -s -- -f && echo done"
+    "curl -fsSL https://get.jetpack.io/devbox | bash -s -- -f"
   ]
 }
