@@ -32,7 +32,7 @@ devbox global pull https://github.com/wardnath/devbox-config.git
 ### cli devcontainer reset and run 
 
 ```bash
-devcontainer up --workspace-folder . --remove-existing-container && wait 2 && devcontainer exec --workspace-folder . bash
+git pull && devcontainer up --workspace-folder . --remove-existing-container && sleep 2 && devcontainer exec --workspace-folder . zsh
 ```
 
 
