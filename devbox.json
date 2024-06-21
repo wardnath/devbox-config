@@ -49,14 +49,11 @@
     "glow@latest",
     "zoxide@latest",
     "asdf@latest",
-    "github:flox/flox",
-    "devcontainer@latest",
     "rustup@latest",
     "libiconv@latest",
     "croc@latest",
     "pdm@latest",
-    "ffmpeg@latest",
-    "bitwarden-cli@latest"
+    "ffmpeg@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
@@ -67,9 +64,6 @@
       ". ${DEVBOX_GLOBAL_ROOT}/init.sh"
     ],
     "scripts": {
-      "install-provider-services": [
-        "export BINDIR='/bin' && curl -sfL https://raw.githubusercontent.com/akash-network/provider/main/install.sh | bash"
-      ],
       "install-nnn": [
         "sh -c \"$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)\""
       ],
