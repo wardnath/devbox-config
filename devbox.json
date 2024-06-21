@@ -72,8 +72,8 @@
       ],
       "install-chezmoi": [
         "chezmoi init",
-        "echo $(devbox global path) -> $(chezmoi cd)",
-        "cp -r -f $(devbox global path) $(chezmoi cd)",
+        "echo $(devbox global path) -> $(chezmoi source-path)",
+        "cp -r -f $(devbox global path) $(chezmoi source-path)",
         "chezmoi init --apply --verbose --progress true"
       ],
       "latest-hash": [
