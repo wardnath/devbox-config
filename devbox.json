@@ -73,7 +73,7 @@
       "install-chezmoi": [
         "chezmoi purge",
         "echo $(devbox global path) -> $(chezmoi source-path)",
-        "cp -r -f $(devbox global path) $(chezmoi source-path)",
+        "cp -r -f $(devbox global path)/chezmoi $(chezmoi source-path)",
         "chezmoi init --apply --verbose --progress true"
       ],
       "latest-hash": [
