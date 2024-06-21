@@ -68,11 +68,12 @@
         "sh -c \"$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)\""
       ],
       "install-tmux": [
-        "[ -f ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
+        "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
       ],
       "install-chezmoi": [
         "chezmoi init",
-        "cp -r -f ${DEVBOX_GLOBAL_ROOT}/chezmoi $(chezmoi cd)",
+        "echo $(devbox global path) -> $(chezmoi cd)",
+        "cp -r -f $(devbox global path) $(chezmoi cd)",
         "chezmoi init --apply --verbose --progress true"
       ],
       "latest-hash": [
