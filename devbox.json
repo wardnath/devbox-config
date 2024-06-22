@@ -71,10 +71,9 @@
         "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
       ],
       "install-chezmoi": [
-        "chezmoi purge",
-        "echo $(devbox global path) -> $(chezmoi source-path)",
-        "cp -r -f $(devbox global path)/chezmoi $(chezmoi source-path)",
-        "chezmoi init --apply --verbose --progress true"
+        "chezmoi purge --force && chezmoi init",
+        "cp -r -f $(devbox global path)/chezmoi/* $(chezmoi source-path)",
+        "chezmoi --apply --verbose --progress true"
       ],
       "latest-hash": [
         "curl -fsSL https://nixos.org/channels/nixos-unstable/git-revision"
