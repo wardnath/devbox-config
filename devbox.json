@@ -73,7 +73,7 @@
       "install-chezmoi": [
         "chezmoi purge --force && chezmoi init",
         "cp -r -f $(devbox global path)/chezmoi/* $(chezmoi source-path)",
-        "chezmoi --apply --verbose --progress true"
+        "chezmoi apply --verbose --progress true"
       ],
       "latest-hash": [
         "curl -fsSL https://nixos.org/channels/nixos-unstable/git-revision"
