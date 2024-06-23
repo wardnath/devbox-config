@@ -48,3 +48,10 @@ jobs:
           path: _archive
           # Duration after which artifact will expire in days.
           retention-days: 30
+          # Steps represent a sequence of tasks that will be executed as part of the job
+      - name: Dev Container Build and Run Action
+        uses: devcontainers/ci@v0.3.1900000328
+        with:
+          imageName: ghcr.io/wardnath/devbox-config
+          cacheFrom: ghcr.io/wardnath/devbox-config
+          push: always
