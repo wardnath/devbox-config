@@ -46,7 +46,8 @@
     "unzip@latest",
     "wget@latest",
     "yq@latest",
-    "zoxide@latest"
+    "zoxide@latest",
+    "github:wardnath/code2prompt"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
