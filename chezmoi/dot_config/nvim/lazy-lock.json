@@ -1,0 +1,8 @@
+{
+    "copilot.vim": { "branch": "release", "commit": "0668308e68b0ac28b332b204b469fbe04601536a" },
+    "coq_nvim": { "branch": "coq", "commit": "28353974363a6db051be2dde391afea38217c262" },
+    "lazy.nvim": { "branch": "main", "commit": "4ea9fe060042f345960ad0c01aa7bca91405e10a" },
+    "nvim-lspconfig": { "branch": "master", "commit": "9c9eb07fecc578e25e28db8dc9002b43fff2ed79" }
+}
+  
+  
