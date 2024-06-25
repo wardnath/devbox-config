@@ -11,6 +11,7 @@
     "direnv@latest",
     "duf@latest",
     "eza@latest",
+    "fd@latest", 
     "ffmpeg@latest",
     "fzf@latest",
     "gh@latest",
