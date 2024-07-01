@@ -12,20 +12,29 @@ source "${ZINIT_HOME}/zinit.zsh"
 # If you source zinit.zsh after compinit, add the following snippet after sourcing zinit.zsh:
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
-### End - zinit's installer chunk
+
 
 ### Start - zinit Config
-# zsh-autosuggestions
-zinit ice wait lucid atload"!_zsh_autosuggest_start"
-zinit load zsh-users/zsh-autosuggestions
-## oh-my-zsh - zinit Setting
+# Zinit Plugins
+
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
+zinit ice wait'0' lucid atload'!_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait'1' lucid atinit'zicompinit'
+zinit light zsh-users/zsh-syntax-highlighting
+
+zinit ice wait'2' from'gh-r'
+zinit light zdharma/fast-syntax-highlighting
+
+zinit ice wait'2' atinit'fzf-compinit' atload'!_fzf_complete'
+zinit light junegunn/fzf
+
+zinit ice wait'1' lucid atload'!_history_search'
+zinit light zdharma-continuum/history-search-multi-word
+
 ### End - zinit Config
 
 ### Start - App Config
@@ -46,7 +55,7 @@ fi
 # devbox completions
 eval "$(devbox completion zsh)"
 # vi mode 
-set -o vi
+# set -o vi
 # nnn
 alias nnn="nnn -e"
 export NNN_PLUG='f:finder;o:autojump;p:preview-tui'
