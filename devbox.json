@@ -1,5 +1,8 @@
 {
   "packages": [
+    "iftop@latest",
+    "gotop@latest",
+    "cmatrix@latest",
     "atuin@latest",
     "bat@latest",
     "btop@latest",
