@@ -27,10 +27,6 @@ zinit ice wait lucid atload"!_zsh_autosuggest_start"
 zinit load zsh-users/zsh-autosuggestions
 ## oh-my-zsh - zinit Setting
 
-# source "$HOME/.zinit/bin/zinit.zsh"
-zinit ice lucid nocompile wait'0e' nocompletions
-zinit load MenkeTechnologies/zsh-more-completions
-
 ### End - zinit Config
 
 ### Start - App Config
