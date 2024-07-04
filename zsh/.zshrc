@@ -86,7 +86,7 @@ eval "$(atuin init zsh )"
 eval "$(devbox completion zsh)"
 
 # vi mode 
-set -o vi
+# set -o vi
 
 # nnn
 alias nnn="nnn -e"
