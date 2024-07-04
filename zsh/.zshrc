@@ -127,52 +127,6 @@ zinit light Aloxaf/fzf-tab
 # SYNTAX HIGHLIGHTING
 zinit ice wait'0c' lucid atinit'zpcompinit;zpcdreplay'
 zinit light zdharma-continuum/fast-syntax-highlighting
-# ZSH AUTOPAIRS
-zinit ice wait'0c' lucid atinit'zpcompinit;zpcdreplay'
-zinit light hlissner/zsh-autopair
-# FORGIT
-zinit ice wait lucid id-as'forgit' atload'alias gr=forgit::checkout::file'
-zinit load 'wfxr/forgit'
-# FORYADM
-zinit ice wait lucid id-as'foryadm'
-zinit load 'disrupted/foryadm'
-# cheat.sh
-zinit wait'2a' lucid \
-  id-as'cht.sh' \
-  as'program' \
-  for https://cht.sh/:cht.sh
-  # has'rlwrap' \
-zinit wait'2b' lucid \
-  id-as'cht-completion' \
-  has'rlwrap' \
-  mv'cht* -> _cht' \
-  as'completion' \
-  for https://cheat.sh/:zsh
-# mmv renamer
-zinit ice lucid wait'0' as'program' id-as'mmv' from'gh-r' \
-  mv'mmv* -> mmv' pick'mmv/mmv'
-zinit light 'itchyny/mmv'
-# nnn file manager
-zinit wait lucid id-as'nnn' from'github' as'program' for \
-  sbin'nnn' make='O_NERD=1' src'misc/quitcd/quitcd.bash_zsh' \
-  jarun/nnn
-export NNN_FIFO="/tmp/nnn.fifo"
-export NNN_PLUG='j:autojump;p:preview-tui;l:launch;r:renamer;w:wallpaper;o:organize;x:xdgdefault'
-# python automatic virtualenv
-zinit light MichaelAquilina/zsh-autoswitch-virtualenv
-# carapace completion
-zinit ice as'program' id-as'carapace' from'gh-r' atload' \
-  autoload -Uz compinit; \
-  compinit; \
-  source <(carapace _carapace);'
-zinit light carapace-sh/carapace-bin
-
-#####################
-# HISTORY           #
-#####################
-[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zhistory"
-HISTSIZE=290000
-SAVEHIST=$HISTSIZE
 
 #####################
 # COMPLETIONS       #
@@ -180,35 +134,7 @@ SAVEHIST=$HISTSIZE
 # load additional completions
 fpath+=~/.zfunc
 
-#####################
-# COLORING          #
-#####################
-autoload colors && colors
 
-#####################
-# ALIASES           #
-#####################
-source $HOME/.zsh_aliases
-source $HOME/.zsh_aliases_private
-eval "$(zoxide init --cmd j zsh)"
-
-#####################
-# FANCY-CTRL-Z      #
-#####################
-function fg-fzf() {
-  job="$(jobs | fzf -0 -1 | sed -E 's/\[(.+)\].*/\1/')" && echo '' && fg %$job
-}
-function fancy-ctrl-z () {
-  if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER=" fg-fzf"
-    zle accept-line -w
-  else
-    zle push-input -w
-    zle clear-screen -w
-  fi
-}
-zle -N fancy-ctrl-z
-bindkey '^Z' fancy-ctrl-z
 
 #####################
 # FZF SETTINGS      #
