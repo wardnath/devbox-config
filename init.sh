@@ -5,6 +5,7 @@ SCRIPT_PATH="$HOME/.local/share/devbox/global/current"
 case $(basename $shell) in
      "zsh" )
             . $DEVBOX_GLOBAL_ROOT/zsh/.zshrc
+            . $DEVBOX_GLOBAL_ROOT/zsh/.zshrc_completions
            ;;
      "bash" )
             . $DEVBOX_GLOBAL_ROOT/bash/.bashrc
