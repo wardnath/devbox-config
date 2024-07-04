@@ -22,16 +22,62 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
+    zdharma-continuum/zinit-annex-rust \
+    zdharma-continuum/zinit-annex-man
 ### End - zinit's installer chunk
 
 ### Start - zinit Config
-# Autosuggestions & fast-syntax-highlighting
-zinit ice wait lucid atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
+zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
-# zsh-autosuggestions
-zinit ice wait lucid atload"!_zsh_autosuggest_start"
-zinit load zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+
+# Load OMZ Git library
+zinit snippet OMZ::lib/git.zsh
+
+# Install OMZ git aliases
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+
+# Install OMZ elixir mix completions
+zinit ice as"completion"
+zinit snippet OMZ::plugins/mix/_mix
+
+zinit ice as"completion"
+zinit snippet OMZ::plugins/mix-fast/mix-fast.plugin.zsh
+
+# Replace zsh's default completion selection menu with fzf!
+zinit light Aloxaf/fzf-tab
+
+# reminders for aliases if whole command is typed
+zinit light djui/alias-tips
+
+# kubernetes completions and aliases
+zinit ice lucid wait \
+  has'kubectl' \
+  atinit'source <(kubectl completion zsh)'
+zinit light Dbz/kube-aliases
+
+# vim mode in zsh
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
+# cht.sh
+zinit wait"2a" lucid \
+  id-as"cht.sh" \
+  as"program" \
+  for https://cht.sh/:cht.sh
+  # has'rlwrap' \
+
+zinit wait"2b" lucid \
+  id-as"cht-completion" \
+  has'rlwrap' \
+  mv"cht* -> _cht" \
+  as"completion" \
+  for https://cheat.sh/:zsh
+
+
+# PRETTYPING
+zinit ice lucid wait="" as="program" pick="prettyping" atload="alias pping=prettyping"
+zinit load denilsonsa/prettyping
 
 ### End - zinit Config
 
