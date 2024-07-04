@@ -27,6 +27,11 @@ zinit light-mode for \
 ### End - zinit's installer chunk
 
 ### Start - zinit Config
+# Prompt : https://github.com/starship/starship
+zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
+zinit load starship/starship
+
+# autosuggest and syntax lighlight
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
