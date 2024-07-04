@@ -35,19 +35,14 @@ export PATH="$PATH:/root/local/bin"
 eval "$(starship init zsh)"
 # zoxide
 eval "$(zoxide init zsh)"
-# direnv
-eval "$(direnv hook zsh)"
-# thefuck
-eval "$(thefuck --alias)"
-alias duck="fuck" # it's like you are ducking the bad command
 # atuin
-if [[ $options[zle] = on ]]; then
-  eval "$(atuin init zsh )"
-fi
+eval "$(atuin init zsh )"
 # devbox completions
 eval "$(devbox completion zsh)"
+
 # vi mode 
 set -o vi
+
 # nnn
 alias nnn="nnn -e"
 export NNN_PLUG='f:finder;o:autojump;p:preview-tui'
@@ -63,3 +58,5 @@ export LC_ALL="C.UTF-8"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export PREVIEW="nvim"
+
+source .zsh_completions
