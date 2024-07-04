@@ -47,14 +47,19 @@ zinit load starship/starship
 # zinit light zdharma-continuum/fast-syntax-highlighting
 # zinit light zsh-users/zsh-completions
 
+# ZUI and Crasis
+zinit ice wait"1" lucid
+zinit load zdharma-continuum/zui
+
+zinit ice wait'[[ -n ${ZLAST_COMMANDS[(r)cra*]} ]]' lucid
+zinit load zdharma-continuum/zinit-crasis
+
 # Load OMZ Git library
 zinit snippet OMZ::lib/git.zsh
 
 # Install OMZ git aliases
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
-# Replace zsh's default completion selection menu with fzf!
-zinit light Aloxaf/fzf-tab
 
 # reminders for aliases if whole command is typed
 zinit light djui/alias-tips
