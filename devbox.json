@@ -1,5 +1,6 @@
 {
   "packages": [
+    "hhighlighter@latest",
     "iftop@latest",
     "gotop@latest",
     "cmatrix@latest",
