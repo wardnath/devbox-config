@@ -37,13 +37,6 @@ zinit snippet OMZ::lib/git.zsh
 # Install OMZ git aliases
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
-# Install OMZ elixir mix completions
-zinit ice as"completion"
-zinit snippet OMZ::plugins/mix/_mix
-
-zinit ice as"completion"
-zinit snippet OMZ::plugins/mix-fast/mix-fast.plugin.zsh
-
 # Replace zsh's default completion selection menu with fzf!
 zinit light Aloxaf/fzf-tab
 
