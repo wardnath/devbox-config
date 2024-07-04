@@ -58,5 +58,3 @@ export LC_ALL="C.UTF-8"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export PREVIEW="nvim"
-
-source .zsh_completions
