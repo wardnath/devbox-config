@@ -48,12 +48,6 @@ zinit light Aloxaf/fzf-tab
 # reminders for aliases if whole command is typed
 zinit light djui/alias-tips
 
-# kubernetes completions and aliases
-zinit ice lucid wait \
-  has'kubectl' \
-  atinit'source <(kubectl completion zsh)'
-zinit light Dbz/kube-aliases
-
 # vim mode in zsh
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
@@ -86,7 +80,8 @@ eval "$(starship init zsh)"
 # zoxide
 eval "$(zoxide init zsh)"
 # atuin
-eval "$(atuin init zsh )"
+eval "$(atuin init zsh)"
+eval "$(atuin gen-completions --shell=zsh)"
 # devbox completions
 eval "$(devbox completion zsh)"
 
@@ -108,4 +103,5 @@ export LC_ALL="C.UTF-8"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export PREVIEW="nvim"
+alias python3="python"
 
