@@ -26,11 +26,14 @@ zinit light-mode for \
 autoload -Uz compinit; compinit
 
 ### End of Zinit's installer chunk
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
 # fzf config, must be after fast-syntax-highlighting, zsh-autusuggestions, compinit
+zinit light junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 zinit light Aloxaf/fzf-tab
+
+zinit ice wait lucid
 zinit load ellie/atuin
 
 
@@ -78,6 +81,12 @@ zinit wait"2b" lucid \
 # PRETTYPING
 zinit ice lucid wait="" as="program" pick="prettyping" atload="alias pping=prettyping"
 zinit load denilsonsa/prettyping
+
+# Completions 
+
+zinit ice as"completion"
+zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+
 
 ### End - zinit Config
 
