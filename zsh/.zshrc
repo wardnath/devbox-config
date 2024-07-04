@@ -92,6 +92,26 @@ zinit load denilsonsa/prettyping
 zinit ice as"completion"
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
+# lib from Oy My Zsh
+zinit snippet OMZL::completion.zsh
+zinit snippet OMZL::spectrum.zsh
+zinit snippet OMZL::history.zsh
+
+# plugins from Oy My Zsh
+zinit wait lucid for \
+    OMZP::colorize \
+    OMZP::command-not-found \
+    OMZP::dotenv \
+    OMZP::extract
+    # OMZP::fzf
+
+# plugins from Prezto: relative order is important
+# TODO: move necessary parts to zshrc
+zinit snippet PZT::modules/helper
+zinit snippet PZT::modules/gnu-utility
+zinit snippet PZT::modules/utility
+zinit snippet PZT::modules/completion
+
 
 ### End - zinit Config
 
