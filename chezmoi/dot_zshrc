@@ -1,1 +1,1 @@
-source $VENV_DIR/bin/activate
+eval "$(devbox global shellenv --init-hook)"
