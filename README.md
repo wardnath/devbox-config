@@ -21,6 +21,7 @@ curl -fsSL https://get.jetpack.io/devbox | bash
 
 # assuming you want to install in z shell
  echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
+ echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
 
 
 # none, min, low, high
