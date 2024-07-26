@@ -86,7 +86,7 @@ zinit ice depth=1 # optional, but avoids downloading the full history
 zinit load 3v1n0/zsh-bash-completions-fallback
 
 zinit load nix-community/nix-zsh-completions
-zinit load sigoden/argc-completions
+# zinit load sigoden/argc-completions
 zinit load zsh-users/zsh-completions
 zinit load clarketm/zsh-completions
 
