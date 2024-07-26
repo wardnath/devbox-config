@@ -1,8 +1,5 @@
+
 #!/usr/bin/env zsh
-# disrupted zshrc
-
-
-
 ### Start - zinit Installer Chunk
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -20,7 +17,7 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust \
     zdharma-continuum/fast-syntax-highlighting \
-    zsh-users/zsh-autosuggestions 
+    zsh-users/zsh-autosuggestions
     # zdharma-continuum/zinit-annex-man
 
 autoload -Uz compinit; compinit
@@ -31,26 +28,21 @@ autoload -Uz compinit; compinit
 # fzf config, must be after fast-syntax-highlighting, zsh-autusuggestions, compinit
 zinit light junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-zinit light Aloxaf/fzf-tab
+zinit load Aloxaf/fzf-tab
 
+
+# Atuin
 zinit ice wait lucid
 zinit load ellie/atuin
-
 
 ### Start - zinit Config
 # Prompt : https://github.com/starship/starship
 zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
-# autosuggest and syntax lighlight
-# zinit light zsh-users/zsh-autosuggestions
-# zinit light zdharma-continuum/fast-syntax-highlighting
-# zinit light zsh-users/zsh-completions
-
-# ZUI and Crasis
+# ZUI and Crasis - tool for zinit config
 zinit ice wait"1" lucid
 zinit load zdharma-continuum/zui
-
 zinit ice wait'[[ -n ${ZLAST_COMMANDS[(r)cra*]} ]]' lucid
 zinit load zdharma-continuum/zinit-crasis
 
@@ -60,7 +52,6 @@ zinit snippet OMZ::lib/git.zsh
 # Install OMZ git aliases
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
-
 # reminders for aliases if whole command is typed
 zinit light djui/alias-tips
 
@@ -68,13 +59,12 @@ zinit light djui/alias-tips
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 
-# cht.sh
+# cht.sh cheat sheet
 zinit wait"2a" lucid \
   id-as"cht.sh" \
   as"program" \
   for https://cht.sh/:cht.sh
   # has'rlwrap' \
-
 zinit wait"2b" lucid \
   id-as"cht-completion" \
   has'rlwrap' \
@@ -87,10 +77,18 @@ zinit wait"2b" lucid \
 zinit ice lucid wait="" as="program" pick="prettyping" atload="alias pping=prettyping"
 zinit load denilsonsa/prettyping
 
-# Completions 
-
+# Completions
 zinit ice as"completion"
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+
+# zsh-bash-completions-fallback
+zinit ice depth=1 # optional, but avoids downloading the full history
+zinit load 3v1n0/zsh-bash-completions-fallback
+
+zinit load nix-community/nix-zsh-completions
+zinit load sigoden/argc-completions
+zinit load zsh-users/zsh-completion
+zinit load clarketm/zsh-completions
 
 # lib from Oy My Zsh
 zinit snippet OMZL::completion.zsh
@@ -112,6 +110,21 @@ zinit snippet PZT::modules/gnu-utility
 zinit snippet PZT::modules/utility
 zinit snippet PZT::modules/completion
 
+# Style
+
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+# switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'
 
 ### End - zinit Config
 
@@ -127,7 +140,7 @@ eval "$(atuin gen-completions --shell=zsh)"
 # devbox completions
 eval "$(devbox completion zsh)"
 
-# vi mode 
+# vi mode
 # set -o vi
 
 # nnn
