@@ -111,6 +111,9 @@ zinit ice as'program' src'asdf.sh'
 zinit light asdf-vm/asdf
 zinit snippet 'OMZP::asdf'
 
+# Reload completions
+autoload -Uz compinit && compinit
+
 # Style
 
 # disable sort when completing `git checkout`
@@ -130,18 +133,18 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 ### End - zinit Config
 
 ### Start - App Config
-export PATH="$PATH:/root/local/bin"
+export PATH="$PATH:/root/.local/bin"
 # starship
-#eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 # zoxide
-#eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)"
 # atuin
 #eval "$(atuin init zsh)"
 #eval "$(atuin gen-completions --shell=zsh)"
 # devbox completions
 eval "$(devbox completion zsh)"
 
-# vi mode
+# vi mode - already set above
 # set -o vi
 
 # nnn
