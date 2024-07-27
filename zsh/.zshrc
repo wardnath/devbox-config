@@ -39,12 +39,6 @@ zinit load ellie/atuin
 zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
-### ZUI and Crasis - tool for zinit config
-zinit ice wait"1" lucid
-zinit load zdharma-continuum/zui
-zinit ice wait'[[ -n ${ZLAST_COMMANDS[(r)cra*]} ]]' lucid
-zinit load zdharma-continuum/zinit-crasis
-
 # Load OMZ Git library
 zinit snippet OMZ::lib/git.zsh
 
@@ -70,7 +64,6 @@ zinit wait"2b" lucid \
   mv"cht* -> _cht" \
   as"completion" \
   for https://cheat.sh/:zsh
-
 
 # PRETTYPING
 zinit ice lucid wait="" as="program" pick="prettyping" atload="alias pping=prettyping"
@@ -112,33 +105,10 @@ zinit snippet PZT::modules/completion
 # Python
 zinit snippet OMZP::python
 zinit snippet OMZP::pip
-zinit ice pick'pdm.plugin.zsh'
-zinit light baurt/zsh-pdm
-
-# DUF - a modern df
-if [[ ! -x "$(command -v duf)" ]]; then
-  zinit ice wait lucid as"program" mv"duf* -> duf" pick"duf/duf" from"gh-r" bpick'*.tar.gz'
-  zinit light muesli/duf
-fi
-
-# # dust - a modern du
-if [[ ! -x "$(command -v dust)" ]]; then
-  zinit ice wait lucid as"program" mv"dust*/dust -> dust" pick"dust" from"gh-r"
-  zinit light bootandy/dust
-fi
-
-# xh - a nicer http client
-zinit ice wait lucid as"program" mv"xh* -> xh" pick"xh/xh" from"gh-r"
-zinit light ducaale/xh
-
-# glow - CLI markdown reader
-zinit ice wait lucid as"program" pick"glow*/glow" from"gh-r" bpick'*.tar.gz'
-zinit light charmbracelet/glow
 
 # asdf
 zinit ice as'program' src'asdf.sh'
 zinit light asdf-vm/asdf
-
 zinit snippet 'OMZP::asdf'
 
 # Style
@@ -162,12 +132,12 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 ### Start - App Config
 export PATH="$PATH:/root/local/bin"
 # starship
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 # zoxide
-eval "$(zoxide init zsh)"
+#eval "$(zoxide init zsh)"
 # atuin
-eval "$(atuin init zsh)"
-eval "$(atuin gen-completions --shell=zsh)"
+#eval "$(atuin init zsh)"
+#eval "$(atuin gen-completions --shell=zsh)"
 # devbox completions
 eval "$(devbox completion zsh)"
 
