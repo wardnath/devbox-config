@@ -105,6 +105,8 @@ zinit snippet PZT::modules/completion
 # Python
 zinit snippet OMZP::python
 zinit snippet OMZP::pip
+zinit ice pick'pdm.plugin.zsh'
+zinit light baurt/zsh-pdm
 
 # asdf
 zinit ice as'program' src'asdf.sh'
