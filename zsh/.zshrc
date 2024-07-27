@@ -22,16 +22,15 @@ zinit light-mode for \
 
 autoload -Uz compinit; compinit
 
-### End of Zinit's installer chunk
+# End of Zinit's installer chunk
 # zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
-# fzf config, must be after fast-syntax-highlighting, zsh-autusuggestions, compinit
-zinit light junegunn/fzf
+### fzf config, must be after fast-syntax-highlighting, zsh-autusuggestions, compinit
+zinit load junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 zinit load Aloxaf/fzf-tab
 
-
-# Atuin
+### Atuin
 zinit ice wait lucid
 zinit load ellie/atuin
 
@@ -40,7 +39,7 @@ zinit load ellie/atuin
 zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
-# ZUI and Crasis - tool for zinit config
+### ZUI and Crasis - tool for zinit config
 zinit ice wait"1" lucid
 zinit load zdharma-continuum/zui
 zinit ice wait'[[ -n ${ZLAST_COMMANDS[(r)cra*]} ]]' lucid
@@ -109,6 +108,38 @@ zinit snippet PZT::modules/helper
 zinit snippet PZT::modules/gnu-utility
 zinit snippet PZT::modules/utility
 zinit snippet PZT::modules/completion
+
+# Python
+zinit snippet OMZP::python
+zinit snippet OMZP::pip
+zinit ice pick'pdm.plugin.zsh'
+zinit light baurt/zsh-pdm
+
+# DUF - a modern df
+if [[ ! -x "$(command -v duf)" ]]; then
+  zinit ice wait lucid as"program" mv"duf* -> duf" pick"duf/duf" from"gh-r" bpick'*.tar.gz'
+  zinit light muesli/duf
+fi
+
+# # dust - a modern du
+if [[ ! -x "$(command -v dust)" ]]; then
+  zinit ice wait lucid as"program" mv"dust*/dust -> dust" pick"dust" from"gh-r"
+  zinit light bootandy/dust
+fi
+
+# xh - a nicer http client
+zinit ice wait lucid as"program" mv"xh* -> xh" pick"xh/xh" from"gh-r"
+zinit light ducaale/xh
+
+# glow - CLI markdown reader
+zinit ice wait lucid as"program" pick"glow*/glow" from"gh-r" bpick'*.tar.gz'
+zinit light charmbracelet/glow
+
+# asdf
+zinit ice as'program' src'asdf.sh'
+zinit light asdf-vm/asdf
+
+zinit snippet 'OMZP::asdf'
 
 # Style
 
