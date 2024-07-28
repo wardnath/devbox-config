@@ -40,6 +40,11 @@ zinit light "kutsan/zsh-system-clipboard"
 zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
+# interactive jq; awesome
+zinit ice wait lucid \
+  atload"bindkey '^j' jq-complete"
+zinit light "reegnz/jq-zsh-plugin"
+
 ## Load OMZ Git library
 zinit snippet OMZ::lib/git.zsh
 
@@ -74,6 +79,8 @@ zinit load denilsonsa/prettyping
 zinit ice as"completion"
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
+
+
 ## zsh-bash-completions-fallback
 zinit ice depth=1 # optional, but avoids downloading the full history
 zinit load 3v1n0/zsh-bash-completions-fallback
@@ -88,6 +95,13 @@ zinit load clarketm/zsh-completions
 zinit snippet OMZL::completion.zsh
 zinit snippet OMZL::spectrum.zsh
 zinit snippet OMZL::history.zsh
+
+zinit ice wait lucid
+zinit light "zsh-users/zsh-completions"
+
+# completions for yarn run (mainly)
+zinit ice wait lucid atclone"./zplug.zsh"
+zinit light "g-plane/zsh-yarn-autocompletions"
 
 # plugins from Oy My Zsh
 zinit wait lucid for \
