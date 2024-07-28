@@ -1,12 +1,11 @@
 
 #!/usr/bin/env zsh
-### Start - zinit Installer Chunk
+# Start - zinit Installer Chunk
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-
 source "${ZINIT_HOME}/zinit.zsh"
-autoload -Uz _zinit
+autoload -Uz compinit && compinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
@@ -23,10 +22,8 @@ zinit light-mode for \
 autoload -Uz compinit; compinit
 
 # End of Zinit's installer chunk
-# zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
 ### fzf config, must be after fast-syntax-highlighting, zsh-autusuggestions, compinit
-zinit load junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 zinit load Aloxaf/fzf-tab
 
@@ -39,20 +36,20 @@ zinit load ellie/atuin
 zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
-# Load OMZ Git library
+## Load OMZ Git library
 zinit snippet OMZ::lib/git.zsh
 
-# Install OMZ git aliases
+## Install OMZ git aliases
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
-# reminders for aliases if whole command is typed
+## reminders for aliases if whole command is typed
 zinit light djui/alias-tips
 
-# vim mode in zsh
+## vim mode in zsh
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 
-# cht.sh cheat sheet
+## cht.sh cheat sheet
 zinit wait"2a" lucid \
   id-as"cht.sh" \
   as"program" \
@@ -65,7 +62,7 @@ zinit wait"2b" lucid \
   as"completion" \
   for https://cheat.sh/:zsh
 
-# PRETTYPING
+## PRETTYPING
 zinit ice lucid wait="" as="program" pick="prettyping" atload="alias pping=prettyping"
 zinit load denilsonsa/prettyping
 
@@ -73,7 +70,7 @@ zinit load denilsonsa/prettyping
 zinit ice as"completion"
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-# zsh-bash-completions-fallback
+## zsh-bash-completions-fallback
 zinit ice depth=1 # optional, but avoids downloading the full history
 zinit load 3v1n0/zsh-bash-completions-fallback
 
@@ -96,7 +93,6 @@ zinit wait lucid for \
     # OMZP::fzf
 
 # plugins from Prezto: relative order is important
-# TODO: move necessary parts to zshrc
 zinit snippet PZT::modules/helper
 zinit snippet PZT::modules/gnu-utility
 zinit snippet PZT::modules/utility
@@ -113,8 +109,6 @@ zinit ice as'program' src'asdf.sh'
 zinit light asdf-vm/asdf
 zinit snippet 'OMZP::asdf'
 
-# Reload completions
-autoload -Uz compinit && compinit
 
 # Style
 
@@ -131,6 +125,8 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 # switch group using `<` and `>`
 zstyle ':fzf-tab:*' switch-group '<' '>'
+# show completion menu on successive tab press (menu_complete overrides)
+setopt auto_menu
 
 ### End - zinit Config
 
