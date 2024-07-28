@@ -73,7 +73,7 @@ zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_
 ## zsh-bash-completions-fallback
 zinit ice depth=1 # optional, but avoids downloading the full history
 zinit load 3v1n0/zsh-bash-completions-fallback
-
+zinit load"spwhitt/nix-zsh-completions"
 zinit load nix-community/nix-zsh-completions
 # zinit load sigoden/argc-completions
 zinit load zsh-users/zsh-completions
