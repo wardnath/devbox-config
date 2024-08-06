@@ -1,5 +1,6 @@
 {
   "packages": [
+    "complgen@latest",
     "iftop@latest",
     "gotop@latest",
     "cmatrix@latest",
