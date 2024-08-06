@@ -10,7 +10,6 @@
     "chezmoi@latest",
     "cloc@latest",
     "cmake@latest",
-    "croc@latest",
     "direnv@latest",
     "duf@latest",
     "eza@latest",
