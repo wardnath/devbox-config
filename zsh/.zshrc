@@ -34,10 +34,10 @@ for f in ~/.config/complgen/*.usage(N); do
     compdef "_complgen_jit $stem" $stem
 done
 # Load all completion scripts from ~/.zsh/completion
-zinit ice as"completion"
-for completion_script in ~/.zsh/completion/*.zsh; do
-  zinit snippet "$completion_script"
-done
+# zinit ice as"completion"
+# for completion_script in ~/.zsh/completion/*.zsh; do
+#   zinit snippet "$completion_script"
+# done
 
 autoload -Uz compinit; compinit
 
