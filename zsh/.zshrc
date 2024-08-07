@@ -19,6 +19,13 @@ zinit light-mode for \
     zsh-users/zsh-autosuggestions
     # zdharma-continuum/zinit-annex-man
 
+
+# Load all completion scripts from ~/.zsh/completion
+zinit ice as"completion"
+for completion_script in ~/.zsh/completion/*.zsh; do
+  zinit snippet "$completion_script"
+done
+
 autoload -Uz compinit; compinit
 
 # End of Zinit's installer chunk
