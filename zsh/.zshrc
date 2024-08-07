@@ -19,7 +19,20 @@ zinit light-mode for \
     zsh-users/zsh-autosuggestions
     # zdharma-continuum/zinit-annex-man
 
+# Function to use complgen JIT mode
+_complgen_jit () {
+    local stem=$1
+    local -a w=("${(@)words[2,$CURRENT-1]}")
+    local zsh_code=$(complgen jit ~/.config/complgen/${stem}.usage zsh --prefix="$PREFIX" -- "${w[@]}")
+    eval $zsh_code
+    return 0
+}
 
+# Register the completions
+for f in ~/.config/complgen/*.usage(N); do
+    local stem=${f:t:r}
+    compdef "_complgen_jit $stem" $stem
+done
 # Load all completion scripts from ~/.zsh/completion
 zinit ice as"completion"
 for completion_script in ~/.zsh/completion/*.zsh; do
