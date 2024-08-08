@@ -44,8 +44,8 @@ autoload -Uz compinit; compinit
 # End of Zinit's installer chunk
 
 ### fzf config, must be after fast-syntax-highlighting, zsh-autusuggestions, compinit
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-zinit load Aloxaf/fzf-tab
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#zinit load Aloxaf/fzf-tab
 
 ### Atuin
 zinit ice wait lucid
@@ -61,9 +61,9 @@ zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
 # interactive jq; awesome
-zinit ice wait lucid \
-  atload"bindkey '^j' jq-complete"
-zinit light "reegnz/jq-zsh-plugin"
+#zinit ice wait lucid \
+#  atload"bindkey '^j' jq-complete"
+#zinit light "reegnz/jq-zsh-plugin"
 
 ## Load OMZ Git library
 zinit snippet OMZ::lib/git.zsh
