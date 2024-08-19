@@ -99,7 +99,10 @@ zinit load denilsonsa/prettyping
 zinit ice as"completion"
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-
+# aux completions
+if ! grep -q "source ~/.config/aux-zsh-completions/stdout-completions.zsh" ~/.zshrc; then
+    echo "source ~/.config/aux-zsh-completions/stdout-completions.zsh" >> ~/.zshrc
+fi
 
 ## zsh-bash-completions-fallback
 zinit ice depth=1 # optional, but avoids downloading the full history
