@@ -19,13 +19,33 @@ zinit light-mode for \
     zsh-users/zsh-autosuggestions
     # zdharma-continuum/zinit-annex-man
 
+# Function to use complgen JIT mode
+_complgen_jit () {
+    local stem=$1
+    local -a w=("${(@)words[2,$CURRENT-1]}")
+    local zsh_code=$(complgen jit ~/.config/complgen/${stem}.usage zsh --prefix="$PREFIX" -- "${w[@]}")
+    eval $zsh_code
+    return 0
+}
+
+# Register the completions
+for f in ~/.config/complgen/*.usage(N); do
+    local stem=${f:t:r}
+    compdef "_complgen_jit $stem" $stem
+done
+# Load all completion scripts from ~/.zsh/completion
+# zinit ice as"completion"
+# for completion_script in ~/.zsh/completion/*.zsh; do
+#   zinit snippet "$completion_script"
+# done
+
 autoload -Uz compinit; compinit
 
 # End of Zinit's installer chunk
 
 ### fzf config, must be after fast-syntax-highlighting, zsh-autusuggestions, compinit
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-zinit load Aloxaf/fzf-tab
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#zinit load Aloxaf/fzf-tab
 
 ### Atuin
 zinit ice wait lucid
@@ -41,9 +61,9 @@ zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
 # interactive jq; awesome
-zinit ice wait lucid \
-  atload"bindkey '^j' jq-complete"
-zinit light "reegnz/jq-zsh-plugin"
+#zinit ice wait lucid \
+#  atload"bindkey '^j' jq-complete"
+#zinit light "reegnz/jq-zsh-plugin"
 
 ## Load OMZ Git library
 zinit snippet OMZ::lib/git.zsh
@@ -132,20 +152,20 @@ zinit snippet 'OMZP::asdf'
 # Style
 
 # disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
+#zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support
 # NOTE: don't use escape sequences here, fzf-tab will ignore them
-zstyle ':completion:*:descriptions' format '[%d]'
+#zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-zstyle ':completion:*' menu no
+#zstyle ':completion:*' menu no
 # preview directory's content with eza when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+#zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 # switch group using `<` and `>`
-zstyle ':fzf-tab:*' switch-group '<' '>'
+#zstyle ':fzf-tab:*' switch-group '<' '>'
 # show completion menu on successive tab press (menu_complete overrides)
-setopt auto_menu
+#setopt auto_menu
 
 ### End - zinit Config
 

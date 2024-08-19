@@ -281,51 +281,51 @@
         }
       }
     },
-    "croc@latest": {
-      "last_modified": "2024-06-29T10:55:25Z",
-      "resolved": "github:NixOS/nixpkgs/53a702e155d4d87cb908524ddb52db36aed98d03#croc",
+    "complgen@latest": {
+      "last_modified": "2024-07-07T07:43:47Z",
+      "resolved": "github:NixOS/nixpkgs/b60793b86201040d9dee019a05089a9150d08b5b#complgen",
       "source": "devbox-search",
-      "version": "10.0.9",
+      "version": "0.1.8",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/0fpkbcls1i0knqqj3v77g94c9v8m7qbw-croc-10.0.9",
+              "path": "/nix/store/f6cwy8znkbhfdifdf7vgjijxvya8a9bk-complgen-0.1.8",
               "default": true
             }
           ],
-          "store_path": "/nix/store/0fpkbcls1i0knqqj3v77g94c9v8m7qbw-croc-10.0.9"
+          "store_path": "/nix/store/f6cwy8znkbhfdifdf7vgjijxvya8a9bk-complgen-0.1.8"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/qa35k2rm3f6drz3h9bq3nms4ajx89h6x-croc-10.0.9",
+              "path": "/nix/store/dg14wj7w3kqxdmc6h1x10am9x37qkasq-complgen-0.1.8",
               "default": true
             }
           ],
-          "store_path": "/nix/store/qa35k2rm3f6drz3h9bq3nms4ajx89h6x-croc-10.0.9"
+          "store_path": "/nix/store/dg14wj7w3kqxdmc6h1x10am9x37qkasq-complgen-0.1.8"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/f525pnypnihl1v4cvzkb54cka0dmzfff-croc-10.0.9",
+              "path": "/nix/store/aw640i9v7i435zlqmyca2x4cc7pyl7vj-complgen-0.1.8",
               "default": true
             }
           ],
-          "store_path": "/nix/store/f525pnypnihl1v4cvzkb54cka0dmzfff-croc-10.0.9"
+          "store_path": "/nix/store/aw640i9v7i435zlqmyca2x4cc7pyl7vj-complgen-0.1.8"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/x1g8bv7z55yl8gclga7x0xyprqxd9bsq-croc-10.0.9",
+              "path": "/nix/store/dga5f1vlv0qa9j66qay7d1c53x0dr0gh-complgen-0.1.8",
               "default": true
             }
           ],
-          "store_path": "/nix/store/x1g8bv7z55yl8gclga7x0xyprqxd9bsq-croc-10.0.9"
+          "store_path": "/nix/store/dga5f1vlv0qa9j66qay7d1c53x0dr0gh-complgen-0.1.8"
         }
       }
     },
