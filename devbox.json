@@ -14,7 +14,7 @@
     "direnv@latest",
     "duf@latest",
     "eza@latest",
-    "fd@latest",
+    "fd@latest", 
     "ffmpeg@latest",
     "fzf@latest",
     "gh@latest",
@@ -53,11 +53,11 @@
     "yq@latest",
     "zoxide@latest",
     "python@latest",
-    "ollama@latest"
+    "wl-clipboard@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
-    "DEVBOX_GLOBAL_ROOT":   "$HOME/.local/share/devbox/global/current"
+    "DEVBOX_GLOBAL_ROOT": "$HOME/.local/share/devbox/global/current"
   },
   "shell": {
     "init_hook": [
@@ -78,7 +78,7 @@
       "latest-hash": [
         "curl -fsSL https://nixos.org/channels/nixos-unstable/git-revision"
       ]
-    },
-    "nixpkgs": {}
+  },
+  "nixpkgs": {}
   }
 }
