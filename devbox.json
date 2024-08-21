@@ -52,7 +52,8 @@
     "wget@latest",
     "yq@latest",
     "zoxide@latest",
-    "python@latest"
+    "python@latest",
+    "wl-clipboard@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
