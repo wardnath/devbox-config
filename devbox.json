@@ -25,7 +25,6 @@
     "jq@latest",
     "kubectl@latest",
     "kubernetes-helm@latest",
-    "make@latest",
     "ncdu@latest",
     "neofetch@latest",
     "neovim@latest",
