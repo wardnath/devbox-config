@@ -99,9 +99,11 @@ zinit load denilsonsa/prettyping
 zinit ice as"completion"
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
+AUX_COMPLETION_PATH="~/.config/aux-zsh-completions/stdout-completions.zsh"
+alias auxcomp="echo $AUX_COMPLETION_PATH"
 # aux completions
-if ! grep -q "source ~/.config/aux-zsh-completions/stdout-completions.zsh" ~/.zshrc; then
-    echo "source ~/.config/aux-zsh-completions/stdout-completions.zsh" >> ~/.zshrc
+if ! grep -q "source $AUX_COMPLETION_PATH" ~/.zshrc; then
+    echo "source $AUX_COMPLETION_PATH" >> ~/.zshrc
 fi
 
 ## zsh-bash-completions-fallback
@@ -114,7 +116,7 @@ zinit light "spwhitt/nix-zsh-completions"
 zinit load zsh-users/zsh-completions
 zinit load clarketm/zsh-completions
 
-# lib from Oy My Zsh
+# lib from Oh My Zsh
 zinit snippet OMZL::completion.zsh
 zinit snippet OMZL::spectrum.zsh
 zinit snippet OMZL::history.zsh

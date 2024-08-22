@@ -10,7 +10,6 @@
     "cheat@latest",
     "chezmoi@latest",
     "cloc@latest",
-    "cmake@latest",
     "direnv@latest",
     "duf@latest",
     "eza@latest",
@@ -26,14 +25,13 @@
     "jq@latest",
     "kubectl@latest",
     "kubernetes-helm@latest",
+    "make@latest",
     "ncdu@latest",
     "neofetch@latest",
     "neovim@latest",
     "nmap@latest",
     "nnn@latest",
-    "nodejs@latest",
     "p7zip@latest",
-    "projectable@latest",
     "pstree@latest",
     "pv@latest",
     "ripgrep@latest",
@@ -50,7 +48,6 @@
     "wget@latest",
     "yq@latest",
     "zoxide@latest",
-    "python@latest",
     "wl-clipboard@latest"
   ],
   "env": {
@@ -63,12 +60,12 @@
     ],
     "scripts": {
       "complgen-man": [
-        "man $CMD | complgen scrape > chezmoi/dot_config/complgen/$CMD.usage.tmpl"
+        "man $1 | complgen scrape > chezmoi/dot_config/complgen/$1.usage.tmpl"
       ],
       "complgen-help": [
-        "$CMD --help | complgen scrape > chezmoi/dot_config/complgen/$CMD.usage.tmpl"
+        "$1 --help | complgen scrape > chezmoi/dot_config/complgen/$1.usage.tmpl"
       ],
-    "install-nnn": [
+      "install-nnn": [
         "sh -c \"$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)\""
       ],
       "install-tmux": [

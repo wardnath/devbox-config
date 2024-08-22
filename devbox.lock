@@ -465,154 +465,6 @@
         }
       }
     },
-    "ffmpeg@latest": {
-      "last_modified": "2024-07-05T12:16:31Z",
-      "resolved": "github:NixOS/nixpkgs/4284c2b73c8bce4b46a6adf23e16d9e2ec8da4bb#ffmpeg",
-      "source": "devbox-search",
-      "version": "6.1.1",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "bin",
-              "path": "/nix/store/xzmj9mv66gmda82kppccczmxzc9w2j50-ffmpeg-6.1.1-bin",
-              "default": true
-            },
-            {
-              "name": "man",
-              "path": "/nix/store/y808pw45g4kmihrc3yszcr6wmpqb4lbl-ffmpeg-6.1.1-man",
-              "default": true
-            },
-            {
-              "name": "out",
-              "path": "/nix/store/6c0vx228xz5727h16zzq4ic9vmx6np5q-ffmpeg-6.1.1"
-            },
-            {
-              "name": "data",
-              "path": "/nix/store/7hmicv6yzh924p3af4g3rs96wwhdjx3d-ffmpeg-6.1.1-data"
-            },
-            {
-              "name": "dev",
-              "path": "/nix/store/qb77qfyzcs54mqlv31zwbjfsi9zghb7c-ffmpeg-6.1.1-dev"
-            },
-            {
-              "name": "doc",
-              "path": "/nix/store/0078wk7mzrzffngm19avdqg2pcbrkxxz-ffmpeg-6.1.1-doc"
-            },
-            {
-              "name": "lib",
-              "path": "/nix/store/6a9mbnhks1x0mj0j0y797gliif5m4rwq-ffmpeg-6.1.1-lib"
-            }
-          ],
-          "store_path": "/nix/store/xzmj9mv66gmda82kppccczmxzc9w2j50-ffmpeg-6.1.1-bin"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "bin",
-              "path": "/nix/store/s8jqvpkz5jva73ir7rdajh33l5kinj94-ffmpeg-6.1.1-bin",
-              "default": true
-            },
-            {
-              "name": "man",
-              "path": "/nix/store/1yr0clfahfw8i4i8r99rvsj7088zldm0-ffmpeg-6.1.1-man",
-              "default": true
-            },
-            {
-              "name": "data",
-              "path": "/nix/store/fxghmjzv4x1scpr104irkr2frd8xfcvc-ffmpeg-6.1.1-data"
-            },
-            {
-              "name": "dev",
-              "path": "/nix/store/966jkdfqcrgjixkpc3492hx0qcj3m0z1-ffmpeg-6.1.1-dev"
-            },
-            {
-              "name": "doc",
-              "path": "/nix/store/50hh46nya8f4sl0fl93jdcj7z91di2zk-ffmpeg-6.1.1-doc"
-            },
-            {
-              "name": "lib",
-              "path": "/nix/store/0d62k12vr1wjag7zclpbr52khpkblym9-ffmpeg-6.1.1-lib"
-            },
-            {
-              "name": "out",
-              "path": "/nix/store/49f2wd6xmwg0cv8gjdl3g1456k3fafzr-ffmpeg-6.1.1"
-            }
-          ],
-          "store_path": "/nix/store/s8jqvpkz5jva73ir7rdajh33l5kinj94-ffmpeg-6.1.1-bin"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "bin",
-              "path": "/nix/store/x2wyjib19dy2mry1gpdwfzky6931hkdz-ffmpeg-6.1.1-bin",
-              "default": true
-            },
-            {
-              "name": "man",
-              "path": "/nix/store/s3kcgad559yr7rc4jsd7d1adk2ydk0d8-ffmpeg-6.1.1-man",
-              "default": true
-            },
-            {
-              "name": "out",
-              "path": "/nix/store/wmqyavzn9vj7w22ygb3f29i4y8srv4n8-ffmpeg-6.1.1"
-            },
-            {
-              "name": "data",
-              "path": "/nix/store/j7dl67f972pwl95navw3nd4sjcgsxz14-ffmpeg-6.1.1-data"
-            },
-            {
-              "name": "dev",
-              "path": "/nix/store/cyqm1xmiybf4da284kv8kqpisjaaycci-ffmpeg-6.1.1-dev"
-            },
-            {
-              "name": "doc",
-              "path": "/nix/store/98qn55m5nhz85b7ahr0m37nxxnmym6n1-ffmpeg-6.1.1-doc"
-            },
-            {
-              "name": "lib",
-              "path": "/nix/store/2jsmf9g5lgy6a1j6dsjw6s9rdy55iyjb-ffmpeg-6.1.1-lib"
-            }
-          ],
-          "store_path": "/nix/store/x2wyjib19dy2mry1gpdwfzky6931hkdz-ffmpeg-6.1.1-bin"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "bin",
-              "path": "/nix/store/hpdx0501l5y5p2grnpyb0dh266fxmiz5-ffmpeg-6.1.1-bin",
-              "default": true
-            },
-            {
-              "name": "man",
-              "path": "/nix/store/7qgi9km11m50xyjrrjc2idlg9095y6m1-ffmpeg-6.1.1-man",
-              "default": true
-            },
-            {
-              "name": "data",
-              "path": "/nix/store/8wfqs8m7f0ycid90xp3n9z0k6l2rxg10-ffmpeg-6.1.1-data"
-            },
-            {
-              "name": "dev",
-              "path": "/nix/store/ccy9gvyqjlkhyfwx3pfg2ixwbr2vs741-ffmpeg-6.1.1-dev"
-            },
-            {
-              "name": "doc",
-              "path": "/nix/store/3486qr49aw0yk9x9pjbll6xyx0kgm1ys-ffmpeg-6.1.1-doc"
-            },
-            {
-              "name": "lib",
-              "path": "/nix/store/fj85yvx8zmakhf63xj0jkrnsih057514-ffmpeg-6.1.1-lib"
-            },
-            {
-              "name": "out",
-              "path": "/nix/store/qkkbsmvg3sds2kmip5np9l0ia3ydrjcy-ffmpeg-6.1.1"
-            }
-          ],
-          "store_path": "/nix/store/hpdx0501l5y5p2grnpyb0dh266fxmiz5-ffmpeg-6.1.1-bin"
-        }
-      }
-    },
     "fzf@latest": {
       "last_modified": "2024-02-01T15:59:28Z",
       "resolved": "github:NixOS/nixpkgs/f38bca1ca559974b36863d0ff4bb710b7bc12890#fzf",
@@ -1138,54 +990,6 @@
             }
           ],
           "store_path": "/nix/store/9ri59jqd8jxjg40zk3jprzvj677sr3h7-kubernetes-helm-3.15.2"
-        }
-      }
-    },
-    "navi@latest": {
-      "last_modified": "2024-07-04T01:58:53Z",
-      "resolved": "github:NixOS/nixpkgs/6842b061970bf96965d66fcc86a28e1f719aae95#navi",
-      "source": "devbox-search",
-      "version": "2.23.0",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/60cxs1b6zs9xsaavwy5m5mbbyffmi5g5-navi-2.23.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/60cxs1b6zs9xsaavwy5m5mbbyffmi5g5-navi-2.23.0"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/34lyrxagxw4j7d8665qss2ssq7mmryjm-navi-2.23.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/34lyrxagxw4j7d8665qss2ssq7mmryjm-navi-2.23.0"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/mcw1jplzjg5wilw6dyi3aj6llcj75jw5-navi-2.23.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/mcw1jplzjg5wilw6dyi3aj6llcj75jw5-navi-2.23.0"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/hsy62s8h1icns4rwsg0n6vs3bis9p73s-navi-2.23.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/hsy62s8h1icns4rwsg0n6vs3bis9p73s-navi-2.23.0"
         }
       }
     },
@@ -2220,6 +2024,54 @@
             }
           ],
           "store_path": "/nix/store/0f964n85rkhp6di76ai4jyaww4pr33kj-wget-1.24.5"
+        }
+      }
+    },
+    "wl-clipboard@latest": {
+      "last_modified": "2024-08-14T11:41:26Z",
+      "resolved": "github:NixOS/nixpkgs/0cb2fd7c59fed0cd82ef858cbcbdb552b9a33465#wl-clipboard",
+      "source": "devbox-search",
+      "version": "2.2.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/0bh9ph5h7aim3nfisfbdf3yyk2bh92fq-wl-clipboard-2.2.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/0bh9ph5h7aim3nfisfbdf3yyk2bh92fq-wl-clipboard-2.2.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/kdyw3p9mdb1a8q1kvq9gdgzc5qcrbg3j-wl-clipboard-2.2.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/kdyw3p9mdb1a8q1kvq9gdgzc5qcrbg3j-wl-clipboard-2.2.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/c2pz98f245carmixn6mfbyddcm612p3l-wl-clipboard-2.2.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/c2pz98f245carmixn6mfbyddcm612p3l-wl-clipboard-2.2.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/3biib9f8z0v2xvs5s99lbms1kiyaraqn-wl-clipboard-2.2.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/3biib9f8z0v2xvs5s99lbms1kiyaraqn-wl-clipboard-2.2.1"
         }
       }
     },
