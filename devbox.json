@@ -63,8 +63,24 @@
     "init_hook": [
       ". ${DEVBOX_GLOBAL_ROOT}/init.sh"
     ],
-    "scripts": {
-      "install-nnn": [
+    "scripts": 
+      "complgen-man": [
+        "if [ -z \"$CMD\" ]; then",
+        "  echo \"Usage: devbox run --env CMD=<command> complgen-man\"",
+        "  echo \"Generates completion template from man page for the specified command\"",
+        "  exit 1",
+        "fi",
+        "man $CMD | complgen scrape > chezmoi/dot_config/complgen/$CMD.usage.tmpl"
+      ],
+      "complgen-help": [
+        "if [ -z \"$CMD\" ]; then",
+        "  echo \"Usage: devbox run --env CMD=<command> complgen-help\"",
+        "  echo \"Generates completion template from --help output for the specified command\"",
+        "  exit 1",
+        "fi",
+        "$CMD --help | complgen scrape > chezmoi/dot_config/complgen/$CMD.usage.tmpl"
+      ],
+    "install-nnn": [
         "sh -c \"$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)\""
       ],
       "install-tmux": [
