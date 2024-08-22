@@ -20,7 +20,25 @@ vim.g.maplocalleader = "\\" -- Same for `maplocalleader`
 require('lazy').setup({
   {'neovim/nvim-lspconfig'},
   {'ms-jpq/coq_nvim', branch = 'coq'},
-  {'github/copilot.vim'}
+  {'github/copilot.vim'},
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+  }
 })
 
 vim.g.copilot_no_tab_map = true
