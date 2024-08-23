@@ -72,7 +72,7 @@ require('lazy').setup({
         --prompt=f'{prefix}{suffix}',
         options = {
           temperature = 0.01, -- Sampling temperature
-          top_p = 0.9,        -- Nucleus sampling probability
+          top_p = 0.9 -- Nucleus sampling probability
           --num_predict = 128,  -- Number of predictions
           -- stop: [""]     -- Stop token
         },
