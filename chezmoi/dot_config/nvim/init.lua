@@ -50,7 +50,7 @@ require('lazy').setup({
       -- dismiss_keymap = "<S-Tab>",
       -- tls_skip_verify_insecure = false,
       -- llm-ls configuration, cf llm-ls section
-      l-- sp = {
+      -- sp = {
       --  bin_path = nil,
       --  host = nil,
       --  port = nil,
