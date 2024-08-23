@@ -32,7 +32,7 @@ require('lazy').setup({
       url = "http://localhost:11434",   -- Backend URL
       -- api_token = nil, -- cf Install paragraph
       -- model = "bigcode/starcoder2-15b", -- the model ID, behavior depends on backend
-      -- backend = "huggingface", -- backend ID, "huggingface" | "ollama" | "openai" | "tgi"
+      backend = "ollama", -- backend ID, "huggingface" | "ollama" | "openai" | "tgi"
       -- url = nil, -- the http url of the backend
       -- tokens_to_clear = { "" }, -- tokens to remove from the model's output
       -- parameters that are added to the request body, values are arbitrary, you can set any field:value pair here it will be passed as is to the backend
@@ -43,6 +43,7 @@ require('lazy').setup({
       --      top_p = 0.95,
       --    },
       --  },
+
       fim = {
         enabled = true, -- Enable Fill in the Middle (FIM)
         prefix = "<fim_prefix>",
@@ -67,7 +68,8 @@ require('lazy').setup({
       -- enable_suggestions_on_files = "*", -- pattern matching syntax to enable suggestions on specific files, either a string or a list of strings
       -- disable_url_path_completion = false, -- cf Backend
       request_body = {
-        -- prompt=f'{prefix}{suffix}',
+        prompt = "<|fim_prefix|>{prefix}<|fim_suffix|>{suffix}<|fim_middle|>",
+        --prompt=f'{prefix}{suffix}',
         options = {
           temperature = 0.01, -- Sampling temperature
           top_p = 0.9,        -- Nucleus sampling probability
