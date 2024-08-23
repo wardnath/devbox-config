@@ -21,6 +21,7 @@ require('lazy').setup({
   {'neovim/nvim-lspconfig'},
   {'ms-jpq/coq_nvim', branch = 'coq'},
   {'github/copilot.vim'},
+ { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
