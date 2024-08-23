@@ -72,7 +72,7 @@ require('lazy').setup({
           temperature = 0.01, -- Sampling temperature
           top_p = 0.9,        -- Nucleus sampling probability
           num_predict = 128,  -- Number of predictions
-          stop: ["<|file_separator|>"],       -- Stop token
+          -- stop: [""]     -- Stop token
         },
       }
     }
