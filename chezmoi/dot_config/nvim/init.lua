@@ -1,4 +1,4 @@
-
+-- Lazy.nvim setup: Automatically installs and sets up Lazy.nvim if not present
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -12,24 +12,29 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to set `mapleader` before lazy so your mappings are correct
+-- Leader keys setup: Set `mapleader` and `maplocalleader` before lazy to ensure mappings are correct
 vim.g.mapleader = " "
--- Same for `maplocalleader`
 vim.g.maplocalleader = "\\"
 
+-- Lazy.nvim plugins setup
 require('lazy').setup({
+  -- LSP configuration
   {'neovim/nvim-lspconfig'},
+  
+  -- COQ completion framework
   {'ms-jpq/coq_nvim', branch = 'coq'},
+
+  -- LLM plugin configuration
   {
     'huggingface/llm.nvim',
     opts = {
-      model = "codegemma:2b-code-q2_K",
-      url = "http://localhost:11434", -- llm-ls uses "/api/generate"
+      model = "codegemma:2b-code-q2_K", -- Specify model ID
+      url = "http://localhost:11434",   -- Backend URL
       -- api_token = nil, -- cf Install paragraph
       -- model = "bigcode/starcoder2-15b", -- the model ID, behavior depends on backend
       -- backend = "huggingface", -- backend ID, "huggingface" | "ollama" | "openai" | "tgi"
       -- url = nil, -- the http url of the backend
-      -- tokens_to_clear = { "<|endoftext|>" }, -- tokens to remove from the model's output
+      -- tokens_to_clear = { "" }, -- tokens to remove from the model's output
       -- parameters that are added to the request body, values are arbitrary, you can set any field:value pair here it will be passed as is to the backend
       -- request_body = {
       --    parameters = {
@@ -38,9 +43,8 @@ require('lazy').setup({
       --      top_p = 0.95,
       --    },
       --  },
-      -- set this if the model supports fill in the middle
       fim = {
-        enabled = true,
+        enabled = true, -- Enable Fill in the Middle (FIM)
         prefix = "<fim_prefix>",
         middle = "<fim_middle>",
         suffix = "<fim_suffix>",
@@ -50,39 +54,41 @@ require('lazy').setup({
       -- dismiss_keymap = "<S-Tab>",
       -- tls_skip_verify_insecure = false,
       -- llm-ls configuration, cf llm-ls section
-      -- sp = {
-      --  bin_path = nil,
-      --  host = nil,
-      --  port = nil,
-      --cmd_env = nil, -- or { LLM_LOG_LEVEL = "DEBUG" } to set the log level of llm-ls
-      --version = "0.5.3",
-      --},
-      --tokenizer = nil, -- cf Tokenizer paragraph
-      --context_window = 1024, -- max number of tokens for the context window
-      --enable_suggestions_on_startup = true,
-      --enable_suggestions_on_files = "*", -- pattern matching syntax to enable suggestions on specific files, either a string or a list of strings
-      --disable_url_path_completion = false, -- cf Backend
+      -- lsp = {
+      --   bin_path = nil,
+      --   host = nil,
+      --   port = nil,
+      --   cmd_env = nil, -- or { LLM_LOG_LEVEL = "DEBUG" } to set the log level of llm-ls
+      --   version = "0.5.3",
+      -- },
+      -- tokenizer = nil, -- cf Tokenizer paragraph
+      -- context_window = 1024, -- max number of tokens for the context window
+      -- enable_suggestions_on_startup = true,
+      -- enable_suggestions_on_files = "*", -- pattern matching syntax to enable suggestions on specific files, either a string or a list of strings
+      -- disable_url_path_completion = false, -- cf Backend
       request_body = {
-	-- prompt=f'<|fim_prefix|>{prefix}<|fim_suffix|>{suffix}<|fim_middle|>',
+        -- prompt=f'{prefix}{suffix}',
         options = {
-          temperature = 0.01,
-          top_p = 0.9,
-	  num_predict: 128,
-          stop: ["<|file_separator|>"],
-        }
+          temperature = 0.01, -- Sampling temperature
+          top_p = 0.9,        -- Nucleus sampling probability
+          num_predict = 128,  -- Number of predictions
+          stop: ["<|file_separator|>"],       -- Stop token
+        },
       }
     }
   },
-  {
-  }
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },  -- Catppuccin theme
+
+  -- Catppuccin theme setup
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
+  -- Which-key configuration
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {},
     keys = {
       {
-        "<leader>?",
+        "<leader>?", -- Show buffer local keymaps
         function()
           require("which-key").show({ global = false })
         end,
@@ -92,57 +98,49 @@ require('lazy').setup({
   }
 })
 
+-- Disable Copilot tab mapping
 vim.g.copilot_no_tab_map = true
+
+-- COQ settings
 vim.g.coq_settings = { auto_start = 'shut-up' }
 
 -- Catppuccin theme configuration
 require("catppuccin").setup({
-    flavour = "mocha", -- latte, frappe, macchiato, mocha
-    background = {
-        light = "latte",
-        dark = "mocha",
+  flavour = "mocha", -- Options: latte, frappe, macchiato, mocha
+  background = {
+    light = "latte",
+    dark = "mocha",
+  },
+  transparent_background = false, -- Disable transparent background
+  show_end_of_buffer = false,     -- Hide '~' characters after the end of buffers
+  term_colors = true,             -- Enable terminal colors
+  dim_inactive = {
+    enabled = false,              -- Disable dimming inactive windows
+    shade = "dark",
+    percentage = 0.15,            -- Dimming percentage
+  },
+  no_italic = false,              -- Allow italics
+  no_bold = false,                -- Allow bold
+  no_underline = false,           -- Allow underline
+  styles = {
+    comments = { "italic" },
+    conditionals = { "italic" },
+    -- More style customizations can be added here
+  },
+  color_overrides = {},
+  custom_highlights = {},
+  integrations = {
+    cmp = true,
+    gitsigns = true,
+    nvimtree = true,
+    treesitter = true,
+    notify = false,
+    mini = {
+      enabled = true,
+      indentscope_color = "",
     },
-    transparent_background = false, -- disables setting the background color
-    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-    term_colors = true, -- sets terminal colors (e.g., `g:terminal_color_0`)
-    dim_inactive = {
-        enabled = false, -- dims the background color of inactive window
-        shade = "dark",
-        percentage = 0.15, -- percentage of the shade to apply to the inactive window
-    },
-    no_italic = false, -- Force no italic
-    no_bold = false, -- Force no bold
-    no_underline = false, -- Force no underline
-    styles = {
-        comments = { "italic" },
-        conditionals = { "italic" },
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-    },
-    color_overrides = {},
-    custom_highlights = {},
-    integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        notify = false,
-        mini = {
-            enabled = true,
-            indentscope_color = "",
-        },
-    },
+  },
 })
 
 -- Apply the Catppuccin theme
 vim.cmd.colorscheme "catppuccin"
-
-
