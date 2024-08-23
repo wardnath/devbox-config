@@ -24,9 +24,7 @@ require('lazy').setup({
     opts = {
       model = "tinyllama:latest",
       url = "http://localhost:11434", -- llm-ls uses "/api/generate"
-      -- cf https://github.com/ollama/ollama/blob/main/docs/api.md#parameters
       request_body = {
-        -- Modelfile options for the model you use
         options = {
           temperature = 0.2,
           top_p = 0.95,
@@ -34,15 +32,11 @@ require('lazy').setup({
       }
     }
   },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },  -- Catppuccin theme
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
+    opts = {},
     keys = {
       {
         "<leader>?",
@@ -57,3 +51,53 @@ require('lazy').setup({
 
 vim.g.copilot_no_tab_map = true
 vim.g.coq_settings = { auto_start = 'shut-up' }
+
+-- Catppuccin theme configuration
+require("catppuccin").setup({
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+    background = {
+        light = "latte",
+        dark = "mocha",
+    },
+    transparent_background = false, -- disables setting the background color
+    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+    term_colors = true, -- sets terminal colors (e.g., `g:terminal_color_0`)
+    dim_inactive = {
+        enabled = false, -- dims the background color of inactive window
+        shade = "dark",
+        percentage = 0.15, -- percentage of the shade to apply to the inactive window
+    },
+    no_italic = false, -- Force no italic
+    no_bold = false, -- Force no bold
+    no_underline = false, -- Force no underline
+    styles = {
+        comments = { "italic" },
+        conditionals = { "italic" },
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
+    },
+    color_overrides = {},
+    custom_highlights = {},
+    integrations = {
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        notify = false,
+        mini = {
+            enabled = true,
+            indentscope_color = "",
+        },
+    },
+})
+
+-- Apply the Catppuccin theme
+vim.cmd.colorscheme "catppuccin"
