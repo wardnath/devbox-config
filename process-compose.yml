@@ -3,6 +3,6 @@ version: "0.5"
 
 processes:
   ollamad:
-   command: ollama pull codegemma:2b-code-q2_K && ollama serve
+   command: ollama pull smollm:135m && ollama serve
    availability:
     restart: "always"
