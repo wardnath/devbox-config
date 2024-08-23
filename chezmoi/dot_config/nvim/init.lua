@@ -20,8 +20,25 @@ vim.g.maplocalleader = "\\" -- Same for `maplocalleader`
 require('lazy').setup({
   {'neovim/nvim-lspconfig'},
   {'ms-jpq/coq_nvim', branch = 'coq'},
-  {'github/copilot.vim'},
- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
+  {
+    'huggingface/llm.nvim',
+    opts = {
+ 
+{
+  model = "tinyllama:latest",
+  url = "http://localhost:11434", -- llm-ls uses "/api/generate"
+  -- cf https://github.com/ollama/ollama/blob/main/docs/api.md#parameters
+  request_body = {
+    -- Modelfile options for the model you use
+    options = {
+      temperature = 0.2,
+      top_p = 0.95,
+    }
+    }
+  },
+
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
