@@ -28,7 +28,7 @@ require('lazy').setup({
   {
     'huggingface/llm.nvim',
     opts = {
-      model = "smollm:135m"-- Specify model ID
+      model = "smollm:135m", -- Specify model ID
       url = "http://localhost:11434",   -- Backend URL
       -- api_token = nil, -- cf Install paragraph
       -- model = "bigcode/starcoder2-15b", -- the model ID, behavior depends on backend
