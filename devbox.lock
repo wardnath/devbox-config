@@ -1121,6 +1121,54 @@
         }
       }
     },
+    "ollama@latest": {
+      "last_modified": "2024-08-14T11:41:26Z",
+      "resolved": "github:NixOS/nixpkgs/0cb2fd7c59fed0cd82ef858cbcbdb552b9a33465#ollama",
+      "source": "devbox-search",
+      "version": "0.3.5",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/9v27wavfppd684ppv1mnigasxxiza756-ollama-0.3.5",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/9v27wavfppd684ppv1mnigasxxiza756-ollama-0.3.5"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/3ww2nbsf61ag7pw71dnqbqvk637c9qdf-ollama-0.3.5",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/3ww2nbsf61ag7pw71dnqbqvk637c9qdf-ollama-0.3.5"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/xba2lc1nv0v0nv4lxmgil0pdswzr5d4l-ollama-0.3.5",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/xba2lc1nv0v0nv4lxmgil0pdswzr5d4l-ollama-0.3.5"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/sm5yn3dmv5wm940xszfhy2w0i7hfbv77-ollama-0.3.5",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/sm5yn3dmv5wm940xszfhy2w0i7hfbv77-ollama-0.3.5"
+        }
+      }
+    },
     "p7zip@latest": {
       "last_modified": "2024-07-05T12:16:31Z",
       "resolved": "github:NixOS/nixpkgs/4284c2b73c8bce4b46a6adf23e16d9e2ec8da4bb#p7zip",
