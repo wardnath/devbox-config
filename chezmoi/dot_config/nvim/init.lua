@@ -15,7 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Leader keys setup: Set `mapleader` and `maplocalleader` before lazy to ensure mappings are correct
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-
 -- Lazy.nvim plugins setup
 require('lazy').setup({
   -- LSP configuration
@@ -23,62 +22,64 @@ require('lazy').setup({
   
   -- COQ completion framework
   {'ms-jpq/coq_nvim', branch = 'coq'},
-
+  {'github/copilot.vim'},
   -- LLM plugin configuration
-  {
-    'huggingface/llm.nvim',
-    opts = {
-      model = "smollm:135m", -- Specify model ID
-      url = "http://localhost:11434",   -- Backend URL
-      -- api_token = nil, -- cf Install paragraph
-      --model = "bigcode/starcoder2-15b", -- the model ID, behavior depends on backend
-      backend = "ollama", -- backend ID, "huggingface" | "ollama" | "openai" | "tgi"
-      -- url = nil, -- the http url of the backend
-      -- tokens_to_clear = { "" }, -- tokens to remove from the model's output
-      -- parameters that are added to the request body, values are arbitrary, you can set any field:value pair here it will be passed as is to the backend
-      -- request_body = {
-      --    parameters = {
-      --      max_new_tokens = 60,
-      --      temperature = 0.2,
-      --      top_p = 0.95,
-      --    },
-      --  },
+  --{
+  --  'huggingface/llm.nvim',
+  --  opts = {
+  --    --model = "smollm:135m", -- Specify model ID
+  --    model = "phi3.5:3.8b-mini-instruct-q2_K",
+  --    url = "http://localhost:11434",   -- Backend URL
+  --    -- api_token = nil, -- cf Install paragraph
+  --    -- model = "bigcode/starcoder2-15b", -- the model ID, behavior depends on backend
+  --    backend = "ollama", -- backend ID, "huggingface" | "ollama" | "openai" | "tgi"
+  --    -- url = nil, -- the http url of the backend
+  --    -- tokens_to_clear = { "" }, -- tokens to remove from the model's output
+  --    -- parameters that are added to the request body, values are arbitrary, you can set any field:value pair here it will be passed as is to the backend
+  --    -- request_body = {
+  --    --    parameters = {
+  --    --      max_new_tokens = 60,
+  --    --      temperature = 0.2,
+  --    --      top_p = 0.95,
+  --    --    },
+  --    --  },
 
-      fim = {
-        enabled = true, -- Enable Fill in the Middle (FIM)
-        prefix = "<fim_prefix>",
-        middle = "<fim_middle>",
-        suffix = "<fim_suffix>",
-      },
-      -- debounce_ms = 150,
-      -- accept_keymap = "<Tab>",
-      -- dismiss_keymap = "<S-Tab>",
-      -- tls_skip_verify_insecure = false,
-      -- llm-ls configuration, cf llm-ls section
-      -- lsp = {
-      --   bin_path = nil,
-      --   host = nil,
-      --   port = nil,
-      --   cmd_env = nil, -- or { LLM_LOG_LEVEL = "DEBUG" } to set the log level of llm-ls
-      --   version = "0.5.3",
-      -- },
-      -- tokenizer = nil, -- cf Tokenizer paragraph
-      -- context_window = 1024, -- max number of tokens for the context window
-      -- enable_suggestions_on_startup = true,
-      -- enable_suggestions_on_files = "*", -- pattern matching syntax to enable suggestions on specific files, either a string or a list of strings
-      -- disable_url_path_completion = false, -- cf Backend
-      request_body = {
-        --prompt = "<|fim_prefix|>{prefix}<|fim_suffix|>{suffix}<|fim_middle|>",
-        --prompt=f'{prefix}{suffix}',
-        options = {
-          temperature = 0.01, -- Sampling temperature
-          top_p = 0.9, -- Nucleus sampling probability
-          --num_predict = 128,  -- Number of predictions
-          -- stop: [""]     -- Stop token
-        },
-      }
-    }
-  },
+  --    --fim = {
+  --    --  enabled = true, -- Enable Fill in the Middle (FIM)
+  --    --  prefix = "<fim_prefix>",
+  --    --  middle = "<fim_middle>",
+  --    --  suffix = "<fim_suffix>",
+  --    --},
+  --    -- debounce_ms = 150,
+  --    -- accept_keymap = "<Tab>",
+  --    -- dismiss_keymap = "<S-Tab>",
+  --    -- tls_skip_verify_insecure = false,
+  --    -- llm-ls configuration, cf llm-ls section
+  --    -- lsp = {
+  --    --   bin_path = nil,
+  --    --   host = nil,
+  --    --   port = nil,
+  --    --   cmd_env = nil, -- or { LLM_LOG_LEVEL = "DEBUG" } to set the log level of llm-ls
+  --    --   version = "0.5.3",
+  --    -- },
+  --    -- tokenizer = nil, -- cf Tokenizer paragraph
+  --    -- context_window = 1024, -- max number of tokens for the context window
+  --    -- enable_suggestions_on_startup = true,
+  --    -- enable_suggestions_on_files = "*", -- pattern matching syntax to enable suggestions on specific files, either a string or a list of strings
+  --    -- disable_url_path_completion = false, -- cf Backend
+  --    request_body = {
+  --      --prompt = "<|fim_prefix|>{prefix}<|fim_suffix|>{suffix}<|fim_middle|>",
+  --      --prompt=f'{prefix}{suffix}',
+  --      options = {
+  --        temperature = 0.01, -- Sampling temperature
+  --        top_p = 0.9 -- Nucleus sampling probability
+  --        --num_predict = 128,  -- Number of predictions
+  --        -- stop: [""]     -- Stop token
+  --      },
+  --    }
+  --  }
+  --},
+
   -- Catppuccin theme setup
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
