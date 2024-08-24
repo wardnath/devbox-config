@@ -1,5 +1,6 @@
 {
   "packages": [
+    "nodejs@latest",
     "ollama@latest",
     "complgen@latest",
     "iftop@latest",
