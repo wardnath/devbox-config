@@ -31,7 +31,7 @@ require('lazy').setup({
       model = "smollm:135m", -- Specify model ID
       url = "http://localhost:11434",   -- Backend URL
       -- api_token = nil, -- cf Install paragraph
-      -- model = "bigcode/starcoder2-15b", -- the model ID, behavior depends on backend
+      --model = "bigcode/starcoder2-15b", -- the model ID, behavior depends on backend
       backend = "ollama", -- backend ID, "huggingface" | "ollama" | "openai" | "tgi"
       -- url = nil, -- the http url of the backend
       -- tokens_to_clear = { "" }, -- tokens to remove from the model's output
@@ -44,12 +44,12 @@ require('lazy').setup({
       --    },
       --  },
 
-      --fim = {
-      --  enabled = true, -- Enable Fill in the Middle (FIM)
-      --  prefix = "<fim_prefix>",
-      --  middle = "<fim_middle>",
-      --  suffix = "<fim_suffix>",
-      --},
+      fim = {
+        enabled = true, -- Enable Fill in the Middle (FIM)
+        prefix = "<fim_prefix>",
+        middle = "<fim_middle>",
+        suffix = "<fim_suffix>",
+      },
       -- debounce_ms = 150,
       -- accept_keymap = "<Tab>",
       -- dismiss_keymap = "<S-Tab>",
@@ -72,14 +72,13 @@ require('lazy').setup({
         --prompt=f'{prefix}{suffix}',
         options = {
           temperature = 0.01, -- Sampling temperature
-          top_p = 0.9 -- Nucleus sampling probability
+          top_p = 0.9, -- Nucleus sampling probability
           --num_predict = 128,  -- Number of predictions
           -- stop: [""]     -- Stop token
         },
       }
     }
   },
-
   -- Catppuccin theme setup
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
