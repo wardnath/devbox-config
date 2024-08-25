@@ -1,5 +1,7 @@
 {
   "packages": [
+    "nodejs@latest",
+    "ollama@latest",
     "complgen@latest",
     "iftop@latest",
     "gotop@latest",
@@ -10,12 +12,10 @@
     "cheat@latest",
     "chezmoi@latest",
     "cloc@latest",
-    "cmake@latest",
     "direnv@latest",
     "duf@latest",
     "eza@latest",
-    "fd@latest", 
-    "ffmpeg@latest",
+    "fd@latest",
     "fzf@latest",
     "gh@latest",
     "git@latest",
@@ -27,15 +27,12 @@
     "jq@latest",
     "kubectl@latest",
     "kubernetes-helm@latest",
-    "navi@latest",
     "ncdu@latest",
     "neofetch@latest",
     "neovim@latest",
     "nmap@latest",
     "nnn@latest",
-    "nodejs@latest",
     "p7zip@latest",
-    "projectable@latest",
     "pstree@latest",
     "pv@latest",
     "ripgrep@latest",
@@ -52,18 +49,24 @@
     "wget@latest",
     "yq@latest",
     "zoxide@latest",
-    "python@latest",
-    "wl-clipboard@latest"
+    "wl-clipboard@latest",
+    "_1password@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
-    "DEVBOX_GLOBAL_ROOT": "$HOME/.local/share/devbox/global/current"
+    "DEVBOX_GLOBAL_ROOT":   "$HOME/.local/share/devbox/global/current"
   },
   "shell": {
     "init_hook": [
       ". ${DEVBOX_GLOBAL_ROOT}/init.sh"
     ],
     "scripts": {
+      "complgen-man": [
+        "man $1 | complgen scrape > chezmoi/dot_config/complgen/$1.usage.tmpl"
+      ],
+      "complgen-help": [
+        "$1 --help | complgen scrape > chezmoi/dot_config/complgen/$1.usage.tmpl"
+      ],
       "install-nnn": [
         "sh -c \"$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)\""
       ],
@@ -78,7 +81,7 @@
       "latest-hash": [
         "curl -fsSL https://nixos.org/channels/nixos-unstable/git-revision"
       ]
-  },
-  "nixpkgs": {}
+    },
+    "nixpkgs": {}
   }
 }

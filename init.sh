@@ -23,5 +23,9 @@ alias lah='eza -lah'
 alias dbr='devbox run'
 alias dbgr='devbox global run'
 alias dbcd='cd $DEVBOX_GLOBAL_ROOT'
+alias dbgs='devbox global services'
+alias dbgpull='devbox global pull'
+alias dbgpush='devbox global push'
+
 
 echo "init.sh complete"
