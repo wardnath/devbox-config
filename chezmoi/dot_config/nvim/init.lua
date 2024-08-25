@@ -101,7 +101,7 @@ require('lazy').setup({
 })
 
 -- Disable Copilot tab mapping
-vim.g.copilot_no_tab_map = true
+--vim.g.copilot_no_tab_map = true
 
 -- COQ settings
 vim.g.coq_settings = { auto_start = 'shut-up' }
