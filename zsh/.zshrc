@@ -65,6 +65,9 @@ zinit load starship/starship
 #  atload"bindkey '^j' jq-complete"
 #zinit light "reegnz/jq-zsh-plugin"
 
+## 1pass
+zinit snippet OMZP::1password
+
 ## Load OMZ Git library
 zinit snippet OMZ::lib/git.zsh
 
