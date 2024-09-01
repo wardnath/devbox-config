@@ -47,10 +47,6 @@ autoload -Uz compinit; compinit
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #zinit load Aloxaf/fzf-tab
 
-### Atuin
-zinit ice wait lucid
-zinit load ellie/atuin
-
 # clipboard
 zinit ice wait lucid
 zinit light "kutsan/zsh-system-clipboard"
@@ -205,7 +201,7 @@ export NNN_FCOLORS="03040601000205f7d204d9f7" # File colors
 # System-related variables
 export LC_ALL="C.UTF-8"
 export EDITOR="nvim"
-export VISUAL="nvim"
-export PREVIEW="nvim"
+export VISUAL="bat"
+export PREVIEW="bat"
 alias python3="python"
 
