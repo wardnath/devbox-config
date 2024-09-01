@@ -51,6 +51,12 @@ autoload -Uz compinit; compinit
 zinit ice wait lucid
 zinit light "kutsan/zsh-system-clipboard"
 
+
+### Atuin
+zinit ice wait lucid
+zinit load ellie/atuin
+
+
 ### Start - zinit Config
 # Prompt : https://github.com/starship/starship
 zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
