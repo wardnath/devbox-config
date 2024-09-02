@@ -62,7 +62,7 @@
     ],
     "scripts": {
       "completion-path": [
-	"echo ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/aux-zsh-completions/stdout-completions.zsh"
+  "echo ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/aux-zsh-completions/stdout-completions.zsh"
       ],
       "complgen-man": [
         "man $1 | complgen scrape > ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/complgen/$1.usage.tmpl"
