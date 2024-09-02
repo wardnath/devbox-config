@@ -50,7 +50,8 @@
     "yq@latest",
     "zoxide@latest",
     "wl-clipboard@latest",
-    "_1password@latest"
+    "_1password@latest",
+    "cargo@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
@@ -62,7 +63,7 @@
     ],
     "scripts": {
       "completion-path": [
-  "echo ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/aux-zsh-completions/stdout-completions.zsh"
+        "echo ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/aux-zsh-completions/stdout-completions.zsh"
       ],
       "complgen-man": [
         "man $1 | complgen scrape > ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/complgen/$1.usage.tmpl"
