@@ -23,13 +23,7 @@ auto_sync = true
 # update_check = true
 
 ## address of the sync server
-sync_address = "{{ range (onepassword "qjeayumitf5zqznoi2nermpfga").fields -}}
-{{   if (eq .label "atuinhost") -}}
-{{     .value -}}
-{{   end -}}
-{{ end }}"
-
-
+# sync_address = "ATUIN_SYNC_ADDRESS"
 
 ## how often to sync history. note that this is only triggered when a command
 ## is ran, so sync intervals may well be longer
