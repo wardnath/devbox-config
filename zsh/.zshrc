@@ -207,7 +207,7 @@ export NNN_FCOLORS="03040601000205f7d204d9f7" # File colors
 # System-related variables
 export LC_ALL="C.UTF-8"
 export EDITOR="nvim"
-export VISUAL="bat"
+export VISUAL="nvim"
 export PREVIEW="bat"
 alias python3="python"
 
