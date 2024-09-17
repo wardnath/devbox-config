@@ -949,6 +949,54 @@
         }
       }
     },
+    "headscale@latest": {
+      "last_modified": "2024-09-10T15:01:03Z",
+      "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#headscale",
+      "source": "devbox-search",
+      "version": "0.22.3",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/7r27h32zj7s8gkvdqlqay58qyjwx68qh-headscale-0.22.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/7r27h32zj7s8gkvdqlqay58qyjwx68qh-headscale-0.22.3"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/cgnj914hcnxg2fms2d6212q3nsp4akng-headscale-0.22.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/cgnj914hcnxg2fms2d6212q3nsp4akng-headscale-0.22.3"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/jjpkzkz017jilhaxmaja57px535v0sgx-headscale-0.22.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/jjpkzkz017jilhaxmaja57px535v0sgx-headscale-0.22.3"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/dqi8n007sim9rqsad7widbd6rvylhcd8-headscale-0.22.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/dqi8n007sim9rqsad7widbd6rvylhcd8-headscale-0.22.3"
+        }
+      }
+    },
     "htop@latest": {
       "last_modified": "2024-09-10T15:01:03Z",
       "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#htop",
