@@ -35,5 +35,48 @@ devbox global pull https://github.com/wardnath/devbox-config.git
 ```bash
 git pull && devcontainer up --workspace-folder . --remove-existing-container && sleep 2 && devcontainer exec --workspace-folder . zsh
 ```
+# Notable nixpkgs and flakes not currently used
+
+## CLI
+
+* sherlock
+* openapi-tui
+* wallabag
+
+### AI
+
+* aider-chat
+* chatblade
+* whisper-ctranslate2
+* github:wardnath/code2prompt
+* open-interpreter
+* openai-whisper
+* openai-whispercpp
+* github:nixified-ai/flake#textgen-nvidia
+
+#### bookmarked
+
+* k8sgpt
+* pentestgpt
+* private-gpt
+* tgpt
+* shell-gpt
+* 
+
+## Notable
+* github:flox/flox
+* github:astro/microvm.nix
+* github:nix-community/nix-direnv
+
+## Flake templates
+
+* nix flake init --template github:tweag/jupyenv
+* github:fluidattacks/make
+
+
+## WIP
+
+* litellm
+* gpt-engineer
 
 
