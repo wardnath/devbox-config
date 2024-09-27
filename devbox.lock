@@ -1830,6 +1830,74 @@
         }
       }
     },
+    "rclone@latest": {
+      "last_modified": "2024-09-10T15:01:03Z",
+      "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#rclone",
+      "source": "devbox-search",
+      "version": "1.68.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/m6qgxggf7xkw1r94l2ih622w0hdkhs58-rclone-1.68.0",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/55kpp70ifagz1m8dbiqdyj08i8iwkdjf-rclone-1.68.0-man",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/m6qgxggf7xkw1r94l2ih622w0hdkhs58-rclone-1.68.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ig01q8baypcc05pl9lxqxlz4aaiidnkd-rclone-1.68.0",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/qvwk6k6cacbgbry9hb6zszvc21pp8qs2-rclone-1.68.0-man",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/ig01q8baypcc05pl9lxqxlz4aaiidnkd-rclone-1.68.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/2kmf7jin9ziif94x7nwcaiywl3f22ygf-rclone-1.68.0",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/kpz1bfwpmhhi92i5586cw1n8zq77ycvi-rclone-1.68.0-man",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/2kmf7jin9ziif94x7nwcaiywl3f22ygf-rclone-1.68.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/avz98885z10rfgbcki9ibxddkq73z7sm-rclone-1.68.0",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/ij93hr3m8yllfv6rv8h5mmi1lfa64dx8-rclone-1.68.0-man",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/avz98885z10rfgbcki9ibxddkq73z7sm-rclone-1.68.0"
+        }
+      }
+    },
     "ripgrep@latest": {
       "last_modified": "2024-09-10T15:01:03Z",
       "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#ripgrep",
