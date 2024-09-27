@@ -45,7 +45,9 @@
     "zoxide@latest",
     "wl-clipboard@latest",
     "headscale@latest",
-    "rclone@latest"
+    "rclone@latest",
+    "ollama@latest",
+    "sqlite@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
