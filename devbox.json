@@ -44,9 +44,7 @@
     "yq@latest",
     "zoxide@latest",
     "wl-clipboard@latest",
-    "headscale@latest",
-    "open-interpreter@latest",
-    "aider-chat@latest"
+    "headscale@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
