@@ -158,7 +158,8 @@ zinit ice as'program' src'asdf.sh'
 zinit light asdf-vm/asdf
 zinit snippet 'OMZP::asdf'
 
-
+# ollama
+zinit light Katrovsky/zsh-ollama-completion
 # Style
 
 # disable sort when completing `git checkout`
