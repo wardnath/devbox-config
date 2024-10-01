@@ -433,6 +433,54 @@
         }
       }
     },
+    "ejson@latest": {
+      "last_modified": "2024-09-28T02:58:32Z",
+      "resolved": "github:NixOS/nixpkgs/4471f9f67fe0f95f5fec4cc2ebac59fe32af2b62#ejson",
+      "source": "devbox-search",
+      "version": "1.5.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ah5vgsx87b7d9s552qivw34kipcs0mv9-ejson-1.5.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/ah5vgsx87b7d9s552qivw34kipcs0mv9-ejson-1.5.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/64k6m5m8wdsyzacv7nracs6ajzcf2iwm-ejson-1.5.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/64k6m5m8wdsyzacv7nracs6ajzcf2iwm-ejson-1.5.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/015wcqyrrkqppx48cva1rv4f0q5nis2g-ejson-1.5.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/015wcqyrrkqppx48cva1rv4f0q5nis2g-ejson-1.5.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/xjb7qh8pbvn8af4dzmiszmpvcbj5nz5v-ejson-1.5.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/xjb7qh8pbvn8af4dzmiszmpvcbj5nz5v-ejson-1.5.2"
+        }
+      }
+    },
     "eza@latest": {
       "last_modified": "2024-09-20T05:11:28Z",
       "resolved": "github:NixOS/nixpkgs/79454ee9aacc9714653a4e7eb2a52b717728caff#eza",
