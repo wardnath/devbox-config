@@ -48,7 +48,6 @@
     "rclone@latest",
     "ollama@latest",
     "sqlite@latest",
-    "oterm@latest",
     "ejson@latest"
   ],
   "env": {
