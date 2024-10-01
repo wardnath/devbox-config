@@ -433,6 +433,54 @@
         }
       }
     },
+    "ejson2env@latest": {
+      "last_modified": "2024-09-10T15:01:03Z",
+      "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#ejson2env",
+      "source": "devbox-search",
+      "version": "2.0.6",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/xp5nnmcqdxhixnc958n84jj8gg3pcnxl-ejson2env-2.0.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/xp5nnmcqdxhixnc958n84jj8gg3pcnxl-ejson2env-2.0.6"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ap1cxl525alr4psxr1q3vwhhcd44yhgh-ejson2env-2.0.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/ap1cxl525alr4psxr1q3vwhhcd44yhgh-ejson2env-2.0.6"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/b8cyk8i9yhms2rqwxpq84fgs0r4qqwys-ejson2env-2.0.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/b8cyk8i9yhms2rqwxpq84fgs0r4qqwys-ejson2env-2.0.6"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/qcglw3lcqb930645wbsmk78gsv46rf21-ejson2env-2.0.6",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/qcglw3lcqb930645wbsmk78gsv46rf21-ejson2env-2.0.6"
+        }
+      }
+    },
     "ejson@latest": {
       "last_modified": "2024-09-28T02:58:32Z",
       "resolved": "github:NixOS/nixpkgs/4471f9f67fe0f95f5fec4cc2ebac59fe32af2b62#ejson",
