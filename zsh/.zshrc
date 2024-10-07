@@ -161,7 +161,7 @@ zinit snippet 'OMZP::asdf'
 # ollama
 #zinit light Katrovsky/zsh-ollama-completion
 zinit ice as"completion"
-zinit snippet https://github.com/Katrovsky/zsh-ollama-completion/blob/main/_ollama
+zinit snippet https://github.com/wardnath/zsh-ollama-completion/blob/main/_ollama
 # Style
 
 # disable sort when completing `git checkout`
