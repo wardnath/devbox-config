@@ -1,4 +1,4 @@
-README
+# README
 
 
 ```bash
@@ -30,11 +30,16 @@ devbox global pull https://devbox.getfleek.dev/none
 devbox global pull https://github.com/wardnath/devbox-config.git
 ```
 
-### cli devcontainer reset and run 
+## cli devcontainer reset and run 
 
 ```bash
 git pull && devcontainer up --workspace-folder . --remove-existing-container && sleep 2 && devcontainer exec --workspace-folder . zsh
 ```
+
+## Secrets etc
+
+Most of the config here aims to be generally applicable. The secrets in the dotconfig are managed by chezmoi ejson https://www.chezmoi.io/user-guide/password-managers/ejson/
+
 # Notable nixpkgs and flakes not currently used
 
 ## CLI
@@ -72,7 +77,6 @@ git pull && devcontainer up --workspace-folder . --remove-existing-container && 
 
 * nix flake init --template github:tweag/jupyenv
 * github:fluidattacks/make
-
 
 ## WIP
 
