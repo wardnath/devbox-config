@@ -929,6 +929,70 @@
         }
       }
     },
+    "gorilla-cli@latest": {
+      "last_modified": "2024-10-13T23:44:06Z",
+      "resolved": "github:NixOS/nixpkgs/d4f247e89f6e10120f911e2e2d2254a050d0f732#gorilla-cli",
+      "source": "devbox-search",
+      "version": "0.0.9",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/1c54nppwf3jkmf8syypwzhnm2x9vdqmg-gorilla-cli-0.0.9",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/6i90mcxmq67ky1094nq3nra4q8r10ss7-gorilla-cli-0.0.9-dist"
+            }
+          ],
+          "store_path": "/nix/store/1c54nppwf3jkmf8syypwzhnm2x9vdqmg-gorilla-cli-0.0.9"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/aywlw8bbn334zdacmdsirhksrykkaxs8-gorilla-cli-0.0.9",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/6n7gy8nmlbfg8gjlq03wkdpzymywj7r5-gorilla-cli-0.0.9-dist"
+            }
+          ],
+          "store_path": "/nix/store/aywlw8bbn334zdacmdsirhksrykkaxs8-gorilla-cli-0.0.9"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/i97whmwqw1kvlpvz6zl2iz57wkw1xndx-gorilla-cli-0.0.9",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/5cs0jlg68ccqfpf045rlz29iw9frnh2k-gorilla-cli-0.0.9-dist"
+            }
+          ],
+          "store_path": "/nix/store/i97whmwqw1kvlpvz6zl2iz57wkw1xndx-gorilla-cli-0.0.9"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/jzgkcnayfp4aba9my7n55crpj0cjm7pj-gorilla-cli-0.0.9",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/l9pm9qbkzx1dkh1smzzc7qhd1g88h51d-gorilla-cli-0.0.9-dist"
+            }
+          ],
+          "store_path": "/nix/store/jzgkcnayfp4aba9my7n55crpj0cjm7pj-gorilla-cli-0.0.9"
+        }
+      }
+    },
     "gotop@latest": {
       "last_modified": "2024-09-10T15:01:03Z",
       "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#gotop",
