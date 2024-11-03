@@ -77,9 +77,9 @@
         "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
       ],
       "install-chezmoi": [
-        "cp -f $(devbox global path)/params.ejson /opt/ejson/params.ejson",
+        "cp $(devbox global path)/params.ejson /opt/ejson/params.ejson",
         "chezmoi purge --force && chezmoi init",
-        "cp -r -f $(devbox global path)/chezmoi/* $(chezmoi source-path)",
+        "cp -r $(devbox global path)/chezmoi/* $(chezmoi source-path)",
         "chezmoi apply --no-pager --progress true"
       ],
       "latest-hash": [
