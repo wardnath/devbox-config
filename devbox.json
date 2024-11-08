@@ -49,8 +49,7 @@
     "ollama@latest",
     "sqlite@latest",
     "ejson@latest",
-    "ejson2env@latest",
-    "gorilla-cli@latest"
+    "ejson2env@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
