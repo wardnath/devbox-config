@@ -50,11 +50,8 @@ Most of the config here aims to be generally applicable. The secrets in the dotc
 
 ### AI
 
-* aider-chat
-* chatblade
 * whisper-ctranslate2
 * github:wardnath/code2prompt
-* open-interpreter
 * openai-whisper
 * openai-whispercpp
 * github:nixified-ai/flake#textgen-nvidia
@@ -63,9 +60,6 @@ Most of the config here aims to be generally applicable. The secrets in the dotc
 
 * k8sgpt
 * pentestgpt
-* private-gpt
-* tgpt
-* shell-gpt
 * 
 
 ## Notable
@@ -81,6 +75,6 @@ Most of the config here aims to be generally applicable. The secrets in the dotc
 ## WIP
 
 * litellm
-* gpt-engineer
+* 
 
 
