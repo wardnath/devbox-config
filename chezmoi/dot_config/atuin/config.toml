@@ -27,15 +27,15 @@ auto_sync = true
 #sync_address = "{{ (ejsonDecrypt "/opt/ejson/params.ejson").atuin_sync_address }}"
 # TODO set default - https://masterminds.github.io/sprig/defaults.html
 
-{{- /* chezmoi:template:left-delimiter="{{" right-delimiter="}}" */ -}}
-{{- $sync_address := "" -}}
-{{- $ejsonFile := "/opt/ejson/params.ejson" -}}
+# {{- /* chezmoi:template:left-delimiter="{{" right-delimiter="}}" */ -}}
+# {{- $sync_address := "" -}}
+# {{- $ejsonFile := "/opt/ejson/params.ejson" -}}
 
-{{- if hasKey . "ejson" -}}
-    sync_address = "{{ (ejsonDecrypt "/opt/ejson/params.ejson").atuin_sync_address }}"
-{{- else -}}
-    sync_address = ""
-{{- end -}}
+# {{- if hasKey . "ejson" -}}
+#    sync_address = "{{ (ejsonDecrypt "/opt/ejson/params.ejson").atuin_sync_address }}"
+# {{- else -}}
+#    sync_address = ""
+# {{- end -}}
 
 
 
