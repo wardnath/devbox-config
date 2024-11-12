@@ -1357,6 +1357,54 @@
         }
       }
     },
+    "kubelogin@latest": {
+      "last_modified": "2024-11-03T14:18:04Z",
+      "resolved": "github:NixOS/nixpkgs/4ae2e647537bcdbb82265469442713d066675275#kubelogin",
+      "source": "devbox-search",
+      "version": "0.1.4",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/x33bqd765rzcrbcar988c75mzxysc1pf-kubelogin-0.1.4",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/x33bqd765rzcrbcar988c75mzxysc1pf-kubelogin-0.1.4"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lzm9yq94kidgpailxrpqxz4qd6lg0i1y-kubelogin-0.1.4",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/lzm9yq94kidgpailxrpqxz4qd6lg0i1y-kubelogin-0.1.4"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/qh3n74lmhwrvp0h4145xy1dxprgd6s9l-kubelogin-0.1.4",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/qh3n74lmhwrvp0h4145xy1dxprgd6s9l-kubelogin-0.1.4"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/l13ak2s0q14nhwk7inzrncg4xnnh5jbb-kubelogin-0.1.4",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/l13ak2s0q14nhwk7inzrncg4xnnh5jbb-kubelogin-0.1.4"
+        }
+      }
+    },
     "kubernetes-helm@latest": {
       "last_modified": "2024-10-26T14:05:56Z",
       "resolved": "github:NixOS/nixpkgs/4e0eec54db79d4d0909f45a88037210ff8eaffee#kubernetes-helm",
