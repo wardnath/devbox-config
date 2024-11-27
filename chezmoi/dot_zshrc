@@ -1,2 +1,7 @@
 eval "$(devbox global shellenv --init-hook)"
 
+source ~/.config/aux-zsh-completions/stdout-completions.zsh
+
+export PATH="/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/local/sbin:${HOME}/.local/bin:$PATH"
+
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$(find /nix/store -regex '.*libstd.*' -type f -exec dirname {} \; -quit | tr '\n' ':')"
