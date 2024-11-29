@@ -1,4 +1,6 @@
 eval "$(devbox global shellenv --init-hook)"
+setopt rm_star_silent
+setopt INTERACTIVE_COMMENTS
 
 source ~/.config/aux-zsh-completions/stdout-completions.zsh
 
