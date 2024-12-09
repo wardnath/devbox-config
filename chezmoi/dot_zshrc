@@ -2,8 +2,13 @@ eval "$(devbox global shellenv --init-hook)"
 setopt rm_star_silent
 setopt INTERACTIVE_COMMENTS
 
+
+
 source ~/.config/aux-zsh-completions/stdout-completions.zsh
 
 export PATH="/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/local/sbin:${HOME}/.local/bin:$PATH"
 
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$(find /nix/store -regex '.*libstd.*' -type f -exec dirname {} \; -quit | tr '\n' ':')"
+
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/root/.local/share/flatpak/exports/share"
+
