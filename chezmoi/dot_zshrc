@@ -3,6 +3,8 @@ setopt rm_star_silent
 setopt INTERACTIVE_COMMENTS
 
 
+export CPPFLAGS="-I/usr/local/include"
+export LDFLAGS="-L/usr/local/lib"
 
 source ~/.config/aux-zsh-completions/stdout-completions.zsh
 
