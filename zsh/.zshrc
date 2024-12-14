@@ -212,5 +212,5 @@ export LC_ALL="C.UTF-8"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export PREVIEW="bat"
-alias python3="python"
+
 
