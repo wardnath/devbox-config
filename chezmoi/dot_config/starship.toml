@@ -847,7 +847,9 @@ detect_folders = []
 pyenv_version_name = true
 pyenv_prefix = "pyenv "
 python_binary = [
-    "python"
+    "python",
+    "python3",
+    "python2",
 ]
 format = 'via [\($virtualenv\)](bold yellow) [${symbol}${pyenv_prefix}(${version})](bold yellow)'
 version_format = "v${raw}"
