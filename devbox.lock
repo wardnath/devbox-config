@@ -433,6 +433,34 @@
         }
       }
     },
+    "duperemove@latest": {
+      "last_modified": "2024-11-16T04:25:12Z",
+      "resolved": "github:NixOS/nixpkgs/34a626458d686f1b58139620a8b2793e9e123bba#duperemove",
+      "source": "devbox-search",
+      "version": "0.14.1",
+      "systems": {
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/8kxbbjwpgsg8d5jx3ly7b6k956gfk17d-duperemove-0.14.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/8kxbbjwpgsg8d5jx3ly7b6k956gfk17d-duperemove-0.14.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/xwzrp3yv70697max73rjnl24nacwk1n5-duperemove-0.14.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/xwzrp3yv70697max73rjnl24nacwk1n5-duperemove-0.14.1"
+        }
+      }
+    },
     "ejson2env@latest": {
       "last_modified": "2024-10-13T23:44:06Z",
       "resolved": "github:NixOS/nixpkgs/d4f247e89f6e10120f911e2e2d2254a050d0f732#ejson2env",

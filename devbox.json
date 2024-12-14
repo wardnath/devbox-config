@@ -50,7 +50,8 @@
     "sqlite@latest",
     "ejson@latest",
     "ejson2env@latest",
-    "kubelogin@latest"
+    "kubelogin@latest",
+    "duperemove@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
