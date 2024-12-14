@@ -1,7 +1,8 @@
 eval "$(devbox global shellenv --init-hook)"
 setopt rm_star_silent
 setopt INTERACTIVE_COMMENTS
-
+setopt NO_NOMATCH
+alias python3="python"
 
 export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
