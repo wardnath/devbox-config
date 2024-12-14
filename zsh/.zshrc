@@ -47,13 +47,15 @@ autoload -Uz compinit; compinit
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #zinit load Aloxaf/fzf-tab
 
+# clipboard
+zinit ice wait lucid
+zinit light "kutsan/zsh-system-clipboard"
+
+
 ### Atuin
 zinit ice wait lucid
 zinit load ellie/atuin
 
-# clipboard
-zinit ice wait lucid
-zinit light "kutsan/zsh-system-clipboard"
 
 ### Start - zinit Config
 # Prompt : https://github.com/starship/starship
@@ -156,7 +158,10 @@ zinit ice as'program' src'asdf.sh'
 zinit light asdf-vm/asdf
 zinit snippet 'OMZP::asdf'
 
-
+# ollama
+#zinit light Katrovsky/zsh-ollama-completion
+zinit ice as"completion"
+zinit snippet https://github.com/wardnath/zsh-ollama-completion/blob/main/_ollama
 # Style
 
 # disable sort when completing `git checkout`
@@ -206,6 +211,6 @@ export NNN_FCOLORS="03040601000205f7d204d9f7" # File colors
 export LC_ALL="C.UTF-8"
 export EDITOR="nvim"
 export VISUAL="nvim"
-export PREVIEW="nvim"
-alias python3="python"
+export PREVIEW="bat"
+
 

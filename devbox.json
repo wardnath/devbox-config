@@ -1,7 +1,6 @@
 {
   "packages": [
     "nodejs@latest",
-    "ollama@latest",
     "complgen@latest",
     "iftop@latest",
     "gotop@latest",
@@ -9,7 +8,6 @@
     "atuin@latest",
     "bat@latest",
     "btop@latest",
-    "cheat@latest",
     "chezmoi@latest",
     "cloc@latest",
     "direnv@latest",
@@ -22,8 +20,6 @@
     "glab@latest",
     "glow@latest",
     "htop@latest",
-    "httpie@latest",
-    "hurl@latest",
     "jq@latest",
     "kubectl@latest",
     "kubernetes-helm@latest",
@@ -36,7 +32,6 @@
     "pstree@latest",
     "pv@latest",
     "ripgrep@latest",
-    "sherlock@latest",
     "starship@latest",
     "thefuck@latest",
     "tig@latest",
@@ -44,13 +39,18 @@
     "tmux@latest",
     "tree-sitter@latest",
     "tree@latest",
-    "trippy@latest",
     "unzip@latest",
     "wget@latest",
     "yq@latest",
     "zoxide@latest",
     "wl-clipboard@latest",
-    "_1password@latest"
+    "headscale@latest",
+    "rclone@latest",
+    "ollama@latest",
+    "sqlite@latest",
+    "ejson@latest",
+    "ejson2env@latest",
+    "kubelogin@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
@@ -61,11 +61,14 @@
       ". ${DEVBOX_GLOBAL_ROOT}/init.sh"
     ],
     "scripts": {
+      "completion-path": [
+        "echo ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/aux-zsh-completions/stdout-completions.zsh"
+      ],
       "complgen-man": [
-        "man $1 | complgen scrape > chezmoi/dot_config/complgen/$1.usage.tmpl"
+        "man $1 | complgen scrape > ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/complgen/$1.usage.tmpl"
       ],
       "complgen-help": [
-        "$1 --help | complgen scrape > chezmoi/dot_config/complgen/$1.usage.tmpl"
+        "$1 --help | complgen scrape > ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/complgen/$1.usage.tmpl"
       ],
       "install-nnn": [
         "sh -c \"$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)\""
@@ -75,7 +78,7 @@
       ],
       "install-chezmoi": [
         "chezmoi purge --force && chezmoi init",
-        "cp -r -f $(devbox global path)/chezmoi/* $(chezmoi source-path)",
+        "cp -r $(devbox global path)/chezmoi/* $(chezmoi source-path)",
         "chezmoi apply --no-pager --progress true"
       ],
       "latest-hash": [

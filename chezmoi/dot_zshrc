@@ -1,1 +1,14 @@
 eval "$(devbox global shellenv --init-hook)"
+setopt rm_star_silent
+setopt INTERACTIVE_COMMENTS
+setopt NO_NOMATCH
+
+export CPPFLAGS="-I/usr/local/include"
+export LDFLAGS="-L/usr/local/lib"
+
+source ~/.config/aux-zsh-completions/stdout-completions.zsh
+
+export PATH="/usr/local/bin:/usr/local/sbin:${HOME}/.local/bin:$PATH"
+
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/root/.local/share/flatpak/exports/share"
+
