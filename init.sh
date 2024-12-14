@@ -1,6 +1,7 @@
 echo "initializing devbox global init.sh"
 shell=`ps -p $$ | awk 'NR>1  {print $4}' | sed 's/-//g'`
 SCRIPT_PATH="$HOME/.local/share/devbox/global/current"
+alias python3='which python'
 
 case $(basename $shell) in
      "zsh" )
