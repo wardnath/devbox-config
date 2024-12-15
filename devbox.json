@@ -52,7 +52,7 @@
     "ejson2env@latest",
     "kubelogin@latest",
     "duperemove@latest",
-    "python@3.12.8"
+    "python@3.12.7"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
