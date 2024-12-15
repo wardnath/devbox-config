@@ -85,6 +85,9 @@
       ],
       "latest-hash": [
         "curl -fsSL https://nixos.org/channels/nixos-unstable/git-revision"
+      ],
+      "install-with-pip": [
+	"$VENV_DIR/bin/python -m ensurepip && $VENV_DIR/bin/python -m pip install llm"
       ]
     },
     "nixpkgs": {}
