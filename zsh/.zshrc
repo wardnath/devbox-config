@@ -67,8 +67,12 @@ zinit load starship/starship
 #  atload"bindkey '^j' jq-complete"
 #zinit light "reegnz/jq-zsh-plugin"
 
-## 1pass
-zinit snippet OMZP::1password
+zinit light-mode lucid as"null" blockf for \
+        wait \
+        pick'az.completion' \
+        atload"zicompinit; zicdreplay;" \
+        has"az" \
+    "https://github.com/Azure/azure-cli/blob/dev/az.completion"
 
 ## Load OMZ Git library
 zinit snippet OMZ::lib/git.zsh
