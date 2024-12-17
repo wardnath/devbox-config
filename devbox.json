@@ -51,7 +51,6 @@
     "ejson@latest",
     "ejson2env@latest",
     "kubelogin@latest",
-    "duperemove@latest",
     "python@3.12"
   ],
   "env": {
