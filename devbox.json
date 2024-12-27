@@ -51,7 +51,8 @@
     "yq-go@latest",
     "jq@latest",
     "ijq@latest",
-    "github:mikaelfangel/nixvim-config"
+    "github:mikaelfangel/nixvim-config",
+    "git-lfs@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
