@@ -1118,7 +1118,7 @@ detect_folders = []
 [custom.py]
 command = '''which python | awk -F'/' '{for(i=1;i<=NF;i++) printf substr($i,1,1) (i==NF?"\n":"")}' '''
 format = "via [${output}]($style)"
-style = "yellow dimmed":
+style = "yellow dimmed"
 detect_files = [
     "requirements.txt",
     "pyproject.toml",
