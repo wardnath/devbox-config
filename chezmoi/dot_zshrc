@@ -12,6 +12,21 @@ export PATH="/usr/local/bin:/usr/local/sbin:${HOME}/.local/bin:$PATH"
 
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/root/.local/share/flatpak/exports/share"
 
+_direnv_hook() {
+  trap -- '' SIGINT
+  eval "$("/nix/store/3mydh7746lji25ry2aygsy5i4s0i23x2-direnv-2.35.0/bin/direnv" export zsh)"
+  trap - SIGINT
+}
+typeset -ag precmd_functions
+if (( ! ${precmd_functions[(I)_direnv_hook]} )); then
+  precmd_functions=(_direnv_hook $precmd_functions)
+fi
+typeset -ag chpwd_functions
+if (( ! ${chpwd_functions[(I)_direnv_hook]} )); then
+  chpwd_functions=(_direnv_hook $chpwd_functions)
+fi
+
+
 if [ -z "$VIRTUAL_ENV" ]; then
     echo "No virtual environment is active. Activating $VENV_DIR..."
     # Activate the virtual environment
@@ -25,3 +40,4 @@ if [ -z "$VIRTUAL_ENV" ]; then
 else
     echo "Virtual environment already active: $VIRTUAL_ENV"
 fi
+
