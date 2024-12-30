@@ -2,7 +2,7 @@ eval "$(devbox global shellenv --init-hook)"
 setopt rm_star_silent
 setopt INTERACTIVE_COMMENTS
 setopt NO_NOMATCH
-if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+if [[ "$TERM_PROGRAM" == "xterm-ghostty" ]]; then
     export TERM=xterm-256color
 fi
 
