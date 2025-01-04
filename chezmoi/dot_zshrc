@@ -6,24 +6,23 @@ setopt NO_NOMATCH
 export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 
+# Aux Completions
 source ~/.config/aux-zsh-completions/stdout-completions.zsh
 
+# Path
 export PATH="/usr/local/bin:/usr/local/sbin:${HOME}/.local/bin:$PATH"
 
+# Flatpak
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/root/.local/share/flatpak/exports/share"
 
-if [ -z "$VIRTUAL_ENV" ]; then
-    echo "No virtual environment is active. Activating $VENV_DIR..."
-    # Activate the virtual environment
-    source "$VENV_DIR/bin/activate"
-    if [ $? -eq 0 ]; then
-        echo "Virtual environment activated successfully."
-    else
-        echo "Failed to activate virtual environment at $VENV_DIR."
-        exit 1
-    fi
+# Initialize the devbox global virtual env
+echo "Initializing devbox global virtual env $VENV_DIR"
+source "$VENV_DIR/bin/activate"
+if [ $? -eq 0 ]; then
+    echo "Virtual environment activated successfully."
 else
-    echo "Virtual environment already active: $VIRTUAL_ENV"
+    echo "Failed to activate virtual environment at $VENV_DIR."
+    exit 1
 fi
 
 _direnv_hook() {
