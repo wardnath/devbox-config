@@ -38,9 +38,12 @@ done
 #   zinit snippet "$completion_script"
 # done
 
-# Crasis to debug completions 
-zinit light zdharma-continuum/zui
-zinit light zdharma-continuum/zplugin-crasis
+# ZUI and Crasis
+zinit ice wait"1" lucid
+zinit load zdharma-continuum/zui
+
+zinit ice wait'[[ -n ${ZLAST_COMMANDS[(r)cra*]} ]]' lucid
+zinit load zdharma-continuum/zinit-crasis
 
 autoload -Uz compinit; compinit
 
