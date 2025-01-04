@@ -93,9 +93,13 @@ zinit load denilsonsa/prettyping
 zinit ice as"completion"
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-## zsh-bash-completions-fallback
-zinit ice depth=1 # optional, but avoids downloading the full history
-zinit load 3v1n0/zsh-bash-completions-fallback
+# Aux Completions - automatically load all .zsh files
+zinit ice as"completion" blockf
+for completion_file in ${HOME}/.config/aux-zsh-completions/*.zsh; do
+    zinit snippet "$completion_file"
+done
+
+## nix completions
 zinit load nix-community/nix-zsh-completions
 zinit light "spwhitt/nix-zsh-completions"
 
