@@ -1,4 +1,3 @@
-
 #!/usr/bin/env zsh
 # Start - zinit Installer Chunk
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -51,11 +50,9 @@ autoload -Uz compinit; compinit
 zinit ice wait lucid
 zinit light "kutsan/zsh-system-clipboard"
 
-
 ### Atuin
 zinit ice wait lucid
 zinit load ellie/atuin
-
 
 ### Start - zinit Config
 # Prompt : https://github.com/starship/starship
@@ -67,6 +64,7 @@ zinit load starship/starship
 #  atload"bindkey '^j' jq-complete"
 #zinit light "reegnz/jq-zsh-plugin"
 
+# Azure CLI completion
 zinit light-mode lucid as"null" blockf for \
         wait \
         pick'az.completion' \
@@ -76,7 +74,6 @@ zinit light-mode lucid as"null" blockf for \
 
 ## Load OMZ Git library
 zinit snippet OMZ::lib/git.zsh
-
 ## Install OMZ git aliases
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
@@ -87,33 +84,14 @@ zinit light djui/alias-tips
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 
-## cht.sh cheat sheet
-zinit wait"2a" lucid \
-  id-as"cht.sh" \
-  as"program" \
-  for https://cht.sh/:cht.sh
-  # has'rlwrap' \
-zinit wait"2b" lucid \
-  id-as"cht-completion" \
-  has'rlwrap' \
-  mv"cht* -> _cht" \
-  as"completion" \
-  for https://cheat.sh/:zsh
-
 ## PRETTYPING
 zinit ice lucid wait="" as="program" pick="prettyping" atload="alias pping=prettyping"
 zinit load denilsonsa/prettyping
 
 # Completions
+# Docker completion
 zinit ice as"completion"
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-
-AUX_COMPLETION_PATH="~/.config/aux-zsh-completions/stdout-completions.zsh"
-alias auxcomp="echo $AUX_COMPLETION_PATH"
-# aux completions
-if ! grep -q "source $AUX_COMPLETION_PATH" ~/.zshrc; then
-    echo "source $AUX_COMPLETION_PATH" >> ~/.zshrc
-fi
 
 ## zsh-bash-completions-fallback
 zinit ice depth=1 # optional, but avoids downloading the full history

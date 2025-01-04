@@ -6,9 +6,6 @@ setopt NO_NOMATCH
 export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 
-# Aux Completions
-source ~/.config/aux-zsh-completions/stdout-completions.zsh
-
 # Path
 export PATH="/usr/local/bin:/usr/local/sbin:${HOME}/.local/bin:$PATH"
 
@@ -38,3 +35,4 @@ typeset -ag chpwd_functions
 if (( ! ${chpwd_functions[(I)_direnv_hook]} )); then
   chpwd_functions=(_direnv_hook $chpwd_functions)
 fi
+
