@@ -38,6 +38,10 @@ done
 #   zinit snippet "$completion_script"
 # done
 
+# Crasis to debug completions 
+zinit light zdharma-continuum/zui
+zinit light zdharma-continuum/zplugin-crasis
+
 autoload -Uz compinit; compinit
 
 # End of Zinit's installer chunk
