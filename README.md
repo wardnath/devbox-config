@@ -66,6 +66,7 @@ Most of the config here aims to be generally applicable. The secrets in the dotc
 * github:flox/flox
 * github:astro/microvm.nix
 * github:nix-community/nix-direnv
+* MikaelFangel/nixvim-config
 
 ## Flake templates
 
