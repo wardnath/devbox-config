@@ -187,6 +187,9 @@ eval "$(zoxide init zsh)"
 # devbox completions
 eval "$(devbox completion zsh)"
 
+# glab
+command -v glab &>/dev/null && eval "$(glab completion -s zsh)"
+
 # vi mode - already set above
 # set -o vi
 
