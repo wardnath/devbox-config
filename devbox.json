@@ -63,15 +63,6 @@
       ". ${DEVBOX_GLOBAL_ROOT}/init.sh"
     ],
     "scripts": {
-      "completion-path": [
-        "echo ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/aux-zsh-completions/stdout-completions.zsh"
-      ],
-      "complgen-man": [
-        "man $1 | complgen scrape > ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/complgen/$1.usage.tmpl"
-      ],
-      "complgen-help": [
-        "$1 --help | complgen scrape > ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/complgen/$1.usage.tmpl"
-      ],
       "install-nnn": [
         "sh -c \"$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)\""
       ],
@@ -85,9 +76,6 @@
       ],
       "latest-hash": [
         "curl -fsSL https://nixos.org/channels/nixos-unstable/git-revision"
-      ],
-      "install-with-pip": [
-        "$VENV_DIR/bin/python -m ensurepip && $VENV_DIR/bin/python -m pip install llm"
       ]
     },
     "nixpkgs": {}
