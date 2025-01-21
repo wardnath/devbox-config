@@ -80,6 +80,38 @@ require('lazy').setup({
   --  }
   --},
 
+  
+  ---------------------------------------
+  -- Enhanced Cursor and Motion Plugins --
+  ---------------------------------------
+  {
+    "xiyaowong/fast-cursor-move.nvim",  -- Fast cursor movement plugin.
+    event = "VeryLazy",  -- Load lazily.
+    config = function()
+      require("fast-cursor-move").setup({
+        acceleration = true,  -- Enable acceleration for faster movement.
+        fast_step = 3,        -- Move 3 lines per keystroke when accelerating.
+        slow_step = 1,        -- Normal speed: move 1 line per keystroke.
+        timeout = 1000,       -- Timeout (ms) before resetting to normal speed.
+      })
+    end,
+  },
+  {
+    "ggandor/leap.nvim",  -- Quick jump motions.
+    event = "VeryLazy",
+    config = function()
+      require("leap").add_default_mappings()  -- Set default keybindings.
+    end,
+  },
+  {
+    "karb94/neoscroll.nvim", -- Smooth scrolling plugin.
+    event = "VeryLazy",
+    config = function()
+      require("neoscroll").setup()  -- Use default settings.
+    end,
+  }
+
+
   -- Catppuccin theme setup
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
@@ -146,3 +178,13 @@ require("catppuccin").setup({
 
 -- Apply the Catppuccin theme
 vim.cmd.colorscheme "catppuccin"
+
+---------------------------------------------------
+-- Custom Key Mappings for fast-cursor-move Plugin --
+---------------------------------------------------
+-- Override default h/j/k/l behavior with fast-cursor-move functions.
+vim.keymap.set('n', 'j', function() require("fast-cursor-move").move("j") end, { noremap = true, silent = true })
+vim.keymap.set('n', 'k', function() require("fast-cursor-move").move("k") end, { noremap = true, silent = true })
+vim.keymap.set('n', 'h', function() require("fast-cursor-move").move("h") end, { noremap = true, silent = true })
+vim.keymap.set('n', 'l', function() require("fast-cursor-move").move("l") end, { noremap = true, silent = true })
+
