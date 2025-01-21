@@ -109,7 +109,7 @@ require('lazy').setup({
     config = function()
       require("neoscroll").setup()  -- Use default settings.
     end,
-  }
+  },
 
 
   -- Catppuccin theme setup
