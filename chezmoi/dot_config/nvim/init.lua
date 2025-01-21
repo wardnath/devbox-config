@@ -1,4 +1,19 @@
--- Lazy.nvim setup: Automatically installs and sets up Lazy.nvim if not present
+--[[
+  Fixed init.lua with the fast-cursor-move plugin properly configured and keymaps moved inside its config function.
+
+  Explanation:
+    - When "event = 'VeryLazy'" is used, the plugin won't be loaded immediately.
+      If we place keymaps using require("fast-cursor-move") at the bottom of init.lua, 
+      Neovim will error out because the plugin module hasn't actually loaded yet.
+    - The fix is to define those keymaps inside the plugin's config block (or remove "event" 
+      so that the plugin loads earlier). This consolidated approach ensures the plugin is 
+      already loaded when we set up our keymaps.
+
+  References:
+    - fast-cursor-move.nvim official repo: https://github.com/xiyaowong/fast-cursor-move.nvim
+    - lazy.nvim usage docs: https://github.com/folke/lazy.nvim
+]]--
+-- -- Lazy.nvim setup: Automatically installs and sets up Lazy.nvim if not present
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -15,102 +30,63 @@ vim.opt.rtp:prepend(lazypath)
 -- Leader keys setup: Set `mapleader` and `maplocalleader` before lazy to ensure mappings are correct
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
 -- Lazy.nvim plugins setup
 require('lazy').setup({
   -- LSP configuration
   {'neovim/nvim-lspconfig'},
-  
+
   -- COQ completion framework
   {'ms-jpq/coq_nvim', branch = 'coq'},
   {'github/copilot.vim'},
-  -- LLM plugin configuration
-  --{
-  --  'huggingface/llm.nvim',
-  --  opts = {
-  --    --model = "smollm:135m", -- Specify model ID
-  --    model = "phi3.5:3.8b-mini-instruct-q2_K",
-  --    url = "http://localhost:11434",   -- Backend URL
-  --    -- api_token = nil, -- cf Install paragraph
-  --    -- model = "bigcode/starcoder2-15b", -- the model ID, behavior depends on backend
-  --    backend = "ollama", -- backend ID, "huggingface" | "ollama" | "openai" | "tgi"
-  --    -- url = nil, -- the http url of the backend
-  --    -- tokens_to_clear = { "" }, -- tokens to remove from the model's output
-  --    -- parameters that are added to the request body, values are arbitrary, you can set any field:value pair here it will be passed as is to the backend
-  --    -- request_body = {
-  --    --    parameters = {
-  --    --      max_new_tokens = 60,
-  --    --      temperature = 0.2,
-  --    --      top_p = 0.95,
-  --    --    },
-  --    --  },
 
-  --    --fim = {
-  --    --  enabled = true, -- Enable Fill in the Middle (FIM)
-  --    --  prefix = "<fim_prefix>",
-  --    --  middle = "<fim_middle>",
-  --    --  suffix = "<fim_suffix>",
-  --    --},
-  --    -- debounce_ms = 150,
-  --    -- accept_keymap = "<Tab>",
-  --    -- dismiss_keymap = "<S-Tab>",
-  --    -- tls_skip_verify_insecure = false,
-  --    -- llm-ls configuration, cf llm-ls section
-  --    -- lsp = {
-  --    --   bin_path = nil,
-  --    --   host = nil,
-  --    --   port = nil,
-  --    --   cmd_env = nil, -- or { LLM_LOG_LEVEL = "DEBUG" } to set the log level of llm-ls
-  --    --   version = "0.5.3",
-  --    -- },
-  --    -- tokenizer = nil, -- cf Tokenizer paragraph
-  --    -- context_window = 1024, -- max number of tokens for the context window
-  --    -- enable_suggestions_on_startup = true,
-  --    -- enable_suggestions_on_files = "*", -- pattern matching syntax to enable suggestions on specific files, either a string or a list of strings
-  --    -- disable_url_path_completion = false, -- cf Backend
-  --    request_body = {
-  --      --prompt = "<|fim_prefix|>{prefix}<|fim_suffix|>{suffix}<|fim_middle|>",
-  --      --prompt=f'{prefix}{suffix}',
-  --      options = {
-  --        temperature = 0.01, -- Sampling temperature
-  --        top_p = 0.9 -- Nucleus sampling probability
-  --        --num_predict = 128,  -- Number of predictions
-  --        -- stop: [""]     -- Stop token
-  --      },
-  --    }
-  --  }
-  --},
-
-  
   ---------------------------------------
   -- Enhanced Cursor and Motion Plugins --
   ---------------------------------------
   {
-    "xiyaowong/fast-cursor-move.nvim",  -- Fast cursor movement plugin.
-    event = "VeryLazy",  -- Load lazily.
+    "xiyaowong/fast-cursor-move.nvim",
+    event = "VeryLazy",  -- load lazily
     config = function()
+      -- Fast cursor movement plugin setup
       require("fast-cursor-move").setup({
-        acceleration = true,  -- Enable acceleration for faster movement.
-        fast_step = 3,        -- Move 3 lines per keystroke when accelerating.
-        slow_step = 1,        -- Normal speed: move 1 line per keystroke.
-        timeout = 1000,       -- Timeout (ms) before resetting to normal speed.
+        acceleration = true,  -- Enable acceleration for faster movement
+        fast_step = 3,        -- Move 3 lines per keystroke when accelerating
+        slow_step = 1,        -- Normal speed: move 1 line per keystroke
+        timeout = 1000,       -- Timeout (ms) before resetting to normal speed
       })
-    end,
-  },
-  {
-    "ggandor/leap.nvim",  -- Quick jump motions.
-    event = "VeryLazy",
-    config = function()
-      require("leap").add_default_mappings()  -- Set default keybindings.
-    end,
-  },
-  {
-    "karb94/neoscroll.nvim", -- Smooth scrolling plugin.
-    event = "VeryLazy",
-    config = function()
-      require("neoscroll").setup()  -- Use default settings.
-    end,
-  },
 
+      -- Keymaps must be placed here so they won't error prior to loading the plugin
+      vim.keymap.set('n', 'j', function()
+        require("fast-cursor-move").move("j")
+      end, { noremap = true, silent = true })
+
+      vim.keymap.set('n', 'k', function()
+        require("fast-cursor-move").move("k")
+      end, { noremap = true, silent = true })
+
+      vim.keymap.set('n', 'h', function()
+        require("fast-cursor-move").move("h")
+      end, { noremap = true, silent = true })
+
+      vim.keymap.set('n', 'l', function()
+        require("fast-cursor-move").move("l")
+      end, { noremap = true, silent = true })
+    end,
+  },
+  {
+    "ggandor/leap.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("leap").add_default_mappings()
+    end,
+  },
+  {
+    "karb94/neoscroll.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("neoscroll").setup()
+    end,
+  },
 
   -- Catppuccin theme setup
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
@@ -122,18 +98,16 @@ require('lazy').setup({
     opts = {},
     keys = {
       {
-        "<leader>?", -- Show buffer local keymaps
-        function()
-          require("which-key").show({ global = false })
-        end,
+        "<leader>?",
+        function() require("which-key").show({ global = false }) end,
         desc = "Buffer Local Keymaps (which-key)",
       },
     },
-  }
+  },
 })
 
 -- Disable Copilot tab mapping
---vim.g.copilot_no_tab_map = true
+-- vim.g.copilot_no_tab_map = true
 
 -- COQ settings
 vim.g.coq_settings = { auto_start = 'shut-up' }
@@ -145,21 +119,20 @@ require("catppuccin").setup({
     light = "latte",
     dark = "mocha",
   },
-  transparent_background = false, -- Disable transparent background
-  show_end_of_buffer = false,     -- Hide '~' characters after the end of buffers
-  term_colors = true,             -- Enable terminal colors
+  transparent_background = false,
+  show_end_of_buffer = false,
+  term_colors = true,
   dim_inactive = {
-    enabled = false,              -- Disable dimming inactive windows
+    enabled = false,
     shade = "dark",
-    percentage = 0.15,            -- Dimming percentage
+    percentage = 0.15,
   },
-  no_italic = false,              -- Allow italics
-  no_bold = false,                -- Allow bold
-  no_underline = false,           -- Allow underline
+  no_italic = false,
+  no_bold = false,
+  no_underline = false,
   styles = {
     comments = { "italic" },
     conditionals = { "italic" },
-    -- More style customizations can be added here
   },
   color_overrides = {},
   custom_highlights = {},
@@ -178,13 +151,4 @@ require("catppuccin").setup({
 
 -- Apply the Catppuccin theme
 vim.cmd.colorscheme "catppuccin"
-
----------------------------------------------------
--- Custom Key Mappings for fast-cursor-move Plugin --
----------------------------------------------------
--- Override default h/j/k/l behavior with fast-cursor-move functions.
-vim.keymap.set('n', 'j', function() require("fast-cursor-move").move("j") end, { noremap = true, silent = true })
-vim.keymap.set('n', 'k', function() require("fast-cursor-move").move("k") end, { noremap = true, silent = true })
-vim.keymap.set('n', 'h', function() require("fast-cursor-move").move("h") end, { noremap = true, silent = true })
-vim.keymap.set('n', 'l', function() require("fast-cursor-move").move("l") end, { noremap = true, silent = true })
 
