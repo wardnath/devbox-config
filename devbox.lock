@@ -2715,6 +2715,54 @@
         }
       }
     },
+    "websocat@latest": {
+      "last_modified": "2025-01-25T23:17:58Z",
+      "resolved": "github:NixOS/nixpkgs/b582bb5b0d7af253b05d58314b85ab8ec46b8d19#websocat",
+      "source": "devbox-search",
+      "version": "1.14.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/isiaqf2gvwj0yr07nncz1s1lpyi0g1yh-websocat-1.14.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/isiaqf2gvwj0yr07nncz1s1lpyi0g1yh-websocat-1.14.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/56l9v9vdrdw2ysrqa3p5f0c25qxy8dhf-websocat-1.14.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/56l9v9vdrdw2ysrqa3p5f0c25qxy8dhf-websocat-1.14.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/q0klcnvykg77h0nj0ssnr9j68zs2ivxk-websocat-1.14.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/q0klcnvykg77h0nj0ssnr9j68zs2ivxk-websocat-1.14.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/kx3qzghacnvbj8jpz0jqdaa5yrz60jcy-websocat-1.14.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/kx3qzghacnvbj8jpz0jqdaa5yrz60jcy-websocat-1.14.0"
+        }
+      }
+    },
     "wget@latest": {
       "last_modified": "2024-10-23T22:21:09Z",
       "resolved": "github:NixOS/nixpkgs/6301495959cf1737c6ebcd153833e4c4596f56e2#wget",

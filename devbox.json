@@ -52,7 +52,8 @@
     "jq@latest",
     "ijq@latest",
     "git-lfs@latest",
-    "neovim@latest"
+    "neovim@latest",
+    "websocat@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
