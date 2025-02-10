@@ -47,6 +47,10 @@ zinit load zdharma-continuum/zinit-crasis
 
 autoload -Uz compinit; compinit
 
+zinit ice as"completion" blockf
+zinit load ~/.config/aux-completions
+
+
 # End of Zinit's installer chunk
 
 ### fzf config, must be after fast-syntax-highlighting, zsh-autusuggestions, compinit
