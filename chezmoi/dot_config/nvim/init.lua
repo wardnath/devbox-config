@@ -134,9 +134,21 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.opt.number = true
 vim.opt.relativenumber = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
+-- Add whitespace visualization settings
+vim.opt.list = true
+vim.opt.listchars = {
+  space = '·',
+  tab = '→ ',
+  trail = '•',
+  extends = '⟩',
+  precedes = '⟨',
+  nbsp = '␣',
+}
 
 require("lazy").setup({
   -- REMOVE fast-cursor-move plugin entry since we embedded it directly above.
@@ -153,6 +165,25 @@ require("lazy").setup({
     event = "VeryLazy",
     config = function()
       require("neoscroll").setup()
+    end,
+  },
+
+  -- Add vim-better-whitespace plugin
+  {
+    "ntpeters/vim-better-whitespace",
+    event = "VeryLazy",
+    config = function()
+      -- Enable highlighting of whitespace by default
+      vim.g.better_whitespace_enabled = 1
+      -- Enable stripping whitespace on save
+      vim.g.strip_whitespace_on_save = 0
+      -- Show spaces and tabs
+      vim.g.better_whitespace_filetypes_blacklist = {}
+      -- Show tabs as well
+      vim.g.show_spaces_that_precede_tabs = 1
+      -- Use a distinct color for whitespace highlighting
+      vim.g.better_whitespace_ctermcolor = 'red'
+      vim.g.better_whitespace_guicolor = '#E06C75'
     end,
   },
 
@@ -202,3 +233,6 @@ require("catppuccin").setup({
 
 vim.cmd.colorscheme("catppuccin")
 
+-- Add keymaps for whitespace toggling
+vim.keymap.set('n', '<leader>sw', '<cmd>ToggleWhitespace<CR>', { desc = 'Toggle whitespace visibility' })
+vim.keymap.set('n', '<leader>ss', '<cmd>StripWhitespace<CR>', { desc = 'Strip trailing whitespace' })
