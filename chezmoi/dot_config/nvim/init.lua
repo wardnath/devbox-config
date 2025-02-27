@@ -187,6 +187,41 @@ require("lazy").setup({
     end,
   },
 
+  -- Add autosave plugin
+  {
+    "Pocco81/auto-save.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("auto-save").setup({
+        enabled = true,
+        execution_message = {
+          message = function() return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S")) end,
+          dim = 0.18,
+          cleaning_interval = 1250,
+        },
+        trigger_events = {"InsertLeave", "TextChanged"},
+        write_all_buffers = false,
+        debounce_delay = 135,
+        condition = function(buf)
+          local fn = vim.fn
+          
+          -- don't save for special buffers
+          if fn.getbufvar(buf, "&filetype") == "TelescopePrompt" then
+            return false
+          end
+          if fn.getbufvar(buf, "&filetype") == "" then
+            return false
+          end
+          if fn.getbufvar(buf, "&modifiable") == 0 then
+            return false
+          end
+          
+          return true
+        end
+      })
+    end,
+  },
+
   -- Additional plugins
   { "neovim/nvim-lspconfig" },
   { "ms-jpq/coq_nvim", branch = "coq" },
@@ -236,3 +271,6 @@ vim.cmd.colorscheme("catppuccin")
 -- Add keymaps for whitespace toggling
 vim.keymap.set('n', '<leader>sw', '<cmd>ToggleWhitespace<CR>', { desc = 'Toggle whitespace visibility' })
 vim.keymap.set('n', '<leader>ss', '<cmd>StripWhitespace<CR>', { desc = 'Strip trailing whitespace' })
+
+-- Add keymap for toggling autosave
+vim.keymap.set('n', '<leader>ta', '<cmd>ASToggle<CR>', { desc = 'Toggle autosave functionality' })
