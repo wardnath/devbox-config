@@ -53,21 +53,7 @@
     "ijq@latest",
     "git-lfs@latest",
     "neovim@latest",
-    "websocat@latest",
-    "dive@latest",
-    "mods@latest",
-    "wishlist@latest",
-    "soft-serve@latest",
-    "yazi@latest",
-    "fx@latest",
-    "inshellisense@latest",
-    "jc@latest",
-    "gping@latest",
-    "onefetch@latest",
-    "superfile@latest",
-    "xsv@latest",
-    "qrcp@latest",
-    "genact@latest"
+    "websocat@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
