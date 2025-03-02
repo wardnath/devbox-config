@@ -107,8 +107,23 @@ local function move(direction)
 end
 
 local function setup_fast_cursor_move()
+  -- Original mappings for hjkl
   for _, motion in ipairs({ "h", "j", "k", "l" }) do
     vim.keymap.set({ "n", "v" }, motion, function()
+      return move(motion)
+    end, { expr = true })
+  end
+  
+  -- Add arrow key mappings
+  local arrow_to_motion = {
+    ["<Up>"] = "k",
+    ["<Down>"] = "j",
+    ["<Left>"] = "h",
+    ["<Right>"] = "l"
+  }
+  
+  for arrow, motion in pairs(arrow_to_motion) do
+    vim.keymap.set({ "n", "v" }, arrow, function()
       return move(motion)
     end, { expr = true })
   end
