@@ -71,17 +71,17 @@ zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
 # interactive jq; awesome
-#zinit ice wait lucid \
-#  atload"bindkey '^j' jq-complete"
-#zinit light "reegnz/jq-zsh-plugin"
+zinit ice wait lucid \
+  atload"bindkey '^j' jq-complete"
+zinit light "reegnz/jq-zsh-plugin"
 
 # Azure CLI completion
-zinit light-mode lucid as"null" blockf for \
-        wait \
-        pick'az.completion' \
-        atload"zicompinit; zicdreplay;" \
-        has"az" \
-    "https://github.com/Azure/azure-cli/blob/dev/az.completion"
+# zinit light-mode lucid as"null" blockf for \
+#         wait \
+#         pick'az.completion' \
+#         atload"zicompinit; zicdreplay;" \
+#         has"az" \
+#     "https://github.com/Azure/azure-cli/blob/dev/az.completion"
 
 ## Load OMZ Git library
 zinit snippet OMZ::lib/git.zsh
@@ -111,20 +111,20 @@ zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_
 # done
 
 ## nix completions
-#zinit load nix-community/nix-zsh-completions
+zinit ice wait lucid
+zinit load nix-community/nix-zsh-completions
 #zinit light "spwhitt/nix-zsh-completions"
 
 # zinit load sigoden/argc-completions
+zinit ice wait lucid
 zinit load zsh-users/zsh-completions
 zinit load clarketm/zsh-completions
 
 # lib from Oh My Zsh
-#zinit snippet OMZL::completion.zsh
-#zinit snippet OMZL::spectrum.zsh
-#zinit snippet OMZL::history.zsh
+zinit snippet OMZL::completion.zsh
+zinit snippet OMZL::spectrum.zsh
+zinit snippet OMZL::history.zsh
 
-#zinit ice wait lucid
-#zinit light "zsh-users/zsh-completions"
 
 # completions for yarn run (mainly)
 #zinit ice wait lucid atclone"./zplug.zsh"
@@ -139,10 +139,10 @@ zinit wait lucid for \
 #    # OMZP::fzf
 
 # plugins from Prezto: relative order is important
-#zinit snippet PZT::modules/helper
-#zinit snippet PZT::modules/gnu-utility
-#zinit snippet PZT::modules/utility
-#zinit snippet PZT::modules/completion
+zinit snippet PZT::modules/helper
+zinit snippet PZT::modules/gnu-utility
+zinit snippet PZT::modules/utility
+zinit snippet PZT::modules/completion
 
 # Python
 zinit snippet OMZP::python
