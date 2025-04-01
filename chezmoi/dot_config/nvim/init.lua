@@ -167,46 +167,46 @@ vim.opt.listchars = {
 
 require("lazy").setup({
  -- File Explorer that supplements but doesn't replace Netrw
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      -- Keep Netrw enabled
-      vim.g.loaded_netrw = 0
-      vim.g.loaded_netrwPlugin = 0
+  -- {
+  --   "nvim-tree/nvim-tree.lua",
+  --   dependencies = {
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  --   config = function()
+  --     -- Keep Netrw enabled
+  --     vim.g.loaded_netrw = 0
+  --     vim.g.loaded_netrwPlugin = 0
       
-      require("nvim-tree").setup({
-        disable_netrw = false,       -- Don't disable Netrw
-        hijack_netrw = false,        -- Don't hijack Netrw windows
-        hijack_directories = {
-          enable = false,            -- Don't hijack directories
-          auto_open = false,         -- Don't automatically open on directory arguments
-        },        
-		    open_on_tab = false,
-		    hijack_unnamed_buffer_when_opening = false,
-        hijack_cursor = false,       -- Keep cursor behavior consistent
-        update_cwd = false,          -- Don't change working directory
-        actions = {
-          open_file = {
-            quit_on_open = true,     -- Close the tree when opening a file
-          },
-        },
-        view = {
-          width = 30,
-          side = "left",
-        },
-        renderer = {
-          group_empty = true,        -- Compact folders that contain only a single folder
-        },
-      })
+  --     require("nvim-tree").setup({
+  --       disable_netrw = false,       -- Don't disable Netrw
+  --       hijack_netrw = false,        -- Don't hijack Netrw windows
+  --       hijack_directories = {
+  --         enable = false,            -- Don't hijack directories
+  --         auto_open = false,         -- Don't automatically open on directory arguments
+  --       },        
+		--     open_on_tab = false,
+		--     hijack_unnamed_buffer_when_opening = false,
+  --       hijack_cursor = false,       -- Keep cursor behavior consistent
+  --       update_cwd = false,          -- Don't change working directory
+  --       actions = {
+  --         open_file = {
+  --           quit_on_open = true,     -- Close the tree when opening a file
+  --         },
+  --       },
+  --       view = {
+  --         width = 30,
+  --         side = "left",
+  --       },
+  --       renderer = {
+  --         group_empty = true,        -- Compact folders that contain only a single folder
+  --       },
+  --     })
       
-      -- Use different keymaps for Netrw and nvim-tree to avoid confusion
-      vim.keymap.set('n', '<leader>e', '<cmd>Lexplore<CR>', { desc = 'Toggle Netrw file explorer' })
-      vim.keymap.set('n', '<leader>t', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' })
-    end
-  },
+  --     -- Use different keymaps for Netrw and nvim-tree to avoid confusion
+  --     vim.keymap.set('n', '<leader>e', '<cmd>Lexplore<CR>', { desc = 'Toggle Netrw file explorer' })
+  --     vim.keymap.set('n', '<leader>t', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' })
+  --   end
+  -- },
   -- Telescope - fuzzy finder that enhances but doesn't replace built-in search
   {
     "nvim-telescope/telescope.nvim",
