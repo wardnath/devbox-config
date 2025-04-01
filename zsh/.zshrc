@@ -47,7 +47,7 @@ zinit light-mode for \
 
 autoload -Uz compinit; compinit
 
-zinit ice as"completion" blockf
+zinit ice wait lucid as"completion" blockf
 zinit load ~/.config/aux-completions
 
 
