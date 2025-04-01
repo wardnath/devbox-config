@@ -84,7 +84,7 @@ zinit light-mode lucid as"null" blockf for \
     "https://github.com/Azure/azure-cli/blob/dev/az.completion"
 
 ## Load OMZ Git library
-#zinit snippet OMZ::lib/git.zsh
+zinit snippet OMZ::lib/git.zsh
 ## Install OMZ git aliases
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
@@ -115,8 +115,8 @@ zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_
 #zinit light "spwhitt/nix-zsh-completions"
 
 # zinit load sigoden/argc-completions
-#zinit load zsh-users/zsh-completions
-#zinit load clarketm/zsh-completions
+zinit load zsh-users/zsh-completions
+zinit load clarketm/zsh-completions
 
 # lib from Oh My Zsh
 #zinit snippet OMZL::completion.zsh
@@ -131,11 +131,11 @@ zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_
 #zinit light "g-plane/zsh-yarn-autocompletions"
 
 # plugins from Oy My Zsh
-#zinit wait lucid for \
-#    OMZP::colorize \
-#    OMZP::command-not-found \
-#    OMZP::dotenv \
-#    OMZP::extract
+zinit wait lucid for \
+    OMZP::colorize \
+    OMZP::command-not-found \
+    OMZP::dotenv \
+    OMZP::extract
 #    # OMZP::fzf
 
 # plugins from Prezto: relative order is important
@@ -145,7 +145,7 @@ zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_
 #zinit snippet PZT::modules/completion
 
 # Python
-#zinit snippet OMZP::python
+zinit snippet OMZP::python
 #zinit snippet OMZP::pip
 #zinit ice pick'pdm.plugin.zsh'
 #zinit light baurt/zsh-pdm
@@ -167,15 +167,15 @@ zinit snippet https://github.com/wardnath/zsh-ollama-completion/blob/main/_ollam
 # NOTE: don't use escape sequences here, fzf-tab will ignore them
 #zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
-#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 #zstyle ':completion:*' menu no
 # preview directory's content with eza when completing cd
-#zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 # switch group using `<` and `>`
 #zstyle ':fzf-tab:*' switch-group '<' '>'
 # show completion menu on successive tab press (menu_complete overrides)
-#setopt auto_menu
+setopt auto_menu
 
 ### End - zinit Config
 
