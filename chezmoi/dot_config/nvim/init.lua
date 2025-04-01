@@ -184,6 +184,8 @@ require("lazy").setup({
           enable = false,            -- Don't hijack directories
           auto_open = false,         -- Don't automatically open on directory arguments
         },        
+		    open_on_tab = false,
+		    hijack_unnamed_buffer_when_opening = false,
         hijack_cursor = false,       -- Keep cursor behavior consistent
         update_cwd = false,          -- Don't change working directory
         actions = {
