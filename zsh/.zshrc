@@ -67,8 +67,8 @@ zinit load ellie/atuin
 
 ### Start - zinit Config
 # Prompt : https://github.com/starship/starship
-#zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
-#zinit load starship/starship
+zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
+zinit load starship/starship
 
 # interactive jq; awesome
 #zinit ice wait lucid \
