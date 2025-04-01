@@ -39,11 +39,11 @@ zinit light-mode for \
 # done
 
 # ZUI and Crasis
-zinit ice wait"1" lucid
-zinit load zdharma-continuum/zui
+# zinit ice wait"1" lucid
+# zinit load zdharma-continuum/zui
 
-zinit ice wait'[[ -n ${ZLAST_COMMANDS[(r)cra*]} ]]' lucid
-zinit load zdharma-continuum/zinit-crasis
+# zinit ice wait'[[ -n ${ZLAST_COMMANDS[(r)cra*]} ]]' lucid
+# zinit load zdharma-continuum/zinit-crasis
 
 autoload -Uz compinit; compinit
 
@@ -67,8 +67,8 @@ zinit load ellie/atuin
 
 ### Start - zinit Config
 # Prompt : https://github.com/starship/starship
-zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
-zinit load starship/starship
+#zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
+#zinit load starship/starship
 
 # interactive jq; awesome
 #zinit ice wait lucid \
@@ -84,7 +84,7 @@ zinit light-mode lucid as"null" blockf for \
     "https://github.com/Azure/azure-cli/blob/dev/az.completion"
 
 ## Load OMZ Git library
-zinit snippet OMZ::lib/git.zsh
+#zinit snippet OMZ::lib/git.zsh
 ## Install OMZ git aliases
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
@@ -111,53 +111,53 @@ zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_
 # done
 
 ## nix completions
-zinit load nix-community/nix-zsh-completions
-zinit light "spwhitt/nix-zsh-completions"
+#zinit load nix-community/nix-zsh-completions
+#zinit light "spwhitt/nix-zsh-completions"
 
 # zinit load sigoden/argc-completions
-zinit load zsh-users/zsh-completions
-zinit load clarketm/zsh-completions
+#zinit load zsh-users/zsh-completions
+#zinit load clarketm/zsh-completions
 
 # lib from Oh My Zsh
-zinit snippet OMZL::completion.zsh
-zinit snippet OMZL::spectrum.zsh
-zinit snippet OMZL::history.zsh
+#zinit snippet OMZL::completion.zsh
+#zinit snippet OMZL::spectrum.zsh
+#zinit snippet OMZL::history.zsh
 
-zinit ice wait lucid
-zinit light "zsh-users/zsh-completions"
+#zinit ice wait lucid
+#zinit light "zsh-users/zsh-completions"
 
 # completions for yarn run (mainly)
-zinit ice wait lucid atclone"./zplug.zsh"
-zinit light "g-plane/zsh-yarn-autocompletions"
+#zinit ice wait lucid atclone"./zplug.zsh"
+#zinit light "g-plane/zsh-yarn-autocompletions"
 
 # plugins from Oy My Zsh
-zinit wait lucid for \
-    OMZP::colorize \
-    OMZP::command-not-found \
-    OMZP::dotenv \
-    OMZP::extract
-    # OMZP::fzf
+#zinit wait lucid for \
+#    OMZP::colorize \
+#    OMZP::command-not-found \
+#    OMZP::dotenv \
+#    OMZP::extract
+#    # OMZP::fzf
 
 # plugins from Prezto: relative order is important
-zinit snippet PZT::modules/helper
-zinit snippet PZT::modules/gnu-utility
-zinit snippet PZT::modules/utility
-zinit snippet PZT::modules/completion
+#zinit snippet PZT::modules/helper
+#zinit snippet PZT::modules/gnu-utility
+#zinit snippet PZT::modules/utility
+#zinit snippet PZT::modules/completion
 
 # Python
-zinit snippet OMZP::python
-zinit snippet OMZP::pip
-zinit ice pick'pdm.plugin.zsh'
-zinit light baurt/zsh-pdm
+#zinit snippet OMZP::python
+#zinit snippet OMZP::pip
+#zinit ice pick'pdm.plugin.zsh'
+#zinit light baurt/zsh-pdm
 
 # asdf
-zinit ice as'program' src'asdf.sh'
-zinit light asdf-vm/asdf
-zinit snippet 'OMZP::asdf'
+#zinit ice as'program' src'asdf.sh'
+#zinit light asdf-vm/asdf
+#zinit snippet 'OMZP::asdf'
 
 # ollama
 #zinit light Katrovsky/zsh-ollama-completion
-zinit ice as"completion"
+zinit ice wait lucid as"completion" 
 zinit snippet https://github.com/wardnath/zsh-ollama-completion/blob/main/_ollama
 # Style
 
