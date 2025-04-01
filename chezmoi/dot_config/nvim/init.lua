@@ -180,7 +180,10 @@ require("lazy").setup({
       require("nvim-tree").setup({
         disable_netrw = false,       -- Don't disable Netrw
         hijack_netrw = false,        -- Don't hijack Netrw windows
-        hijack_directories = false,
+        hijack_directories = {
+          enable = false,            -- Don't hijack directories
+          auto_open = false,         -- Don't automatically open on directory arguments
+        },        
         hijack_cursor = false,       -- Keep cursor behavior consistent
         update_cwd = false,          -- Don't change working directory
         actions = {
