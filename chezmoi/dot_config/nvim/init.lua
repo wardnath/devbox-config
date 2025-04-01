@@ -365,4 +365,4 @@ vim.keymap.set('n', '<leader>sw', '<cmd>ToggleWhitespace<CR>', { desc = 'Toggle 
 vim.keymap.set('n', '<leader>ss', '<cmd>StripWhitespace<CR>', { desc = 'Strip trailing whitespace' })
 
 -- Add keymap for toggling autosave
-vim.keymap.set('n', '<leader>ta', '<cmd>ASToggle<CR>', { desc = 'Toggle autosave functionality' })
+vim.keymap.set('n', '<leader>at', '<cmd>ASToggle<CR>', { desc = 'Toggle autosave functionality' })
