@@ -18,46 +18,12 @@ zinit light-mode for \
     zsh-users/zsh-autosuggestions
     # zdharma-continuum/zinit-annex-man
 
-# # Function to use complgen JIT mode
-# _complgen_jit () {
-#     local stem=$1
-#     local -a w=("${(@)words[2,$CURRENT-1]}")
-#     local zsh_code=$(complgen jit ~/.config/complgen/${stem}.usage zsh --prefix="$PREFIX" -- "${w[@]}")
-#     eval $zsh_code
-#     return 0
-# }
-
-# # Register the completions
-# for f in ~/.config/complgen/*.usage(N); do
-#     local stem=${f:t:r}
-#     compdef "_complgen_jit $stem" $stem
-# done
-# Load all completion scripts from ~/.zsh/completion
-# zinit ice as"completion"
-# for completion_script in ~/.zsh/completion/*.zsh; do
-#   zinit snippet "$completion_script"
-# done
-
-# ZUI and Crasis
-# zinit ice wait"1" lucid
-# zinit load zdharma-continuum/zui
-
-# zinit ice wait'[[ -n ${ZLAST_COMMANDS[(r)cra*]} ]]' lucid
-# zinit load zdharma-continuum/zinit-crasis
-
 autoload -Uz compinit; compinit
-
-zinit ice wait lucid as"completion" blockf
-zinit load ~/.config/aux-completions
-
 
 # End of Zinit's installer chunk
 
-### fzf config, must be after fast-syntax-highlighting, zsh-autusuggestions, compinit
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-#zinit load Aloxaf/fzf-tab
-
-# clipboard
+# zsh vi mode clipboard
+# https://github.com/kutsan/zsh-system-clipboard
 zinit ice wait lucid
 zinit light "kutsan/zsh-system-clipboard"
 
@@ -70,23 +36,19 @@ zinit load ellie/atuin
 zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
-# interactive jq; awesome
+# interactive jq initiate with alt-j
+# https://github.com/reegnz/jq-zsh-plugin
 zinit ice wait lucid \
   atload"bindkey '^j' jq-complete"
 zinit light "reegnz/jq-zsh-plugin"
 
-# Azure CLI completion
-# zinit light-mode lucid as"null" blockf for \
-#         wait \
-#         pick'az.completion' \
-#         atload"zicompinit; zicdreplay;" \
-#         has"az" \
-#     "https://github.com/Azure/azure-cli/blob/dev/az.completion"
 
 ## Load OMZ Git library
-zinit snippet OMZ::lib/git.zsh
+zinit snippet OMZL::git.zsh
 ## Install OMZ git aliases
 zinit snippet OMZ::plugins/git/git.plugin.zsh
+# for git completion
+#zinit load wfxr/forgit
 
 ## reminders for aliases if whole command is typed
 zinit light djui/alias-tips
@@ -99,73 +61,36 @@ zinit light jeffreytse/zsh-vi-mode
 zinit ice lucid wait="" as="program" pick="prettyping" atload="alias pping=prettyping"
 zinit load denilsonsa/prettyping
 
+# FZF 
+#zinit ice wait lucid
+#zinit light Aloxaf/fzf-tab
+#zinit ice blockf
+#zinit snippet OMZ::plugins/fzf
+
+# libs from Oh My Zsh
+# A script to make using 256 colors in zsh less painful
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/spectrum.zsh
+zinit snippet OMZL::spectrum.zsh 
+
 # Completions
 # Docker completion
 zinit ice as"completion"
 zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 
-# # Aux Completions - automatically load all .zsh files
-# zinit ice as"completion" blockf
-# for completion_file in ${HOME}/.config/aux-zsh-completions/*.zsh; do
-#     zinit snippet "$completion_file"
-# done
-
-## nix completions
-zinit ice wait lucid
-zinit load nix-community/nix-zsh-completions
-#zinit light "spwhitt/nix-zsh-completions"
-
-# zinit load sigoden/argc-completions
+# misc completions
 zinit ice wait lucid
 zinit load zsh-users/zsh-completions
 zinit load clarketm/zsh-completions
 
-# lib from Oh My Zsh
-zinit snippet OMZL::completion.zsh
-zinit snippet OMZL::spectrum.zsh
-zinit snippet OMZL::history.zsh
-
-
-# completions for yarn run (mainly)
-#zinit ice wait lucid atclone"./zplug.zsh"
-#zinit light "g-plane/zsh-yarn-autocompletions"
-
-# plugins from Oy My Zsh
-zinit wait lucid for \
-    OMZP::colorize \
-    OMZP::command-not-found \
-    OMZP::dotenv \
-    OMZP::extract
-#    # OMZP::fzf
-
-# plugins from Prezto: relative order is important
-zinit snippet PZT::modules/helper
-zinit snippet PZT::modules/gnu-utility
-zinit snippet PZT::modules/utility
-zinit snippet PZT::modules/completion
 
 # Python
 zinit snippet OMZP::python
-#zinit snippet OMZP::pip
-#zinit ice pick'pdm.plugin.zsh'
-#zinit light baurt/zsh-pdm
-
-# asdf
-#zinit ice as'program' src'asdf.sh'
-#zinit light asdf-vm/asdf
-#zinit snippet 'OMZP::asdf'
 
 # ollama
 #zinit light Katrovsky/zsh-ollama-completion
 zinit ice wait lucid as"completion" 
 zinit snippet https://github.com/wardnath/zsh-ollama-completion/blob/main/_ollama
-# Style
 
-# disable sort when completing `git checkout`
-#zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-# NOTE: don't use escape sequences here, fzf-tab will ignore them
-#zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
@@ -185,17 +110,6 @@ export PATH="$PATH:/root/.local/bin"
 # eval "$(starship init zsh)"
 # zoxide
 eval "$(zoxide init zsh)"
-# atuin
-#eval "$(atuin init zsh)"
-#eval "$(atuin gen-completions --shell=zsh)"
-# devbox completions
-eval "$(devbox completion zsh)"
-
-# glab
-command -v glab &>/dev/null && eval "$(glab completion -s zsh)"
-
-# vi mode - already set above
-# set -o vi
 
 # nnn
 alias nnn="nnn -e"
