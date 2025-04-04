@@ -1,4 +1,3 @@
-
 --------------------------------------------------------------------------------
 -- Direct integration of "fast-cursor-move" logic without using Lazy
 -- Place this entire content in your init.lua (or equivalent Neovim config file).
@@ -327,10 +326,14 @@ require("lazy").setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VeryLazy",
     config = function()
+      local custom_catppuccin = require('lualine.themes.catppuccin')
+      -- Customize the theme if needed
+      -- custom_catppuccin.normal.a.bg = '#89b4fa' 
+
       require("lualine").setup({
         options = {
           icons_enabled = true,
-          theme = "catppuccin", -- Matches your colorscheme
+          theme = custom_catppuccin, -- Use the catppuccin theme
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {},
@@ -444,7 +447,7 @@ require("catppuccin").setup({
     treesitter = true,
     notify = false,
     mini = { enabled = true, indentscope_color = "" },
-    lualine = true, -- Enable lualine integration with catppuccin
+    -- Remove lualine integration from here
   },
 })
 
