@@ -1,3 +1,4 @@
+
 --------------------------------------------------------------------------------
 -- Direct integration of "fast-cursor-move" logic without using Lazy
 -- Place this entire content in your init.lua (or equivalent Neovim config file).
@@ -184,8 +185,8 @@ require("lazy").setup({
   --         enable = false,            -- Don't hijack directories
   --         auto_open = false,         -- Don't automatically open on directory arguments
   --       },        
-		--     open_on_tab = false,
-		--     hijack_unnamed_buffer_when_opening = false,
+  --     open_on_tab = false,
+  --     hijack_unnamed_buffer_when_opening = false,
   --       hijack_cursor = false,       -- Keep cursor behavior consistent
   --       update_cwd = false,          -- Don't change working directory
   --       actions = {
@@ -320,6 +321,88 @@ require("lazy").setup({
     end,
   },
 
+  -- Add statusline plugin (lualine)
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "VeryLazy",
+    config = function()
+      require("lualine").setup({
+        options = {
+          icons_enabled = true,
+          theme = "catppuccin", -- Matches your colorscheme
+          component_separators = { left = "", right = "" },
+          section_separators = { left = "", right = "" },
+          disabled_filetypes = {},
+          always_divide_middle = true,
+          globalstatus = true, -- Uses a single statusline for all windows
+        },
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { 
+            "branch",
+            {
+              "diff",
+              symbols = { added = " ", modified = " ", removed = " " },
+            },
+          },
+          lualine_c = { 
+            {
+              "filename",
+              path = 1, -- Show relative path
+              symbols = {
+                modified = "[+]",
+                readonly = "[RO]",
+                unnamed = "[No Name]",
+              }
+            }
+          },
+          lualine_x = {
+            { 
+              "diagnostics",
+              sources = { "nvim_diagnostic" },
+              symbols = { error = " ", warn = " ", info = " ", hint = " " },
+            },
+            {
+              function()
+                -- Show auto-save status if enabled
+                return vim.g.auto_save_state and "󰆓 AS" or ""
+              end,
+              color = { fg = "#E06C75" }
+            },
+            {
+              function()
+                -- Show cursor position in file (percentage)
+                local current_line = vim.fn.line(".")
+                local total_lines = vim.fn.line("$")
+                local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+                local line_ratio = current_line / total_lines
+                local index = math.ceil(line_ratio * #chars)
+                return chars[index]
+              end,
+              color = { fg = "#89B4FA" }
+            },
+            "encoding",
+            "fileformat",
+            "filetype"
+          },
+          lualine_y = { "progress" },
+          lualine_z = { "location" }
+        },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = { "filename" },
+          lualine_x = { "location" },
+          lualine_y = {},
+          lualine_z = {}
+        },
+        tabline = {},
+        extensions = { "nvim-tree", "fugitive" }
+      })
+    end
+  },
+
   -- Additional plugins
   { "neovim/nvim-lspconfig" },
   { "ms-jpq/coq_nvim", branch = "coq" },
@@ -361,6 +444,7 @@ require("catppuccin").setup({
     treesitter = true,
     notify = false,
     mini = { enabled = true, indentscope_color = "" },
+    lualine = true, -- Enable lualine integration with catppuccin
   },
 })
 
@@ -372,3 +456,8 @@ vim.keymap.set('n', '<leader>ss', '<cmd>StripWhitespace<CR>', { desc = 'Strip tr
 
 -- Add keymap for toggling autosave
 vim.keymap.set('n', '<leader>at', '<cmd>ASToggle<CR>', { desc = 'Toggle autosave functionality' })
+
+-- Set up a keymap to toggle the statusline if needed
+vim.keymap.set('n', '<leader>st', function()
+  vim.opt.laststatus = vim.opt.laststatus:get() == 0 and 2 or 0
+end, { desc = 'Toggle statusline visibility' })
