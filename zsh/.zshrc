@@ -47,8 +47,7 @@ zinit light "reegnz/jq-zsh-plugin"
 zinit snippet OMZL::git.zsh
 ## Install OMZ git aliases
 zinit snippet OMZ::plugins/git/git.plugin.zsh
-# for git completion
-#zinit load wfxr/forgit
+
 
 ## reminders for aliases if whole command is typed
 zinit light djui/alias-tips
@@ -85,6 +84,13 @@ zinit load clarketm/zsh-completions
 
 # Python
 zinit snippet OMZP::python
+# Dotenv
+zinit snippet OMZP::dotenv
+# K8s
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+# Brew
+zinit snippet OMZP::brew
 
 # ollama
 #zinit light Katrovsky/zsh-ollama-completion
