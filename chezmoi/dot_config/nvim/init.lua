@@ -281,7 +281,7 @@ require("lazy").setup({
       vim.g.show_spaces_that_precede_tabs = 1
       -- Use a distinct color for whitespace highlighting
       vim.g.better_whitespace_ctermcolor = 'red'
-      vim.g.better_whitespace_guicolor = '#E06C75'
+      vim.g.better_whitespace_guicolor = '#B45A63'
     end,
   },
 
