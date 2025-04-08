@@ -932,6 +932,70 @@
         }
       }
     },
+    "glances@latest": {
+      "last_modified": "2025-03-23T05:31:05Z",
+      "resolved": "github:NixOS/nixpkgs/dd613136ee91f67e5dba3f3f41ac99ae89c5406b#glances",
+      "source": "devbox-search",
+      "version": "4.3.0.8",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/akw4kiwm6ggp64yw2q3vi4pm8g9k8km8-glances-4.3.0.8",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/vdpzyjigbipvdywkk9myl3ca6fi0flfy-glances-4.3.0.8-dist"
+            }
+          ],
+          "store_path": "/nix/store/akw4kiwm6ggp64yw2q3vi4pm8g9k8km8-glances-4.3.0.8"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6rhpbaqkc5l0ab8nbl8gc2j8lg1iiya7-glances-4.3.0.8",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/p3anaypdl1c806r56capx4qb76by1z3d-glances-4.3.0.8-dist"
+            }
+          ],
+          "store_path": "/nix/store/6rhpbaqkc5l0ab8nbl8gc2j8lg1iiya7-glances-4.3.0.8"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/h4k9a91cvc01v8lagwca11mqi0z0hln0-glances-4.3.0.8",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/jr0kqqavw4kl4zfbl85sgq86zvm5b1g2-glances-4.3.0.8-dist"
+            }
+          ],
+          "store_path": "/nix/store/h4k9a91cvc01v8lagwca11mqi0z0hln0-glances-4.3.0.8"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wd35zz9lar05jnzrg07awg8cnrrdg92r-glances-4.3.0.8",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/plp2gqpblva0m1pcz6ziwp7hf4xjsfdf-glances-4.3.0.8-dist"
+            }
+          ],
+          "store_path": "/nix/store/wd35zz9lar05jnzrg07awg8cnrrdg92r-glances-4.3.0.8"
+        }
+      }
+    },
     "glow@latest": {
       "last_modified": "2024-10-13T23:44:06Z",
       "resolved": "github:NixOS/nixpkgs/d4f247e89f6e10120f911e2e2d2254a050d0f732#glow",
