@@ -111,7 +111,6 @@ setopt auto_menu
 ### End - zinit Config
 
 ### Start - App Config
-is init zsh
 
 export PATH="$PATH:/root/.local/bin"
 # starship
