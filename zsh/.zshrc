@@ -38,9 +38,10 @@ zinit load starship/starship
 
 # interactive jq initiate with alt-j
 # https://github.com/reegnz/jq-zsh-plugin
-zinit ice wait lucid \
-  atload"bindkey '^j' jq-complete"
-zinit light "reegnz/jq-zsh-plugin"
+# Causing problems with Warp - disabled for now
+#zinit ice wait lucid \
+#  atload"bindkey '^j' jq-complete"
+#zinit light "reegnz/jq-zsh-plugin"
 
 
 ## Load OMZ Git library
