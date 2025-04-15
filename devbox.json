@@ -56,7 +56,8 @@
     "websocat@latest",
     "uv@latest",
     "glances@latest",
-    "inshellisense@latest"
+    "inshellisense@latest",
+    "cargo@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
