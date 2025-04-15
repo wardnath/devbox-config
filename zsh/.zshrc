@@ -45,7 +45,7 @@ zinit load starship/starship
 #zinit light "reegnz/jq-zsh-plugin"
 
 # 25q2 try new git completions
-zinit ice wait lucid as"null" atload"unalias grv g"
+zinit ice wait lucid as"null" 
 zinit snippet OMZP::git
 zinit cdreplay -q
 
