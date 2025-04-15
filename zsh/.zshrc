@@ -48,7 +48,7 @@ zinit load starship/starship
 ## Load OMZ Git library
 zinit snippet OMZL::git.zsh
 ## Install OMZ git aliases
-zinit snippet OMZ::plugins/git/git.plugin.zsh
+# zinit snippet OMZ::plugins/git/git.plugin.zsh
 
 
 ## reminders for aliases if whole command is typed
