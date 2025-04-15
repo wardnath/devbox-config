@@ -44,9 +44,14 @@ zinit load starship/starship
 #  atload"bindkey '^j' jq-complete"
 #zinit light "reegnz/jq-zsh-plugin"
 
+# 25q2 try new git completions
+zinit ice wait lucid as"null" atload"unalias grv g"
+zinit snippet OMZP::git
+zinit cdreplay -q
+
 
 ## Load OMZ Git library
-zinit snippet OMZL::git.zsh
+#zinit snippet OMZL::git.zsh
 ## Install OMZ git aliases
 # zinit snippet OMZ::plugins/git/git.plugin.zsh
 
