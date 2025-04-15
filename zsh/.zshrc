@@ -18,6 +18,7 @@ zinit light-mode for \
     zsh-users/zsh-autosuggestions
     # zdharma-continuum/zinit-annex-man
 
+fpath=($DEVBOX_GLOBAL_PREFIX/share/zsh/site-functions $fpath)
 autoload -Uz compinit; compinit
 
 # End of Zinit's installer chunk
