@@ -1,3 +1,4 @@
+
 #!/usr/bin/env zsh
 # Start - zinit Installer Chunk
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -18,6 +19,10 @@ zinit light-mode for \
     zsh-users/zsh-autosuggestions
     # zdharma-continuum/zinit-annex-man
 
+# Ensure devbox binaries are in PATH early
+export PATH="$DEVBOX_GLOBAL_PREFIX/bin:$PATH:/usr/local/bin:/usr/local/sbin:${HOME}/.local/bin"
+
+# Git completion path - add before compinit
 fpath=($DEVBOX_GLOBAL_PREFIX/share/zsh/site-functions $fpath)
 autoload -Uz compinit; compinit
 
@@ -44,50 +49,53 @@ zinit load starship/starship
 #  atload"bindkey '^j' jq-complete"
 #zinit light "reegnz/jq-zsh-plugin"
 
-# 25q2 try new git completions
-zinit ice wait lucid as"null" 
-zinit snippet OMZP::git
-zinit cdreplay -q
+# Custom Git aliases instead of OMZ Git plugin
+# Basic commands
+alias g='git'
+alias gst='git status'
+alias ga='git add'
+alias gaa='git add --all'
+alias gc='git commit -v'
+alias gcm='git commit -m'
+alias gca='git commit -v --amend'
+alias gcb='git checkout -b'
+alias gco='git checkout'
+alias gd='git diff'
+alias gds='git diff --staged'
 
+# Branch operations
+alias gb='git branch'
+alias gba='git branch -a'
+alias gbd='git branch -d'
+alias gbD='git branch -D'
 
-## Load OMZ Git library
-#zinit snippet OMZL::git.zsh
-## Install OMZ git aliases
-# zinit snippet OMZ::plugins/git/git.plugin.zsh
+# Remote operations
+alias gf='git fetch'
+alias gfo='git fetch origin'
+alias gl='git pull'
+alias gp='git push'
+alias gpf='git push --force-with-lease'
+alias gpsup='git push --set-upstream origin $(git symbolic-ref --short HEAD)'
 
+# Log operations
+alias glg='git log --stat'
+alias glgp='git log --stat -p'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glo='git log --oneline --decorate'
 
-## reminders for aliases if whole command is typed
-zinit light djui/alias-tips
+# Stash operations
+alias gsta='git stash push'
+alias gstp='git stash pop'
+alias gstd='git stash drop'
 
-## vim mode in zsh
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
+# Reset operations
+alias grh='git reset'
+alias grhh='git reset --hard'
 
-## PRETTYPING
-zinit ice lucid wait="" as="program" pick="prettyping" atload="alias pping=prettyping"
-zinit load denilsonsa/prettyping
-
-# FZF 
-#zinit ice wait lucid
-#zinit light Aloxaf/fzf-tab
-#zinit ice blockf
-#zinit snippet OMZ::plugins/fzf
-
-# libs from Oh My Zsh
-# A script to make using 256 colors in zsh less painful
-# https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/spectrum.zsh
-zinit snippet OMZL::spectrum.zsh 
-
-# Completions
-# Docker completion
-zinit ice as"completion"
-zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-
-# misc completions
-zinit ice wait lucid
-zinit load zsh-users/zsh-completions
-zinit load clarketm/zsh-completions
-
+# Show information
+alias gss='git status -s'
+alias gsh='git show'
 
 # Python
 zinit snippet OMZP::python
@@ -101,7 +109,7 @@ zinit snippet OMZP::brew
 
 # ollama
 #zinit light Katrovsky/zsh-ollama-completion
-zinit ice wait lucid as"completion" 
+zinit ice wait lucid as"completion"
 zinit snippet https://github.com/wardnath/zsh-ollama-completion/blob/main/_ollama
 
 # set list-colors to enable filename colorizing
@@ -141,4 +149,33 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export PREVIEW="bat"
 
+# Add common aliases
+alias lah='eza -lah'
 
+# devbox helpers
+alias dbr='devbox run'
+alias dbgr='devbox global run'
+alias dbcd='cd $DEVBOX_GLOBAL_ROOT'
+alias dbgs='devbox global services'
+alias dbgpull='devbox global pull'
+alias dbgpush='devbox global push'
+
+# InShellisense activation using precmd hook
+# This ensures it runs after the environment is fully established
+function _activate_inshellisense() {
+  # Only run once
+  if [[ -z $_INSHELLISENSE_INITIALIZED ]]; then
+    # Debug what's happening
+    echo "Activating InShellisense via precmd hook..."
+
+    # Use the actual command that works when you type it manually
+    is
+
+    # Mark as initialized to prevent running again
+    export _INSHELLISENSE_INITIALIZED=1
+  fi
+}
+
+# Add our function to the precmd hooks array
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _activate_inshellisense
