@@ -98,14 +98,14 @@ alias gss='git status -s'
 alias gsh='git show'
 
 # Python
-zinit snippet OMZP::python
+# zinit snippet OMZP::python
 # Dotenv
-zinit snippet OMZP::dotenv
+# zinit snippet OMZP::dotenv
 # K8s
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
+# zinit snippet OMZP::kubectl
+# zinit snippet OMZP::kubectx
 # Brew
-zinit snippet OMZP::brew
+# zinit snippet OMZP::brew
 
 # ollama
 #zinit light Katrovsky/zsh-ollama-completion
