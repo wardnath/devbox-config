@@ -12,9 +12,6 @@ export PATH="/usr/local/bin:/usr/local/sbin:${HOME}/.local/bin:$PATH"
 # Flatpak
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/root/.local/share/flatpak/exports/share"
 
-# inshellisense
-# is init zsh
-
 
 # Initialize the devbox global virtual env
 echo "Initializing devbox global virtual env $VENV_DIR"
