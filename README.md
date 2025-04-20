@@ -78,4 +78,29 @@ Most of the config here aims to be generally applicable. The secrets in the dotc
 * litellm
 * 
 
+# Older config patterns
+
+## Inshellisense
+append to end of the ./zsh/.zshrc
+```bash
+# InShellisense activation using precmd hook
+# This ensures it runs after the environment is fully established
+function _activate_inshellisense() {
+   # Only run once
+   if [[ -z $_INSHELLISENSE_INITIALIZED ]]; then
+     # Debug what's happening
+     echo "Activating InShellisense via precmd hook..."
+
+     # Use the actual command that works when you type it manually
+     is
+
+     # Mark as initialized to prevent running again
+     export _INSHELLISENSE_INITIALIZED=1
+   fi
+ }
+
+ # Add our function to the precmd hooks array
+ autoload -Uz add-zsh-hook
+ add-zsh-hook precmd _activate_inshellisense
+```
 
