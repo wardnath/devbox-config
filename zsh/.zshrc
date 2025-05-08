@@ -1,4 +1,3 @@
-
 #!/usr/bin/env zsh
 # Start - zinit Installer Chunk
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -22,8 +21,9 @@ zinit light-mode for \
 # Ensure devbox binaries are in PATH early
 export PATH="$DEVBOX_GLOBAL_PREFIX/bin:$PATH:/usr/local/bin:/usr/local/sbin:${HOME}/.local/bin"
 
-# Git completion path - add before compinit
-fpath=($DEVBOX_GLOBAL_PREFIX/share/zsh/site-functions $fpath)
+# Setup fpath for completions
+# Add custom completions directories
+fpath=($DEVBOX_GLOBAL_PREFIX/share/zsh/site-functions ${0:h}/aux_completions ${HOME}/.config/aux_completions $fpath)
 autoload -Uz compinit; compinit
 
 # End of Zinit's installer chunk
