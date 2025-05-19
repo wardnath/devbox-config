@@ -55,6 +55,10 @@ zinit load ellie/atuin
 zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
+# fzf-tab 
+zinit ice wait lucid
+zinit light Aloxaf/fzf-tab
+
 # interactive jq initiate with alt-j
 # https://github.com/reegnz/jq-zsh-plugin
 # Causing problems with Warp - disabled for now
