@@ -1,10 +1,28 @@
 #!/usr/bin/env zsh
+
+# Clear existing compdump file to force reloading completions
+[[ -f ~/.zcompdump ]] && rm -f ~/.zcompdump
+
+# Set up fpath for completions EARLY - before any plugins load
+# Custom completions directories are placed FIRST to override system completions
+fpath=(${HOME}/.config/aux_completions ${0:h}/aux_completions $DEVBOX_GLOBAL_PREFIX/share/zsh/site-functions $fpath)
+
+# Unload any existing completions to ensure a clean slate
+unfunction compdef 2>/dev/null
+unfunction _* 2>/dev/null  # Unload all completion functions
+
+# Run compinit with the -u flag to avoid security checks on custom completions
+autoload -Uz compinit && compinit -u
+
 # Start - zinit Installer Chunk
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
-autoload -Uz compinit && compinit
+
+# We don't need another compinit call - we already did one above
+# autoload -Uz compinit && compinit  # This line is removed/commented
+
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
@@ -20,11 +38,6 @@ zinit light-mode for \
 
 # Ensure devbox binaries are in PATH early
 export PATH="$DEVBOX_GLOBAL_PREFIX/bin:$PATH:/usr/local/bin:/usr/local/sbin:${HOME}/.local/bin"
-
-# Setup fpath for completions
-# Add custom completions directories
-fpath=($DEVBOX_GLOBAL_PREFIX/share/zsh/site-functions ${0:h}/aux_completions ${HOME}/.config/aux_completions $fpath)
-autoload -Uz compinit; compinit
 
 # End of Zinit's installer chunk
 
@@ -159,3 +172,7 @@ alias dbcd='cd $DEVBOX_GLOBAL_ROOT'
 alias dbgs='devbox global services'
 alias dbgpull='devbox global pull'
 alias dbgpush='devbox global push'
+
+# Optional: Force specific completions for critical commands if needed
+# For example:
+# compdef _my_custom_git git
