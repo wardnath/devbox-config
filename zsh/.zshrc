@@ -9,7 +9,7 @@ fpath=(${HOME}/.config/aux_completions ${0:h}/aux_completions $DEVBOX_GLOBAL_PRE
 
 # Unload any existing completions to ensure a clean slate
 unfunction compdef 2>/dev/null
-unfunction _* 2>/dev/null  # Unload all completion functions
+#unfunction _* 2>/dev/null  # Unload all completion functions
 
 # Run compinit with the -u flag to avoid security checks on custom completions
 autoload -Uz compinit && compinit -u
