@@ -58,7 +58,9 @@
     "glances@latest",
     "inshellisense@latest",
     "cargo@latest",
-    "devcontainer@latest"
+    "devcontainer@latest",
+    "pnpm@latest",
+    "bun@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
