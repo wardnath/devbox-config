@@ -1,0 +1,133 @@
+mkdir -p chezmoi/dot_config/nnn/plugins
+cat > chezmoi/dot_config/nnn/plugins/finder << 'EOF'
+#!/usr/bin/env bash
+
+# Description: Use find/fd to search for files by name
+#
+# Shell: POSIX compliant
+# Author: Todd Yamakawa
+#
+# Modified for macOS compatibility
+#
+# Dependencies:
+#   - find
+#   - fd (preferred)
+#   - fzf/skim
+
+. "$(dirname "$0")"/.nnn-plugin-helper 2>/dev/null ||:
+
+if type fzf >/dev/null 2>&1; then
+    cmd="fzf -m --header="$(pwd)" --prompt="fd> ""
+elif type sk >/dev/null 2>&1; then
+    cmd="sk -m --ansi"
+else
+    exit 1
+fi
+
+prev_pattern=""
+
+expr_history_file=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.finder_histories
+[ -f "$expr_history_file" ] || : > "$expr_history_file"
+
+if [ -z "$2" ]; then
+    printf "Press any key for ALL queries to be GLOB (*)...\n"
+    read -r -n1 glob
+    if [ -n "$glob" ]; then
+        glob="*"
+    fi
+fi
+
+printsel() {
+    sel=$(sort -u)
+    if [ -n "$sel" ]; then
+        printf "%s" "$sel"
+    else
+        exit 0
+    fi
+}
+
+# Use fd if available
+if type fd >/dev/null 2>&1; then
+    advsel=$(printf "%s\n" "$fd_default" | $cmd)
+    if [ -n "$advsel" ]; then
+        printf "%s\n" "$advsel" | cut -d" " -f 1 | printsel
+        exit 0
+    fi
+
+    # Save common used expressions to expr_history_file
+    save_expr() {
+        # skip if expr already in the file
+        if ! grep -q -F -x "$expr" "$expr_history_file"; then
+            # insert at the beginning
+            echo "$expr" | cat - "$expr_history_file" > /tmp/finder_hist && mv /tmp/finder_hist "$expr_history_file"
+        else
+            # move the line to the top
+            grep -F -x "$expr" "$expr_history_file" > /tmp/finder_hist
+            grep -v -F -x "$expr" "$expr_history_file" >> /tmp/finder_hist
+            mv /tmp/finder_hist "$expr_history_file"
+        fi
+    }
+
+    while true; do
+        echo "Most used search expressions:"
+        head -5 "$expr_history_file" 2>/dev/null || echo "No history yet"
+
+        echo "Most recently used search expressions:"
+        tail -5 "$expr_history_file" 2>/dev/null || echo "No history yet"
+
+        printf "Search expression or index (h for help): "
+        read -r expr
+
+        if [ "$expr" = "h" ]; then
+            echo "Help:"
+            echo "- Enter a search expression (supports fd syntax)"
+            echo "- Enter a number to use a previously used expression"
+            echo "- Enter h for help"
+            echo "- Enter q to quit"
+            continue
+        elif [ "$expr" = "q" ]; then
+            exit 0
+        elif [ -z "$expr" ]; then
+            continue
+        elif echo "$expr" | grep -q "^[0-9]\+$"; then
+            # expr is a number, check if it matches a line number in the history file
+            line_num=$expr
+            total_lines=$(wc -l < "$expr_history_file")
+            if [ "$line_num" -le "$total_lines" ]; then
+                expr=$(sed -n "${line_num}p" "$expr_history_file")
+            else
+                echo "Invalid index: $line_num (max: $total_lines)"
+                continue
+            fi
+        fi
+
+        save_expr "$expr"
+
+        if [ "$expr" = "$prev_pattern" ]; then
+            sel_last=$(fd --color=always "$expr$glob" 2>/dev/null | $cmd)
+            if [ -n "$sel_last" ]; then
+                printf "%s\n" "$sel_last" | printsel
+                exit 0
+            fi
+        fi
+
+        sel=$(fd --color=always "$expr$glob" 2>/dev/null | $cmd)
+        if [ -n "$sel" ]; then
+            printf "%s\n" "$sel" | printsel
+            exit 0
+        fi
+
+        prev_pattern="$expr"
+    done
+fi
+
+# Fallback to using find
+advsel=$(find -not -path "*/\.*" -type f,d 2>/dev/null | $cmd)
+if [ -n "$advsel" ]; then
+    printf "%s\n" "$advsel" | printsel
+    exit 0
+fi
+
+exit 1
+EOF
+chmod +x chezmoi/dot_config/nnn/plugins/finder

@@ -60,7 +60,12 @@
     "cargo@latest",
     "devcontainer@latest",
     "pnpm@latest",
-    "bun@latest"
+    "bun@latest",
+    "coreutils@latest",
+    "findutils@latest",
+    "bash@latest",
+    "gnugrep@latest",
+    "gnused@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
@@ -72,7 +77,17 @@
     ],
     "scripts": {
       "install-nnn": [
-        "sh -c \"$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)\""
+        "mkdir -p ~/.config/nnn/plugins",
+        "mkdir -p ~/.cache/nnn/previews",
+        "mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nnn",
+        "rm -rf /tmp/nnn_plugins && mkdir -p /tmp/nnn_plugins",
+        "git clone --depth 1 https://github.com/jarun/nnn.git /tmp/nnn_plugins",
+        "cp -rf /tmp/nnn_plugins/plugins/* ~/.config/nnn/plugins/",
+        "chmod +x ~/.config/nnn/plugins/*",
+        "cp -f ${DEVBOX_GLOBAL_ROOT}/chezmoi/dot_config/nnn/plugins/* ~/.config/nnn/plugins/",
+        "chmod +x ~/.config/nnn/plugins/*",
+        "rm -rf /tmp/nnn_plugins",
+        "echo 'nnn plugins installed without prompts'"
       ],
       "install-tmux": [
         "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"

@@ -114,6 +114,18 @@ alias grhh='git reset --hard'
 alias gss='git status -s'
 alias gsh='git show'
 
+fzfb() {
+   fzf --bind "change:reload:rg --color=always --line-number --no-heading --smart-case {q} || true" \
+    --ansi --phony \
+    --preview '
+      FILE=$(echo {1} | cut -d: -f1)
+      LINE=$(echo {1} | cut -d: -f2)
+      START=$(( LINE > 50 ? LINE - 50 : 1 ))
+      END=$(( LINE + 50 ))
+      bat --style=numbers --color=always --highlight-line $LINE --line-range $START:$END $FILE
+    '
+}
+
 # Python
 # zinit snippet OMZP::python
 # Dotenv
@@ -151,13 +163,74 @@ export PATH="$PATH:/root/.local/bin"
 eval "$(zoxide init zsh)"
 
 # nnn
-alias nnn="nnn -e"
-export NNN_PLUG='f:finder;o:autojump;p:preview-tui'
-export NNN_FIFO='/tmp/nnn.fifo'
+#alias nnn="nnn -e"
+#export NNN_PLUG='f:finder;o:autojump;p:preview-tui'
+#export NNN_FIFO='/tmp/nnn.fifo'
 # export NNN_FCOLORS='00001e310000000000000000'
+#export NNN_TERMINAL="tmux"
+#export NNN_BMS="d:~/Downloads;D:~/Documents;t:~/Temporary" # Bookmarks
+#export NNN_FCOLORS="03040601000205f7d204d9f7" # File colors
+
+
+# nnn configuration
+# Basic settings
+alias nnn="nnn -e"
 export NNN_TERMINAL="tmux"
-export NNN_BMS="d:~/Downloads;D:~/Documents;t:~/Temporary" # Bookmarks
-export NNN_FCOLORS="03040601000205f7d204d9f7" # File colors
+
+# Extended plugin selection
+export NNN_PLUG='f:finder;o:autojump;p:preview-tui;g:gitroot;d:diffs;v:imgview;m:mimelist;c:fzcd;s:suedit;b:bulknew;x:hexview;w:wallpaper;l:git-log'
+
+# Preview configuration
+export NNN_FIFO='/tmp/nnn.fifo'
+export NNN_PREVIEW_TABWIDTH=4
+export NNN_PREVIEWDIR="$HOME/.cache/nnn/previews"
+export NNN_PREVIEW=1
+
+# File selection and operations
+export NNN_SEL='/tmp/.sel'  # Selection file location
+export NNN_TRASH=1          # Use trash instead of permanent delete
+export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
+
+# Enhanced navigation
+export NNN_RESTRICT_NAV_OPEN=0  # Don't restrict file opening
+export NNN_OPENER="$HOME/.config/nnn/plugins/nuke"  # Enhanced opener script
+export NNN_IDLE_TIMEOUT=300     # For auto preview refresh
+export NNN_OPS_PROG=1           # Enable progress bars for operations
+
+# Extended bookmarks
+export NNN_BMS="d:~/Downloads;D:~/Documents;t:~/Temporary;p:~/Projects;g:~/gitrepos;c:~/.config;n:~/.config/nvim"
+
+# Colors and appearance
+export NNN_FCOLORS="03040601000205f7d204d9f7"  # File colors
+export NNN_COLORS="2136"  # Different directory colors
+
+# User preferences
+export NNN_USE_EDITOR=1
+export NNN_SHOW_HIDDEN=1  # Always show hidden files
+export NNN_OPTS="aAcdeEHoruU"  # Various usability options
+
+# CD on quit functionality
+n() {
+    # Block nesting of nnn in subshells
+    if [[ "${NNNLVL:-0}" -ge 1 ]]; then
+        echo "nnn is already running"
+        return
+    fi
+    
+    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    
+    # Run nnn
+    nnn "$@"
+    
+    if [ -f "$NNN_TMPFILE" ]; then
+            . "$NNN_TMPFILE"
+            rm -f "$NNN_TMPFILE" > /dev/null
+    fi
+}
+
+
+
 ### End - App Config
 
 # System-related variables

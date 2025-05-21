@@ -265,8 +265,10 @@ require("lazy").setup({
       require("neoscroll").setup()
     end,
   },
-
-  -- Add vim-better-whitespace plugin
+  {
+    "tpope/vim-sleuth",
+    event = "BufReadPre",
+  },
   {
     "ntpeters/vim-better-whitespace",
     event = "VeryLazy",
@@ -274,7 +276,8 @@ require("lazy").setup({
       -- Enable highlighting of whitespace by default
       vim.g.better_whitespace_enabled = 1
       -- Enable stripping whitespace on save
-      vim.g.strip_whitespace_on_save = 0
+      vim.g.strip_whitespace_on_save = 1  -- Changed from 0 to 1 to auto-strip on save
+      vim.g.strip_whitespace_confirm = 0  -- No confirmation needed
       -- Show spaces and tabs
       vim.g.better_whitespace_filetypes_blacklist = {}
       -- Show tabs as well
@@ -282,9 +285,10 @@ require("lazy").setup({
       -- Use a distinct color for whitespace highlighting
       vim.g.better_whitespace_ctermcolor = 'gray'
       vim.g.better_whitespace_guicolor = '#222222'
+      -- Highlight all whitespace, not just trailing
+      vim.g.better_whitespace_operator = ''
     end,
   },
-
   -- Add autosave plugin
   {
     "Pocco81/auto-save.nvim",
@@ -302,7 +306,6 @@ require("lazy").setup({
         debounce_delay = 135,
         condition = function(buf)
           local fn = vim.fn
-          
           -- don't save for special buffers
           if fn.getbufvar(buf, "&filetype") == "TelescopePrompt" then
             return false
