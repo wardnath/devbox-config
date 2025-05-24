@@ -55,64 +55,14 @@ zinit load ellie/atuin
 zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
-# fzf-tab 
+# fzf-tab
 zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
 
-# interactive jq initiate with alt-j
-# https://github.com/reegnz/jq-zsh-plugin
-# Causing problems with Warp - disabled for now
-#zinit ice wait lucid \
-#  atload"bindkey '^j' jq-complete"
-#zinit light "reegnz/jq-zsh-plugin"
-
 # Custom Git aliases instead of OMZ Git plugin
 # Basic commands
-alias g='git'
 alias gst='git status'
-alias ga='git add'
-alias gaa='git add --all'
-alias gc='git commit -v'
-alias gcm='git commit -m'
-alias gca='git commit -v --amend'
-alias gcb='git checkout -b'
-alias gco='git checkout'
 alias gd='git diff'
-alias gds='git diff --staged'
-
-# Branch operations
-alias gb='git branch'
-alias gba='git branch -a'
-alias gbd='git branch -d'
-alias gbD='git branch -D'
-
-# Remote operations
-alias gf='git fetch'
-alias gfo='git fetch origin'
-alias gl='git pull'
-alias gp='git push'
-alias gpf='git push --force-with-lease'
-alias gpsup='git push --set-upstream origin $(git symbolic-ref --short HEAD)'
-
-# Log operations
-alias glg='git log --stat'
-alias glgp='git log --stat -p'
-alias glgg='git log --graph'
-alias glgga='git log --graph --decorate --all'
-alias glo='git log --oneline --decorate'
-
-# Stash operations
-alias gsta='git stash push'
-alias gstp='git stash pop'
-alias gstd='git stash drop'
-
-# Reset operations
-alias grh='git reset'
-alias grhh='git reset --hard'
-
-# Show information
-alias gss='git status -s'
-alias gsh='git show'
 
 fzfb() {
    fzf --bind "change:reload:rg --color=always --line-number --no-heading --smart-case {q} || true" \
@@ -126,16 +76,6 @@ fzfb() {
     '
 }
 
-# Python
-# zinit snippet OMZP::python
-# Dotenv
-# zinit snippet OMZP::dotenv
-# K8s
-# zinit snippet OMZP::kubectl
-# zinit snippet OMZP::kubectx
-# Brew
-# zinit snippet OMZP::brew
-
 # ollama
 #zinit light Katrovsky/zsh-ollama-completion
 zinit ice wait lucid as"completion"
@@ -144,11 +84,11 @@ zinit snippet https://github.com/wardnath/zsh-ollama-completion/blob/main/_ollam
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-#zstyle ':completion:*' menu no
+zstyle ':completion:*' menu no
 # preview directory's content with eza when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 # switch group using `<` and `>`
-#zstyle ':fzf-tab:*' switch-group '<' '>'
+zstyle ':fzf-tab:*' switch-group '<' '>'
 # show completion menu on successive tab press (menu_complete overrides)
 setopt auto_menu
 
@@ -162,27 +102,17 @@ export PATH="$PATH:/root/.local/bin"
 # zoxide
 eval "$(zoxide init zsh)"
 
-# nnn
-#alias nnn="nnn -e"
-#export NNN_PLUG='f:finder;o:autojump;p:preview-tui'
-#export NNN_FIFO='/tmp/nnn.fifo'
-# export NNN_FCOLORS='00001e310000000000000000'
-#export NNN_TERMINAL="tmux"
-#export NNN_BMS="d:~/Downloads;D:~/Documents;t:~/Temporary" # Bookmarks
-#export NNN_FCOLORS="03040601000205f7d204d9f7" # File colors
-
-
 # nnn configuration
 # Basic settings
 alias nnn="nnn -e"
 export NNN_TERMINAL="tmux"
 
 # Extended plugin selection
-export NNN_PLUG='f:finder;o:autojump;p:preview-tui;g:gitroot;d:diffs;v:imgview;m:mimelist;c:fzcd;s:suedit;b:bulknew;x:hexview;w:wallpaper;l:git-log'
+export NNN_PLUG='o:autojump;p:preview-tui;g:gitroot;c:fzcd;'
 
 # Preview configuration
 export NNN_FIFO='/tmp/nnn.fifo'
-export NNN_PREVIEW_TABWIDTH=4
+export NNN_PREVIEW_TABWIDTH=2
 export NNN_PREVIEWDIR="$HOME/.cache/nnn/previews"
 export NNN_PREVIEW=1
 
@@ -216,13 +146,13 @@ n() {
         echo "nnn is already running"
         return
     fi
-    
+
     # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
     export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    
+
     # Run nnn
     nnn "$@"
-    
+
     if [ -f "$NNN_TMPFILE" ]; then
             . "$NNN_TMPFILE"
             rm -f "$NNN_TMPFILE" > /dev/null

@@ -65,7 +65,9 @@
     "findutils@latest",
     "bash@latest",
     "gnugrep@latest",
-    "gnused@latest"
+    "gnused@latest",
+    "tiv@latest",
+    "catimg@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
