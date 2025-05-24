@@ -104,7 +104,7 @@ eval "$(zoxide init zsh)"
 
 # nnn configuration
 # Basic settings
-alias nnn="nnn -e"
+
 export NNN_TERMINAL="tmux"
 
 # Extended plugin selection
@@ -158,7 +158,7 @@ n() {
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
-
+alias nnn="n"
 
 
 ### End - App Config
