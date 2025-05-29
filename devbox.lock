@@ -3214,24 +3214,6 @@
         }
       }
     },
-    "tiv@latest": {
-      "last_modified": "2025-05-16T20:19:48Z",
-      "resolved": "github:NixOS/nixpkgs/12a55407652e04dcf2309436eb06fef0d3713ef3#tiv",
-      "source": "devbox-search",
-      "version": "1.1.1",
-      "systems": {
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/5bj3v2yl3dxc12z00k68mzrfjlwr9irg-tiv-1.1.1",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/5bj3v2yl3dxc12z00k68mzrfjlwr9irg-tiv-1.1.1"
-        }
-      }
-    },
     "tldr@latest": {
       "last_modified": "2024-10-22T11:15:56Z",
       "resolved": "github:NixOS/nixpkgs/782740762fb281404740b6b7084d356c3dab1173#tldr",

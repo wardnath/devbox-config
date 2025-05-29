@@ -66,7 +66,6 @@
     "bash@latest",
     "gnugrep@latest",
     "gnused@latest",
-    "tiv@latest",
     "catimg@latest"
   ],
   "env": {
