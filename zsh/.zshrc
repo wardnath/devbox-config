@@ -59,10 +59,55 @@ zinit load starship/starship
 zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
 
+
 # Custom Git aliases instead of OMZ Git plugin
 # Basic commands
+alias g='git'
 alias gst='git status'
+alias ga='git add'
+alias gaa='git add --all'
+alias gc='git commit -v'
+alias gcm='git commit -m'
+alias gca='git commit -v --amend'
+alias gcb='git checkout -b'
+alias gco='git checkout'
 alias gd='git diff'
+alias gds='git diff --staged'
+
+# Branch operations
+alias gb='git branch'
+alias gba='git branch -a'
+alias gbd='git branch -d'
+alias gbD='git branch -D'
+
+# Remote operations
+alias gf='git fetch'
+alias gfo='git fetch origin'
+alias gl='git pull'
+alias gp='git push'
+alias gpf='git push --force-with-lease'
+alias gpsup='git push --set-upstream origin $(git symbolic-ref --short HEAD)'
+
+# Log operations
+alias glg='git log --stat'
+alias glgp='git log --stat -p'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glo='git log --oneline --decorate'
+
+# Stash operations
+alias gsta='git stash push'
+alias gstp='git stash pop'
+alias gstd='git stash drop'
+
+# Reset operations
+alias grh='git reset'
+alias grhh='git reset --hard'
+
+# Show information
+alias gss='git status -s'
+alias gsh='git show'
+
 
 fzfb() {
    fzf --bind "change:reload:rg --color=always --line-number --no-heading --smart-case {q} || true" \
