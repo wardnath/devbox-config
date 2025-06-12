@@ -108,6 +108,11 @@ alias grhh='git reset --hard'
 alias gss='git status -s'
 alias gsh='git show'
 
+# docker
+alias d='docker'
+alias dps='docker ps'
+alias dc='docker compose'
+alias dcps='docker compose ps'
 
 fzfb() {
    fzf --bind "change:reload:rg --color=always --line-number --no-heading --smart-case {q} || true" \
