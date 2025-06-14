@@ -114,6 +114,9 @@ alias dps='docker ps'
 alias dc='docker compose'
 alias dcps='docker compose ps'
 
+# other
+alias ap='asciinema play'
+
 fzfb() {
    fzf --bind "change:reload:rg --color=always --line-number --no-heading --smart-case {q} || true" \
     --ansi --phony \
