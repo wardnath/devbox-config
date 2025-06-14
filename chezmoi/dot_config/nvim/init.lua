@@ -113,7 +113,7 @@ local function setup_fast_cursor_move()
       return move(motion)
     end, { expr = true })
   end
-  
+
   -- Add arrow key mappings
   local arrow_to_motion = {
     ["<Up>"] = "k",
@@ -121,7 +121,7 @@ local function setup_fast_cursor_move()
     ["<Left>"] = "h",
     ["<Right>"] = "l"
   }
-  
+
   for arrow, motion in pairs(arrow_to_motion) do
     vim.keymap.set({ "n", "v" }, arrow, function()
       return move(motion)
@@ -154,6 +154,21 @@ vim.opt.relativenumber = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Quit mappings
+vim.keymap.set('n', '<leader>q', ':q<CR>', {
+    noremap = true,
+    silent = true,
+    desc = 'Quit current window'
+})
+
+vim.keymap.set('n', '<leader>Q', ':q!<CR>', {
+    noremap = true,
+    silent = true,
+    desc = 'Force quit without saving'
+})
+
+
+
 -- Add whitespace visualization settings
 vim.opt.list = true
 vim.opt.listchars = {
@@ -176,14 +191,14 @@ require("lazy").setup({
   --     -- Keep Netrw enabled
   --     vim.g.loaded_netrw = 0
   --     vim.g.loaded_netrwPlugin = 0
-      
+
   --     require("nvim-tree").setup({
   --       disable_netrw = false,       -- Don't disable Netrw
   --       hijack_netrw = false,        -- Don't hijack Netrw windows
   --       hijack_directories = {
   --         enable = false,            -- Don't hijack directories
   --         auto_open = false,         -- Don't automatically open on directory arguments
-  --       },        
+  --       },
   --     open_on_tab = false,
   --     hijack_unnamed_buffer_when_opening = false,
   --       hijack_cursor = false,       -- Keep cursor behavior consistent
@@ -201,7 +216,7 @@ require("lazy").setup({
   --         group_empty = true,        -- Compact folders that contain only a single folder
   --       },
   --     })
-      
+
   --     -- Use different keymaps for Netrw and nvim-tree to avoid confusion
   --     vim.keymap.set('n', '<leader>e', '<cmd>Lexplore<CR>', { desc = 'Toggle Netrw file explorer' })
   --     vim.keymap.set('n', '<leader>t', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' })
@@ -229,10 +244,10 @@ require("lazy").setup({
           }
         }
       })
-      
+
       -- Load fzf extension if available
       pcall(function() require("telescope").load_extension("fzf") end)
-      
+
       -- Key mappings that coexist with built-in search
       vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
       vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Live grep" })
@@ -316,7 +331,7 @@ require("lazy").setup({
           if fn.getbufvar(buf, "&modifiable") == 0 then
             return false
           end
-          
+
           return true
         end
       })
@@ -331,7 +346,7 @@ require("lazy").setup({
     config = function()
       local custom_catppuccin = require('lualine.themes.catppuccin')
       -- Customize the theme if needed
-      -- custom_catppuccin.normal.a.bg = '#89b4fa' 
+      -- custom_catppuccin.normal.a.bg = '#89b4fa'
 
       require("lualine").setup({
         options = {
@@ -345,14 +360,14 @@ require("lazy").setup({
         },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { 
+          lualine_b = {
             "branch",
             {
               "diff",
               symbols = { added = " ", modified = " ", removed = " " },
             },
           },
-          lualine_c = { 
+          lualine_c = {
             {
               "filename",
               path = 1, -- Show relative path
@@ -364,7 +379,7 @@ require("lazy").setup({
             }
           },
           lualine_x = {
-            { 
+            {
               "diagnostics",
               sources = { "nvim_diagnostic" },
               symbols = { error = " ", warn = " ", info = " ", hint = " " },
