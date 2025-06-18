@@ -19,6 +19,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+  export TERM=xterm-256color
+fi
+
 
 # Initialize the devbox global virtual env
 echo "Initializing devbox global virtual env $VENV_DIR"
