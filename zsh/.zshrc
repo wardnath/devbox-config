@@ -129,6 +129,24 @@ fzfb() {
     '
 }
 
+fzfgitdiff() {
+    local git_root
+    git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+    
+    if [[ -z "$git_root" ]]; then
+        echo "Not in a git repository" >&2
+        return 1
+    fi
+    
+    git -C "$git_root" diff --name-only | fzf \
+        --preview "git -C '$git_root' diff --color=always -- {}" \
+        --preview-window right:60% \
+        --bind 'ctrl-d:preview-down' \
+        --bind 'ctrl-u:preview-up' \
+        --bind 'ctrl-f:preview-page-down' \
+        --bind 'ctrl-b:preview-page-up' \
+        --bind "enter:execute(git -C '$git_root' diff --color=always -- {} | less -R)"
+}
 # ollama
 #zinit light Katrovsky/zsh-ollama-completion
 zinit ice wait lucid as"completion"
