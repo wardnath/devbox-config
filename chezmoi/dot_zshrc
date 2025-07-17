@@ -23,7 +23,7 @@ if [[ "$TERM" == *ghostty* ]]; then
   export TERM=xterm-256color
 fi
 
-alias claude="$HOME/.claude/local/claude"
+alias claude="~/.claude/local/claude"
 
 # Initialize the devbox global virtual env
 echo "Initializing devbox global virtual env $VENV_DIR"
