@@ -66,7 +66,10 @@
     "bash@latest",
     "gnugrep@latest",
     "gnused@latest",
-    "catimg@latest"
+    "catimg@latest",
+    "gum@latest",
+    "dialog@latest",
+    "watch@latest"
   ],
   "env": {
     "DEVBOX_GLOBAL_PREFIX": "$HOME/.local/share/devbox/global/default/.devbox/nix/profile/default",
