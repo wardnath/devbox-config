@@ -36,4 +36,6 @@ else
 fi
 
 eval "$(direnv hook zsh)"
+test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
+
 
