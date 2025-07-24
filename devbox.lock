@@ -1,6 +1,70 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "ansible@latest": {
+      "last_modified": "2025-07-17T10:11:59Z",
+      "resolved": "github:NixOS/nixpkgs/fa0ef8a6bb1651aa26c939aeb51b5f499e86b0ec#ansible",
+      "source": "devbox-search",
+      "version": "2.18.6",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/sm9ibx39h8ayzv8hsr95nblcl15qq796-python3.13-ansible-core-2.18.6",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/7pk0zzlbgnlyb4srj5swd0hwz5rn3ib4-python3.13-ansible-core-2.18.6-dist"
+            }
+          ],
+          "store_path": "/nix/store/sm9ibx39h8ayzv8hsr95nblcl15qq796-python3.13-ansible-core-2.18.6"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/9vrwp2amwf4762bffdfhvz98fl0ms2d0-python3.13-ansible-core-2.18.6",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/r845dk8zp9fr1q81ds95m56sdz857kmz-python3.13-ansible-core-2.18.6-dist"
+            }
+          ],
+          "store_path": "/nix/store/9vrwp2amwf4762bffdfhvz98fl0ms2d0-python3.13-ansible-core-2.18.6"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/xwbi8933gby9hf681ldq6hzd9zr9xvyv-python3.13-ansible-core-2.18.6",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/awgibd5nrs3vdxc4agfskcnvnmdlnd8m-python3.13-ansible-core-2.18.6-dist"
+            }
+          ],
+          "store_path": "/nix/store/xwbi8933gby9hf681ldq6hzd9zr9xvyv-python3.13-ansible-core-2.18.6"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ljbs2q1ibrk63wk7jp55qnanz5rms0in-python3.13-ansible-core-2.18.6",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/7xdzjaifq6blck60xbnb59w840yqclyk-python3.13-ansible-core-2.18.6-dist"
+            }
+          ],
+          "store_path": "/nix/store/ljbs2q1ibrk63wk7jp55qnanz5rms0in-python3.13-ansible-core-2.18.6"
+        }
+      }
+    },
     "atuin@latest": {
       "last_modified": "2024-10-13T23:44:06Z",
       "resolved": "github:NixOS/nixpkgs/d4f247e89f6e10120f911e2e2d2254a050d0f732#atuin",
@@ -722,54 +786,6 @@
             }
           ],
           "store_path": "/nix/store/rsgk0drbdmxa20n4kv41flr71aqa60yd-devcontainer-0.72.0"
-        }
-      }
-    },
-    "dialog@latest": {
-      "last_modified": "2025-07-13T22:45:35Z",
-      "resolved": "github:NixOS/nixpkgs/a421ac6595024edcfbb1ef950a3712b89161c359#dialog",
-      "source": "devbox-search",
-      "version": "1.3-20231002",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/hfdxd6809y4l8kcgj9lnp6rmin7jl2mc-dialog-1.3-20231002",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/hfdxd6809y4l8kcgj9lnp6rmin7jl2mc-dialog-1.3-20231002"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/fhvazsdhb4axwkmhfmzaj9md7lbc1sm9-dialog-1.3-20231002",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/fhvazsdhb4axwkmhfmzaj9md7lbc1sm9-dialog-1.3-20231002"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/ng1m2vb78mnfw1qgr8pyx6g731l3lm89-dialog-1.3-20231002",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/ng1m2vb78mnfw1qgr8pyx6g731l3lm89-dialog-1.3-20231002"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/48b70nswn81q887nh7h47ir36drwqfjh-dialog-1.3-20231002",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/48b70nswn81q887nh7h47ir36drwqfjh-dialog-1.3-20231002"
         }
       }
     },
@@ -1685,54 +1701,6 @@
             }
           ],
           "store_path": "/nix/store/clbb2cvigynr235ab5zgi18dyavznlk2-gnused-4.9"
-        }
-      }
-    },
-    "gum@latest": {
-      "last_modified": "2025-07-13T22:45:35Z",
-      "resolved": "github:NixOS/nixpkgs/a421ac6595024edcfbb1ef950a3712b89161c359#gum",
-      "source": "devbox-search",
-      "version": "0.16.2",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/klzb6vbharlnnv135lav7w0vcvi655b5-gum-0.16.2",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/klzb6vbharlnnv135lav7w0vcvi655b5-gum-0.16.2"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/gyvfv5vkadk9l0p1l85wqb2d6rpa1857-gum-0.16.2",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/gyvfv5vkadk9l0p1l85wqb2d6rpa1857-gum-0.16.2"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/rdfkiqni59b5pvfd6hb0kpar1gf0hb1p-gum-0.16.2",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/rdfkiqni59b5pvfd6hb0kpar1gf0hb1p-gum-0.16.2"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/dagbgvfb0pcl5s8101g7cdy7rp7wn5rc-gum-0.16.2",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/dagbgvfb0pcl5s8101g7cdy7rp7wn5rc-gum-0.16.2"
         }
       }
     },
@@ -3617,12 +3585,6 @@
           "store_path": "/nix/store/jcg8fnn76jdvf3aygbkh350cs9hgr9jb-uv-0.6.10"
         }
       }
-    },
-    "watch@latest": {
-      "last_modified": "2023-02-24T09:01:09Z",
-      "resolved": "github:NixOS/nixpkgs/7d0ed7f2e5aea07ab22ccb338d27fbe347ed2f11#watch",
-      "source": "devbox-search",
-      "version": "3.3.17"
     },
     "websocat@latest": {
       "last_modified": "2025-01-25T23:17:58Z",
