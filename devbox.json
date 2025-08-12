@@ -47,7 +47,7 @@
     "ejson@latest",
     "ejson2env@latest",
     "kubelogin@latest",
-    "python@3.12",
+    "python@3.13",
     "yq-go@latest",
     "jq@latest",
     "ijq@latest",
