@@ -7,7 +7,7 @@ export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 
 # Path
-export PATH="/usr/local/bin:/usr/local/sbin:${HOME}/.local/bin:/usr/lib/wsl/lib:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:${HOME}/.local/bin:/usr/lib/wsl/lib:~/.cargo/bin:$PATH"
 
 # Flatpak
 export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/root/.local/share/flatpak/exports/share"
