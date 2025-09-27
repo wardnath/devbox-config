@@ -9,9 +9,9 @@
 key_path = "~/.config/atuin/atuin.key"
 
 # 20250927 - added after disable alternate screen history in tmux
-inline_height = 20
-style = "compact"
-invert = true
+# inline_height = 20
+# style = "compact"
+# invert = true
 
 
 ## where to store your auth session token, default is your system data directory
