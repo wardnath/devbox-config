@@ -30,11 +30,26 @@ devbox global pull https://devbox.getfleek.dev/none
 devbox global pull https://github.com/wardnath/devbox-config.git
 ```
 
-## cli devcontainer reset and run 
+## cli devcontainer reset and run
 
 ```bash
 git pull && devcontainer up --workspace-folder . --remove-existing-container && sleep 2 && devcontainer exec --workspace-folder . zsh
 ```
+
+## Python Examples
+
+The `python/` directory contains example Python scripts demonstrating various capabilities:
+
+* `hello_world.py` - Simple Hello World example with type hints
+* `example_utils.py` - Comprehensive utilities showing file operations, JSON parsing, and system commands
+
+Run examples:
+```bash
+python python/hello_world.py
+python python/example_utils.py
+```
+
+See [python/README.md](python/README.md) for more details on using Python in this devbox environment.
 
 ## Secrets etc
 
