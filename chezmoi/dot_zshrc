@@ -19,6 +19,15 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# NPM configuration (similar to pnpm)
+export NPM_CONFIG_PREFIX="$HOME/.local/share/npm"
+export NPM_CONFIG_CACHE="$HOME/.cache/npm"
+
+case ":$PATH:" in
+  *":$NPM_CONFIG_PREFIX/bin:"*) ;;
+  *) export PATH="$NPM_CONFIG_PREFIX/bin:$PATH" ;;
+esac
+
 if [[ "$TERM" == *ghostty* ]]; then
   export TERM=xterm-256color
 fi
