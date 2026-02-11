@@ -6,7 +6,7 @@
     "cmatrix@latest",
     "atuin@latest",
     "bat@latest",
-    "btop@latest",
+    "path:./#btop-gpu",
     "chezmoi@latest",
     "cloc@latest",
     "direnv@latest",
