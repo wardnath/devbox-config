@@ -95,7 +95,7 @@
         "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm"
       ],
       "install-chezmoi": [
-        "chezmoi purge --force && chezmoi init",
+        "chezmoi init || true",
         "cp -r $(devbox global path)/chezmoi/* $(chezmoi source-path)",
         "chezmoi apply --no-pager --progress true"
       ],
