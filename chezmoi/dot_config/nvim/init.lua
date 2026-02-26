@@ -272,8 +272,8 @@ require("lazy").setup({
 
     event = "VeryLazy",
     config = function()
-      vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
-      vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
+      vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)', { desc = 'Leap forward' })
+      vim.keymap.set('n', 'S', '<Plug>(leap-from-window)', { desc = 'Leap from window' })
     end,
   },
   {
