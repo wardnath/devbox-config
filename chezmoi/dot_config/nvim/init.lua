@@ -133,6 +133,162 @@ vim.defer_fn(setup_fast_cursor_move, 500)
 
 
 --------------------------------------------------------------------------------
+-- Static Leap: lightweight 2-character motion plugin (inline, no dependencies)
+-- Inspired by leap.nvim - press s/S + 2 chars to jump to a match
+--------------------------------------------------------------------------------
+
+local leap_ns = vim.api.nvim_create_namespace("static_leap")
+local leap_labels = "sfnjklhodweimbuyvrgtaqpcxz"
+
+local function leap_get_input()
+  local ok, ch = pcall(vim.fn.getcharstr)
+  if not ok or ch == "\27" or ch == "" then return nil end
+  return ch
+end
+
+local function leap_find_matches(pattern, backward, case_sensitive)
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local cursor_line = cursor[1]
+  local cursor_col = cursor[2]
+  local top = vim.fn.line("w0")
+  local bot = vim.fn.line("w$")
+  local matches = {}
+
+  local search_pat = case_sensitive and pattern or pattern:lower()
+
+  if backward then
+    for lnum = cursor_line, top, -1 do
+      local text = vim.api.nvim_buf_get_lines(0, lnum - 1, lnum, false)[1] or ""
+      local search_text = case_sensitive and text or text:lower()
+      local line_matches = {}
+      local start = 1
+      while true do
+        local s = search_text:find(search_pat, start, true)
+        if not s then break end
+        local col = s - 1
+        if not (lnum == cursor_line and col >= cursor_col) then
+          table.insert(line_matches, { lnum = lnum, col = col })
+        end
+        start = s + 1
+      end
+      -- Closest to cursor first (reverse within line for backward)
+      for i = #line_matches, 1, -1 do
+        table.insert(matches, line_matches[i])
+      end
+    end
+  else
+    for lnum = cursor_line, bot do
+      local text = vim.api.nvim_buf_get_lines(0, lnum - 1, lnum, false)[1] or ""
+      local search_text = case_sensitive and text or text:lower()
+      local start = 1
+      while true do
+        local s = search_text:find(search_pat, start, true)
+        if not s then break end
+        local col = s - 1
+        if not (lnum == cursor_line and col <= cursor_col) then
+          table.insert(matches, { lnum = lnum, col = col })
+        end
+        start = s + 1
+      end
+    end
+  end
+
+  return matches
+end
+
+local function setup_static_leap()
+  vim.api.nvim_set_hl(0, "LeapMatch", { fg = "#000000", bg = "#ccff88", bold = true })
+  vim.api.nvim_set_hl(0, "LeapLabel", { fg = "#ffffff", bg = "#ff2299", bold = true })
+
+  local function do_leap(backward)
+    -- Prompt for first character
+    vim.api.nvim_echo({ { "leap>", "Comment" }, { " ", "Normal" } }, false, {})
+    local ch1 = leap_get_input()
+    if not ch1 then
+      vim.api.nvim_echo({ { "", "Normal" } }, false, {})
+      return
+    end
+
+    -- Prompt for second character
+    vim.api.nvim_echo({ { "leap>" .. ch1, "Comment" }, { " ", "Normal" } }, false, {})
+    local ch2 = leap_get_input()
+    if not ch2 then
+      vim.api.nvim_echo({ { "", "Normal" } }, false, {})
+      return
+    end
+
+    local pattern = ch1 .. ch2
+
+    -- Respect vim case settings
+    local case_sensitive = true
+    if vim.o.ignorecase then
+      if vim.o.smartcase then
+        case_sensitive = pattern:find("[A-Z]") ~= nil
+      else
+        case_sensitive = false
+      end
+    end
+
+    local matches = leap_find_matches(pattern, backward, case_sensitive)
+    vim.api.nvim_echo({ { "", "Normal" } }, false, {})
+
+    if #matches == 0 then
+      vim.api.nvim_echo({ { "No matches", "WarningMsg" } }, false, {})
+      return
+    end
+
+    -- Single match: jump directly
+    if #matches == 1 then
+      -- Force inclusive motion in operator-pending mode
+      if vim.fn.mode(true):match("o") then
+        vim.cmd("normal! v")
+      end
+      vim.api.nvim_win_set_cursor(0, { matches[1].lnum, matches[1].col })
+      return
+    end
+
+    -- Multiple matches: show labels as extmark overlays
+    local buf = vim.api.nvim_get_current_buf()
+    local label_map = {}
+
+    for i, match in ipairs(matches) do
+      if i > #leap_labels then break end
+      local label = leap_labels:sub(i, i)
+      label_map[label] = match
+      vim.api.nvim_buf_set_extmark(buf, leap_ns, match.lnum - 1, match.col, {
+        virt_text = { { label, "LeapLabel" } },
+        virt_text_pos = "overlay",
+        priority = 1000,
+      })
+    end
+
+    vim.cmd("redraw")
+
+    -- Get label selection
+    local selected = leap_get_input()
+
+    -- Clear all labels
+    vim.api.nvim_buf_clear_namespace(buf, leap_ns, 0, -1)
+    vim.cmd("redraw")
+
+    if selected and label_map[selected] then
+      if vim.fn.mode(true):match("o") then
+        vim.cmd("normal! v")
+      end
+      vim.api.nvim_win_set_cursor(0, { label_map[selected].lnum, label_map[selected].col })
+    end
+  end
+
+  vim.keymap.set({ "n", "x", "o" }, "s", function() do_leap(false) end,
+    { silent = true, desc = "Leap forward" })
+  vim.keymap.set({ "n", "x", "o" }, "S", function() do_leap(true) end,
+    { silent = true, desc = "Leap backward" })
+end
+
+vim.defer_fn(setup_static_leap, 500)
+
+
+--------------------------------------------------------------------------------
 -- Lazy.nvim and other plugin configurations
 --------------------------------------------------------------------------------
 
@@ -267,13 +423,7 @@ require("lazy").setup({
       })
     end
   },
-  {
-    url = "https://codeberg.org/andyg/Leap.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("leap").add_default_mappings()
-    end,
-  },
+  -- leap.nvim replaced by static inline implementation above (no external dependency)
   {
     "karb94/neoscroll.nvim",
     event = "VeryLazy",
