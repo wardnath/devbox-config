@@ -272,6 +272,12 @@ require("lazy").setup({
 
     event = "VeryLazy",
     config = function()
+      -- NOTE: These mappings intentionally override Vim's built-in:
+      --   - 's' (substitute character) in normal/visual/operator-pending modes
+      --   - 'S' (substitute line) in normal mode
+      -- This matches leap.nvim's default keybindings and provides quick motion
+      -- on 's'/'S'. If you rely on the original substitute commands, you may
+      -- want to change these keys or rebind the built-ins to alternative keys.
       vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)', { desc = 'Leap forward' })
       vim.keymap.set('n', 'S', '<Plug>(leap-from-window)', { desc = 'Leap from window' })
     end,
