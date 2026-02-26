@@ -225,6 +225,7 @@ require("lazy").setup({
   -- Telescope - fuzzy finder that enhances but doesn't replace built-in search
   {
     "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
@@ -268,6 +269,7 @@ require("lazy").setup({
   },
   {
     url = "https://codeberg.org/andyg/leap.nvim",
+
     event = "VeryLazy",
     config = function()
       vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
